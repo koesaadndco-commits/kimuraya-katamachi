@@ -14,6 +14,10 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Vendored vanilla script served as a static asset, not app source.
     "public/**",
+    // Cloudflare/OpenNext build output, not app source.
+    ".open-next/**",
+    ".wrangler/**",
+    "cloudflare-env.d.ts",
   ]),
 ]);
 
