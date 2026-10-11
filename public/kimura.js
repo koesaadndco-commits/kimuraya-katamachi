@@ -125,7 +125,7 @@
 
   // ---- narration with subtitles ----
   var narr=document.getElementById('narr'), sub=document.getElementById('xpSub'), vbtns=document.querySelectorAll('.js-voice');
-  var lines=['昭和二十一年、福井。','小さな食料品店「木村屋」から、すべては始まりました。','あの日の「いらっしゃい」から、今日の「ありがとう」まで。','八十年たった今も、私たちは、この町の台所です。'];
+  var lines=['昭和二十一年、福井。','小さな食料品店「木村屋」から、すべては始まりました。','毎朝、誰よりも早く売り場に立つ。','昭和四十年には、片町フードセンターとして歩みはじめました。','あの日の「いらっしゃい」から、今日の「ありがとう」まで。','八十年たった今も、私たちは、この町の台所です。'];
   var weights=lines.map(function(l){return l.length;}), total=weights.reduce(function(a,b){return a+b;},0);
   function setOn(on){ vbtns.forEach(function(b){ b.classList.toggle('on',on); b.lastChild.textContent= on?'再生中…':'物語を聴く'; }); sub.classList.toggle('on',on); if(!on) sub.textContent=''; }
   vbtns.forEach(function(b){ b.addEventListener('click',function(){

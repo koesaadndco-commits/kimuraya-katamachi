@@ -67,7 +67,7 @@ export default function Home() {
       <h1 className="xp-title" aria-label="ありがとうの、八十年。"><span className="l">ありがとうの、</span><span className="r">八十年。</span></h1>
       <div className="xp-meta"><button type="button" className="voice-btn js-voice" aria-label="ナレーションを聴く"><span className="eq"><i></i><i></i><i></i></span>物語を聴く</button><span className="yr" aria-hidden="true">Since 1946 · Fukui</span><span aria-hidden="true">スクロールで、物語へ</span><span className="cue" aria-hidden="true"></span></div>
       <div className="xp-sub" id="xpSub" aria-live="polite"></div>
-      <audio id="narr" preload="auto" src="/img/narration.mp3"></audio>
+      <audio id="narr" preload="auto" src="/img/narration.wav"></audio>
       <div className="xp-copy" id="xpCopy">
         <div className="wrap">
           <div className="year"><i></i>昭和二十一年 → 令和八年</div>
