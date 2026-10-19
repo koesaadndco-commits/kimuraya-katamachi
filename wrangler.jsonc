@@ -13,5 +13,13 @@
   },
   "observability": {
     "enabled": true
+  },
+  "send_email": [
+    {
+      "name": "EMAIL"
+    }
+  ],
+  "vars": {
+    "APPLY_NOTIFY_EMAIL": ""
   }
 }

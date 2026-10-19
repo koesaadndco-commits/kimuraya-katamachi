@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import ApplyForm from "./ApplyForm";
 import "../kimura.css";
 
 export const metadata: Metadata = {
@@ -59,6 +60,16 @@ export default function Recruit() {
             <div className="eyebrow">RECRUIT</div>
             <h1>「ありがとう」を、<br />仕事にしよう。</h1>
             <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。正社員・パート・アルバイトを募集しています。</p>
+          </div>
+        </section>
+
+        <section className="pad" style={{paddingBottom: 0}}>
+          <div className="wrap">
+            <div className="rc-block rv">
+              <h3 className="rc-title">応募フォーム</h3>
+              <p style={{margin: '0 0 22px'}}>お電話が苦手な方も、こちらから気軽にご応募いただけます。内容を確認のうえ、担当者よりご連絡します。</p>
+              <ApplyForm />
+            </div>
           </div>
         </section>
 
