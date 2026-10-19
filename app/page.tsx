@@ -47,7 +47,7 @@ export default function Home() {
         <a href="#fukui">福井の恵み</a>
         <a href="#dinner">今日の献立</a>
         <a href="#stores">店舗一覧</a>
-        <a href="#recruit">採用情報</a>
+        <a href="/recruit">採用情報</a>
       </nav>
       <a className="btn btn-mitsu" href="#quick">今日のチラシ</a>
       <button className="menu-btn" type="button" aria-label="メニューを開く">MENU</button>
@@ -205,7 +205,7 @@ export default function Home() {
   {/* PEOPLE: marquee */}
   <section className="people pad">
     <div className="wrap">
-      <div className="sec-hd"><div><div className="eyebrow">PEOPLE</div><h2>売り場には、<br />名前のある人がいる。</h2></div><a className="btn btn-line" href="#recruit">スタッフの声をもっと読む</a></div>
+      <div className="sec-hd"><div><div className="eyebrow">PEOPLE</div><h2>売り場には、<br />名前のある人がいる。</h2></div><a className="btn btn-line" href="/recruit">スタッフの声をもっと読む</a></div>
       <div className="people-photos">
         <figure className="rv"><img src="/img/register.jpg" alt="レジで笑顔で接客するスタッフ（イメージ）" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
         <figure className="rv"><img src="/img/hands.jpg" alt="惣菜をつくる手（イメージ）" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
@@ -302,7 +302,7 @@ export default function Home() {
         <div className="eyebrow">RECRUIT</div>
         <h2>「ありがとう」を、<br />仕事にしよう。</h2>
         <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。正社員・パート・アルバイトを募集しています。</p>
-        <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '8px'}}><a className="btn btn-mitsu" href="https://kimura-group48.jp/recruit.php">採用情報を見る</a><a className="btn btn-ghost" href="https://kimura-group48.jp/recruit.php">先輩の声を読む</a></div>
+        <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '8px'}}><a className="btn btn-mitsu" href="/recruit">採用情報を見る</a><a className="btn btn-ghost" href="/recruit">先輩の声を読む</a></div>
       </div>
     </div>
   </section>
@@ -328,7 +328,7 @@ export default function Home() {
           <p style={{marginTop: '18px', lineHeight: '2'}}>〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
         </div>
         <ul><li><a href="#promise">私たちの約束</a></li><li><a href="#story">80年の物語</a></li><li><a href="#fukui">福井の恵み</a></li><li><a href="#stores">店舗一覧</a></li></ul>
-        <ul><li><a href="#news">お知らせ・ブログ</a></li><li><a href="#recruit">採用情報</a></li><li><a href="https://kimura-group48.jp/contact.php">お問い合わせ</a></li><li><a href="#top">プライバシーポリシー</a></li></ul>
+        <ul><li><a href="#news">お知らせ・ブログ</a></li><li><a href="/recruit">採用情報</a></li><li><a href="https://kimura-group48.jp/contact.php">お問い合わせ</a></li><li><a href="#top">プライバシーポリシー</a></li></ul>
       </div>
       <div className="copy"><span>© 2026 木村グループ</span><span>Design sample by KOESA Co.,Ltd. — AI SOLUTION STUDIO</span></div>
     </div>
