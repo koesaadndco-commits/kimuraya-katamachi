@@ -221,8 +221,8 @@ section.pad{padding-block:clamp(72px,10vw,140px)}
 .recruit .eyebrow{color:var(--mitsu)}
 
 /* ===== RECRUIT DETAIL PAGE (/recruit) ===== */
-.rc-hero{position:relative;min-height:44vh;display:flex;align-items:flex-end;background:var(--sumi);color:#fff;overflow:hidden}
-.rc-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+.rc-hero{position:relative;min-height:clamp(420px,58vh,640px);display:flex;align-items:flex-end;background:var(--sumi);color:#fff;overflow:hidden}
+.rc-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;opacity:.5}
 .rc-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,20,23,.2),rgba(18,20,23,.9))}
 .rc-hero .wrap{position:relative;z-index:1;padding-block:clamp(96px,15vw,168px) 48px}
 .rc-hero .eyebrow{color:var(--mitsu)}
