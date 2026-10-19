@@ -297,7 +297,7 @@ export default function Home() {
   {/* RECRUIT */}
   <section className="recruit" id="recruit">
     <div className="grid">
-      <figure><img src="/img/register.jpg" alt="お客様と笑い合うスタッフ（イメージ）" loading="lazy" /></figure>
+      <figure><img src="/img/team-recruit.jpg" alt="経営陣・幹部の集合写真" loading="lazy" /></figure>
       <div className="txt rv">
         <div className="eyebrow">RECRUIT</div>
         <h2>「ありがとう」を、<br />仕事にしよう。</h2>
