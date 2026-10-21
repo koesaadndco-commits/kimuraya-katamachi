@@ -19,7 +19,16 @@
       "name": "EMAIL"
     }
   ],
+  // スタッフ専用ページ（/staff）で登録した「本日のチラシ・お知らせ」の保存先
+  "kv_namespaces": [
+    {
+      "binding": "STAFF_KV",
+      "id": "c0c242105b6a4af8b5285d90969ca165"
+    }
+  ],
   "vars": {
     "APPLY_NOTIFY_EMAIL": ""
+    // STAFF_PASSWORD（スタッフページのパスワード）は Cloudflare ダッシュボードの
+    // Secrets で設定する（docs/staff-page-setup.md 参照）
   }
 }

@@ -1,0 +1,41 @@
+/* スタッフ専用ページ */
+.st{min-height:100vh;background:var(--washi);padding:32px var(--gut) 80px}
+.st .inner{max-width:920px;margin:0 auto}
+.st-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.st-head h1{font-family:var(--mincho);font-size:22px;letter-spacing:.1em;margin:0}
+.st-head .sub{font-size:12px;color:var(--hai);letter-spacing:.08em}
+.st-head form{margin:0}
+.st-card{background:#fff;border:1px solid var(--line);padding:clamp(18px,3vw,28px);margin-bottom:28px}
+.st-card h2{font-family:var(--mincho);font-size:17px;letter-spacing:.08em;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.st-form{display:grid;gap:14px}
+.st-form label{display:grid;gap:6px;font-size:13px;font-weight:700;letter-spacing:.04em}
+.st-form label small{font-weight:400;color:var(--hai)}
+.st-form input[type=text],.st-form input[type=url],.st-form input[type=password],.st-form input[type=datetime-local],.st-form textarea,.st-form select{font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);background:var(--kinari);width:100%}
+.st-form textarea{min-height:96px;resize:vertical}
+.st-form input[type=file]{font-size:13px}
+.st-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.st-row{grid-template-columns:1fr}}
+.st-kind{display:flex;gap:18px;font-weight:400}
+.st-kind label{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+.st-btn{font:inherit;font-weight:700;font-size:14px;letter-spacing:.06em;min-height:46px;padding:0 24px;border-radius:999px;border:0;background:var(--mitsu);color:var(--sumi);cursor:pointer}
+.st-btn:hover{background:#e6b24d}
+.st-btn.ghost{background:transparent;border:1px solid var(--sumi);min-height:38px;padding:0 16px;font-size:13px}
+.st-msg{padding:12px 16px;margin-bottom:20px;font-size:14px;border-left:4px solid var(--mitsu);background:#fff}
+.st-msg.err{border-color:#b43d2c;color:#b43d2c}
+.st-list{list-style:none;margin:0;padding:0}
+.st-list li{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start;padding:16px 0;border-bottom:1px solid var(--line)}
+.st-list li:last-child{border-bottom:0}
+.st-badge{font-size:11px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:3px;white-space:nowrap;margin-top:3px}
+.st-badge.live{background:var(--mitsu);color:var(--sumi)}
+.st-badge.scheduled{background:var(--ai);color:#fff}
+.st-badge.ended{background:#ddd7cb;color:var(--hai)}
+.st-list .tt{font-weight:700;font-size:15px}
+.st-list .kind{font-size:11px;color:var(--mitsu-d);letter-spacing:.1em;margin-right:8px}
+.st-list .meta{font-size:12.5px;color:var(--hai);line-height:1.8}
+.st-list .meta a{color:var(--ai2)}
+.st-list .body{font-size:13.5px;white-space:pre-wrap;margin-top:4px}
+.st-del{font:inherit;font-size:12.5px;padding:6px 12px;border:1px solid #b43d2c;color:#b43d2c;background:#fff;cursor:pointer;border-radius:4px}
+.st-del:hover{background:#b43d2c;color:#fff}
+.st-empty{color:var(--hai);font-size:14px}
+.st-login{max-width:420px;margin:12vh auto 0}
+.st-note{font-size:12.5px;color:var(--hai);line-height:1.8;margin-top:10px}

@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./kimura.css";
+import { DEFAULT_FLYER_URL, TIMEE_URL } from "./lib/links";
+import { flyerHref, listActivePosts, type Post } from "./lib/staff-store";
+
+// スタッフページ（/staff）の登録内容を毎回読むため、リクエスト時に描画する
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "木村グループ｜ハニー食彩館 — ありがとうの、八十年。",
@@ -12,7 +17,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  // 掲載期間内の「本日のチラシ・お知らせ」（期間外のものは含まれない）
+  const active = await listActivePosts();
+  const flyer = flyerHref(active, DEFAULT_FLYER_URL);
   return (
     <>
   <div className="theater" id="theater" role="dialog" aria-modal="true" aria-label="創業八十周年記念映像">
@@ -87,13 +95,15 @@ export default function Home() {
   {/* QUICK */}
   <nav className="quick" id="quick" aria-label="よく使うメニュー">
     <ul>
-      <li><a href="https://kimura-group48.jp/flyer.php"><svg viewBox="0 0 28 28"><rect x="5" y="3" width="18" height="22" rx="1"/><path d="M9 9h10M9 13h10M9 17h6"/></svg><span><span className="k">今日のチラシ</span><br /><span className="s">スマホで見やすく毎朝更新</span></span></a></li>
+      <li><a href={flyer}><svg viewBox="0 0 28 28"><rect x="5" y="3" width="18" height="22" rx="1"/><path d="M9 9h10M9 13h10M9 17h6"/></svg><span><span className="k">今日のチラシ</span><br /><span className="s">スマホで見やすく毎朝更新</span></span></a></li>
       <li><a href="#stores"><svg viewBox="0 0 28 28"><path d="M14 25s8-7.5 8-13.5A8 8 0 0 0 6 11.5C6 17.5 14 25 14 25z"/><circle cx="14" cy="11.5" r="3"/></svg><span><span className="k">店舗を探す</span><br /><span className="s">福井市・坂井市 7店舗</span></span></a></li>
       <li className="uber"><a href="#quick"><svg viewBox="0 0 28 28"><path d="M4 9h15l-1.5 10h-12z"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/><path d="M20 13h4M21 17h3"/></svg><span><span className="k">お届け注文</span><br /><span className="s">Uber Eatsでお家まで</span></span></a></li>
       <li><a href="#goods"><svg viewBox="0 0 28 28"><rect x="4" y="6" width="20" height="18" rx="1"/><path d="M4 11h20M9 3v5M19 3v5M9 16h3M16 16h3M9 20h3"/></svg><span><span className="k">オードブル予約</span><br /><span className="s">ネットで24時間受付</span></span></a></li>
       <li><a href="https://lin.ee/rNifBeB"><svg viewBox="0 0 28 28"><path d="M14 5C8 5 3.5 8.8 3.5 13.4c0 4.1 3.6 7.5 8.5 8.2l-.6 3 4.2-2.8c5.4-.4 9.9-4 9.9-8.4C25.5 8.8 20 5 14 5z"/></svg><span><span className="k">LINE友だち</span><br /><span className="s">お得な情報をいち早く</span></span></a></li>
     </ul>
   </nav>
+
+  <TodayNotice posts={active} />
   
   {/* MANIFESTO: reading reveal */}
   <section className="read" id="promise">
@@ -178,7 +188,7 @@ export default function Home() {
           <h3 id="dishName">秋鮭と根菜の粕汁</h3>
           <p id="dishText">脂ののった秋鮭と、大根・人参・ごぼう。酒粕でコクを足せば、体の芯からぽかぽかに。</p>
           <ul id="dishList"><li><b>鮮魚</b>秋鮭</li><li><b>青果</b>大根・人参・ごぼう</li><li><b>日配</b>酒粕・油揚げ</li></ul>
-          <a className="go" href="https://kimura-group48.jp/flyer.php">今日のチラシでお買い得をチェック →</a>
+          <a className="go" href={flyer}>今日のチラシでお買い得をチェック →</a>
         </div>
       </article>
     </div>
@@ -239,13 +249,13 @@ export default function Home() {
         <div className="map-tools"><button type="button" id="nearBtn">現在地から近い店を探す</button><span id="nearOut"></span></div>
       </div>
       <div className="store-list one" id="storeList">
-        <div className="store" data-close="24"><h3>食彩館 大宮店<span className="open"></span></h3><div className="addr">福井市大宮6丁目5-5 ／ TEL 0776-27-1194</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps?cid=698264289893347059">地図を開く</a><a href="https://kimura-group48.jp/flyer.php">チラシ</a></div></div>
-        <div className="store" data-close="22"><h3>食彩館 四ツ居店<span className="open"></span></h3><div className="addr">福井市北四ツ居1-9-1 ／ TEL 0776-53-5535</div><div className="hrs"><b>8:00 – 22:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館四ツ居店">地図を開く</a><a href="https://kimura-group48.jp/flyer.php">チラシ</a></div></div>
-        <div className="store" data-close="24"><h3>食彩館 やしろ店<span className="open"></span></h3><div className="addr">福井市若杉4丁目1021 ／ TEL 0776-34-3030</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館やしろ店">地図を開く</a><a href="https://kimura-group48.jp/flyer.php">チラシ</a></div></div>
-        <div className="store" data-close="23"><h3>食彩館 西福井店<span className="open"></span></h3><div className="addr">福井市文京4丁目3-1 ／ TEL 0776-26-6400</div><div className="hrs"><b>8:00 – 23:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館西福井">地図を開く</a><a href="https://kimura-group48.jp/flyer.php">チラシ</a></div></div>
-        <div className="store" data-close="24"><h3>食彩館 丸岡店<span className="open"></span></h3><div className="addr">坂井市丸岡町羽崎16字25 ／ TEL 0776-67-3771</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館丸岡店">地図を開く</a><a href="https://kimura-group48.jp/flyer.php">チラシ</a></div></div>
-        <div className="store" data-close="24"><h3>食彩館 みくに店<span className="open"></span></h3><div className="addr">坂井市三国町三国東7-513 ／ TEL 0776-81-6670</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館みくに">地図を開く</a><a href="https://kimura-group48.jp/flyer.php">チラシ</a></div></div>
-        <div className="store" data-close="24"><h3>食彩館 東部店<span className="open"></span></h3><div className="addr">福井市成和1丁目3210 ／ TEL 0776-26-1002</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館東部店">地図を開く</a><a href="https://kimura-group48.jp/flyer.php">チラシ</a></div></div>
+        <div className="store" data-close="24"><h3>食彩館 大宮店<span className="open"></span></h3><div className="addr">福井市大宮6丁目5-5 ／ TEL 0776-27-1194</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps?cid=698264289893347059">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="22"><h3>食彩館 四ツ居店<span className="open"></span></h3><div className="addr">福井市北四ツ居1-9-1 ／ TEL 0776-53-5535</div><div className="hrs"><b>8:00 – 22:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館四ツ居店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="24"><h3>食彩館 やしろ店<span className="open"></span></h3><div className="addr">福井市若杉4丁目1021 ／ TEL 0776-34-3030</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館やしろ店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="23"><h3>食彩館 西福井店<span className="open"></span></h3><div className="addr">福井市文京4丁目3-1 ／ TEL 0776-26-6400</div><div className="hrs"><b>8:00 – 23:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館西福井">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="24"><h3>食彩館 丸岡店<span className="open"></span></h3><div className="addr">坂井市丸岡町羽崎16字25 ／ TEL 0776-67-3771</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館丸岡店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="24"><h3>食彩館 みくに店<span className="open"></span></h3><div className="addr">坂井市三国町三国東7-513 ／ TEL 0776-81-6670</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館みくに">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="24"><h3>食彩館 東部店<span className="open"></span></h3><div className="addr">福井市成和1丁目3210 ／ TEL 0776-26-1002</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館東部店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
       </div>
       </div>
     </div>
@@ -302,7 +312,7 @@ export default function Home() {
         <div className="eyebrow">RECRUIT</div>
         <h2>「ありがとう」を、<br />仕事にしよう。</h2>
         <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。正社員・パート・アルバイトを募集しています。</p>
-        <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '8px'}}><a className="btn btn-mitsu" href="/recruit">採用情報を見る</a><a className="btn btn-ghost" href="/recruit">先輩の声を読む</a></div>
+        <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '8px'}}><a className="btn btn-mitsu" href="/recruit">採用情報を見る</a><a className="btn btn-ghost" href="/recruit">先輩の声を読む</a><a className="btn btn-ghost" href={TIMEE_URL} target="_blank" rel="noopener noreferrer">タイミーでお試しバイト</a></div>
       </div>
     </div>
   </section>
@@ -335,5 +345,42 @@ export default function Home() {
   </footer>
       <Script src="/kimura.js" strategy="afterInteractive" />
     </>
+  );
+}
+
+// スタッフページで登録した「本日のチラシ・お知らせ」。掲載期間内のものだけが渡される
+function TodayNotice({ posts }: { posts: Post[] }) {
+  if (posts.length === 0) return null;
+  return (
+    <section className="notice" id="notice" aria-label="本日のチラシ・お知らせ">
+      <div className="wrap">
+        <div className="notice-hd"><span className="eyebrow">TODAY</span><h2>本日のチラシ・お知らせ</h2></div>
+        <ul>
+          {posts.map((p) => {
+            const isPdf = p.fileType === "application/pdf";
+            const href = p.fileId ? `/f/${p.fileId}` : p.linkUrl || "";
+            return (
+              <li key={p.id} className={p.kind}>
+                {p.fileId && !isPdf && (
+                  <a className="thumb" href={href} target="_blank" rel="noopener noreferrer">
+                    <img src={href} alt={p.title} loading="lazy" />
+                  </a>
+                )}
+                <div className="txt">
+                  <span className="tag">{p.kind === "flyer" ? "チラシ" : "お知らせ"}</span>
+                  <h3>{p.title}</h3>
+                  {p.body && <p>{p.body}</p>}
+                  {href && (
+                    <a className="go" href={href} target="_blank" rel="noopener noreferrer">
+                      {p.kind === "flyer" ? (isPdf ? "チラシ（PDF）を開く →" : "チラシを大きく見る →") : "くわしく見る →"}
+                    </a>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
   );
 }

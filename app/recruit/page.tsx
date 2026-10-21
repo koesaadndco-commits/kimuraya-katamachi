@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import ApplyForm from "./ApplyForm";
+import { TIMEE_URL } from "../lib/links";
 import "../kimura.css";
 
 export const metadata: Metadata = {
@@ -128,6 +129,17 @@ export default function Recruit() {
                     {s.name}<span>求人を見る ›</span>
                   </a>
                 ))}
+              </div>
+            </div>
+
+            <div className="rc-block rv">
+              <h3 className="rc-title">スポットバイト（お試し）</h3>
+              <p>「いきなり長く働くのは不安」という方は、まず1日だけ。タイミーのお試しバイトで、売り場の雰囲気を体験できます。</p>
+              <div className="rc-special">
+                <div>
+                  <p style={{margin: '0 0 8px', fontWeight: 700}}>スキマ時間にアプリで応募</p>
+                  <a className="btn btn-mitsu" href={TIMEE_URL} target="_blank" rel="noopener noreferrer">タイミーでお試しバイトを探す</a>
+                </div>
               </div>
             </div>
           </div>
