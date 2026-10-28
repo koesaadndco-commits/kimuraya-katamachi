@@ -38,9 +38,10 @@ export default function Recruit() {
     <>
       <header className="site" id="hdr">
         <div className="wrap hd">
-          <a className="logo" href="/" aria-label="木村グループ ホーム">
-            <span className="mark">木</span>
-            <span><span className="t1">木村グループ</span><br /><span className="t2">HONEY 食彩館</span></span>
+          <a className="logo" href="/" aria-label="木村屋（木村グループ）ホーム">
+            <img className="lg lg-light" src="/img/logo/kimuraya-lockup-light.png" alt="木村屋" width={423} height={136} />
+            <img className="lg lg-dark" src="/img/logo/kimuraya-lockup.png" alt="" aria-hidden="true" width={423} height={136} />
+            <span className="lg-txt"><span className="t1">木村グループ</span><br /><span className="t2">HONEY 食彩館</span></span>
           </a>
           <nav className="gnav" aria-label="メインメニュー">
             <a href="/#promise">私たちの約束</a>
@@ -166,7 +167,7 @@ export default function Recruit() {
         <div className="wrap">
           <div className="grid">
             <div>
-              <a className="logo" href="/"><span className="mark">木</span><span><span className="t1">木村グループ</span><br /><span className="t2">HONEY 食彩館</span></span></a>
+              <a className="logo" href="/" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo-light.png" alt="木村屋 SINCE 1946" width={317} height={280} /></a>
               <p style={{marginTop: '18px', lineHeight: '2'}}>〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
             </div>
             <ul><li><a href="/#promise">私たちの約束</a></li><li><a href="/#story">80年の物語</a></li><li><a href="/#fukui">福井の恵み</a></li><li><a href="/#stores">店舗一覧</a></li></ul>

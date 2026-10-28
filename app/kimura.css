@@ -33,6 +33,15 @@ body.has-ribbon header.site.solid{top:0}
 .logo .mark{width:38px;height:38px;border-radius:50%;background:var(--ai);color:var(--mitsu);display:grid;place-items:center;font-family:var(--mincho);font-weight:800;font-size:19px;border:1px solid rgba(217,162,59,.5)}
 .logo .t1{font-family:var(--mincho);font-weight:800;font-size:19px;letter-spacing:.08em;line-height:1.1}
 .logo .t2{font-size:10.5px;letter-spacing:.24em;opacity:.7;line-height:1.2}
+/* 木村屋ロゴ（丸文字9案）：ヘッダーは横組みロックアップ、透明時は明色・スクロール後は紺色に切替。フッターは縦組みの明色版 */
+.logo .lg{height:44px;width:auto;display:block}
+.logo .lg-txt{padding-left:12px;border-left:1px solid currentColor;opacity:.9}
+.logo .lg-txt .t1{font-size:14px;letter-spacing:.1em}
+header.site .lg-dark{display:none}
+header.site.solid .lg-dark{display:block}
+header.site.solid .lg-light{display:none}
+footer .lg-full{height:124px;width:auto;display:block}
+@media (max-width:480px){.logo .lg{height:38px}.logo .lg-txt{display:none}}
 nav.gnav{margin-left:auto;display:flex;gap:26px;font-size:14px}
 nav.gnav a{text-decoration:none;position:relative;padding:4px 0}
 nav.gnav a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:currentColor;transition:right .3s}
