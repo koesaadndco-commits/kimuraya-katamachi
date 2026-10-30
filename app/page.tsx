@@ -46,11 +46,9 @@ export default async function Home() {
   <header className="site" id="hdr">
     <div className="wrap hd">
       <a className="logo" href="#top" aria-label="木村屋（木村グループ）ホーム">
-        <img className="lg lg-light" src="/img/logo/kimuraya-lockup-light.png" alt="木村屋" width={423} height={136} />
-        <img className="lg lg-dark" src="/img/logo/kimuraya-lockup.png" alt="" aria-hidden="true" width={423} height={136} />
+        <img className="lg" src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={423} height={136} />
         <span className="lg-sub">
-          <img className="lg2 lg2-light" src="/img/logo/shokusaikan-logo-ondark.png" alt="ハニー食彩館 FOOD MARKET" width={2012} height={957} />
-          <img className="lg2 lg2-dark" src="/img/logo/shokusaikan-logo.png" alt="" aria-hidden="true" width={2012} height={957} />
+          <img className="lg2" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={2012} height={957} />
         </span>
       </a>
       <nav className="gnav" aria-label="メインメニュー">
@@ -338,7 +336,7 @@ export default async function Home() {
     <div className="wrap">
       <div className="grid">
         <div>
-          <div className="ft-logos"><a className="logo" href="#top" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo-light.png" alt="木村屋 SINCE 1946" width={317} height={280} /></a><img className="ft-shoku" src="/img/logo/shokusaikan-logo-ondark.png" alt="ハニー食彩館 FOOD MARKET" width={2012} height={957} /></div>
+          <div className="ft-logos"><a className="logo" href="#top" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo.png" alt="木村屋 SINCE 1946" width={317} height={280} /></a><img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={2012} height={957} /></div>
           <p style={{marginTop: '18px', lineHeight: '2'}}>〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
         </div>
         <ul><li><a href="#promise">私たちの約束</a></li><li><a href="#story">80年の物語</a></li><li><a href="#fukui">福井の恵み</a></li><li><a href="#stores">店舗一覧</a></li></ul>

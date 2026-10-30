@@ -35,18 +35,12 @@ body.has-ribbon header.site.solid{top:0}
 .logo .t2{font-size:10.5px;letter-spacing:.24em;opacity:.7;line-height:1.2}
 /* 木村屋ロゴ（丸文字9案）：ヘッダーは横組みロックアップ、透明時は明色・スクロール後は紺色に切替。フッターは縦組みの明色版 */
 .logo .lg{height:44px;width:auto;display:block}
-.logo .lg-sub{padding-left:14px;border-left:1px solid currentColor;display:flex;align-items:center}
+.logo .lg-sub{padding-left:14px;border-left:1px solid rgba(18,20,23,.22);display:flex;align-items:center}
 .logo .lg2{height:34px;width:auto;display:block}
-header.site .lg2-dark{display:none}
-header.site.solid .lg2-dark{display:block}
-header.site.solid .lg2-light{display:none}
-header.site .lg-dark{display:none}
-header.site.solid .lg-dark{display:block}
-header.site.solid .lg-light{display:none}
-footer .lg-full{height:124px;width:auto;display:block}
+footer .lg-full{height:112px;width:auto;display:block}
 @media (max-width:480px){.logo .lg{height:38px}.logo .lg-sub{display:none}}
-.ft-logos{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap}
-footer .ft-shoku{height:64px;width:auto;margin-bottom:6px}
+.ft-logos{display:inline-flex;align-items:center;gap:26px;flex-wrap:wrap;background:var(--kinari);border-radius:14px;padding:16px 26px}
+footer .ft-shoku{height:58px;width:auto}
 .st-logo{height:52px;width:auto;display:block;margin-bottom:14px}
 nav.gnav{margin-left:auto;display:flex;gap:26px;font-size:14px}
 nav.gnav a{text-decoration:none;position:relative;padding:4px 0}
@@ -456,3 +450,7 @@ form.mem-form{background:#fff;border:1px solid var(--line);padding:26px;display:
 .notice .go{font-weight:700;font-size:13.5px;letter-spacing:.06em;color:var(--mitsu-d);text-decoration:none}
 .notice .go:hover{text-decoration:underline}
 @media(max-width:600px){.notice li{flex-direction:column}.notice .thumb{width:100%}}
+
+/* ヘッダーのロゴ：背景が写真・映像でも元の色で見えるよう、明るい下地（プレート）に載せる */
+header.site .logo{background:rgba(247,244,238,.96);color:var(--sumi);border-radius:14px;padding:6px 18px 6px 14px;box-shadow:0 1px 8px rgba(0,0,0,.18)}
+header.site.solid .logo{box-shadow:none;background:transparent;padding-inline:0}
