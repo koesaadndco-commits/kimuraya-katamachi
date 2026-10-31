@@ -118,7 +118,7 @@ export default async function Home() {
       <div className="wrap read-in">
         <div>
           <div className="eyebrow">OUR PROMISE</div>
-          <p className="read-text" id="readText">「おいしかったよ」のひとことのために、<span className="mk">今日も朝いちばんに</span>売り場に立つ。私たちが売っているのは、食材だけではありません。福井の家族の、<span className="mk">今日の晩ごはんの時間</span>です。</p>
+          <p className="read-text" id="readText">「おいしかったよ」のひとことのために、<span className="mk">今日も朝いちばんに</span>売り場に立つ。私たちが販売しているのは、食材だけではありません。<span className="mk">今日という日の食事の時間</span>。家族の笑顔です。</p>
           <div className="read-sign"><span>経営理念</span><b>食を通じて、ありがとうの溢れる豊かな社会を実現する</b></div>
         </div>
         <div className="read-side">
