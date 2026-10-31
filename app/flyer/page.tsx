@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-html-link-for-pages -- ホーム（/）は kimura.js の初期化が必要なため、通常のページ読み込みで遷移させる */
 import type { Metadata } from "next";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import "../kimura.css";
 import { DEFAULT_FLYER_URL } from "../lib/links";
@@ -22,7 +22,7 @@ export default async function FlyerPage() {
   return (
     <>
       <header className="flyer-hd">
-        <Link className="flyer-back" href="/">‹ ホームへ戻る</Link>
+        <a className="flyer-back" href="/">‹ ホームへ戻る</a>
         <span>木村グループ ／ ハニー食彩館</span>
       </header>
       <main className="flyer-main">

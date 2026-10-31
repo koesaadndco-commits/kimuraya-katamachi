@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages -- ホーム（/）は kimura.js の初期化が必要なため、通常のページ読み込みで遷移させる */
 import type { ReactNode } from "react";
 import Link from "next/link";
 import "./staff.css";
@@ -29,12 +30,12 @@ export default function StaffShell({
   return (
     <div className="st-shell">
       <aside className="st-side">
-        <Link className="st-brand" href="/" aria-label="木村屋 ホームページへ">
+        <a className="st-brand" href="/" aria-label="木村屋 ホームページへ">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="st-brand-k" src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="st-brand-s" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
-        </Link>
+        </a>
         <small>お店のたより 管理画面</small>
         <nav aria-label="管理メニュー">
           {NAV.map((n) => (
