@@ -64,10 +64,10 @@ nav.gnav a:hover::after{right:0}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 .xp-copy{position:absolute;z-index:4;left:0;right:0;bottom:0;padding-bottom:clamp(40px,8vh,80px);opacity:var(--c,0);transform:translateY(calc((1 - var(--c,0)) * 30px));pointer-events:none}
 .xp-copy.on{pointer-events:auto}
-.xp-copy .year{font-family:var(--latin);font-style:italic;font-size:18px;letter-spacing:.2em;color:var(--mitsu);display:flex;align-items:center;gap:14px}
+.xp-copy .year{font-family:var(--latin);font-style:italic;font-size:18px;letter-spacing:.2em;color:var(--mitsu);font-weight:700;display:flex;align-items:center;gap:14px}
 .xp-copy .year i{width:56px;height:1px;background:var(--mitsu);display:inline-block}
 .xp-copy h2{font-size:clamp(28px,4vw,54px);line-height:1.4;letter-spacing:.05em;margin:12px 0 14px;color:#fff}
-.xp-copy p{max-width:34em;color:#e9e4da;margin:0 0 24px;font-size:15px;line-height:2.05}
+.xp-copy p{max-width:34em;color:#e9e4da;font-weight:700;margin:0 0 24px;font-size:15px;line-height:2.05}
 .xp-copy .ctas{display:flex;gap:12px;flex-wrap:wrap}
 .xp-ctrl{position:absolute;right:var(--gut);bottom:clamp(40px,8vh,80px);z-index:5;opacity:var(--c,0)}
 .xp-ctrl button{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:999px;height:40px;padding:0 16px;font:inherit;font-size:12px;letter-spacing:.1em;cursor:pointer}
