@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 const ERRORS: Record<string, string> = {
   password: "パスワードが違います。",
+  notconfigured: "パスワードがまだ設定されていないため、ログインできません。",
   login: "ログインの有効期限が切れました。もう一度ログインしてください。",
   title: "お知らせにはタイトルが必要です。",
   period: "掲載する日・時刻を確認してください。",
