@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import "../kimura.css";
 import { BlogFooter, BlogHeader, Eyebrow } from "../blog/SiteChrome";
+import { SITE_URL } from "../lib/links";
 
 export const metadata: Metadata = {
   title: "会社の沿革｜木村グループ（ハニー食彩館）",
   description: "昭和21年、福井の小さな食料品店「木村屋」から。木村グループ80年のあゆみ。",
-  robots: { index: false, follow: false },
+  alternates: { canonical: `${SITE_URL}/history` },
 };
 
 type Item = { wa: string; year: string; title: string; text: string; img?: { src: string; alt: string } };

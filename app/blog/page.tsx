@@ -3,13 +3,14 @@ import Link from "next/link";
 import "../kimura.css";
 import { TYPE_LABEL, dotDate, isArticleType, listPublishedArticles } from "../lib/articles";
 import { BlogFooter, BlogHeader, Eyebrow } from "./SiteChrome";
+import { SITE_URL } from "../lib/links";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "お店のたより｜社長ブログ・スタッフブログ・レシピ｜木村グループ",
   description: "木村グループ（ハニー食彩館）の、社長ブログ・スタッフブログ・おすすめレシピ。",
-  robots: { index: false, follow: false },
+  alternates: { canonical: `${SITE_URL}/blog` },
 };
 
 type Search = Record<string, string | string[] | undefined>;

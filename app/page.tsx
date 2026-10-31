@@ -1,21 +1,52 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./kimura.css";
-import { DEFAULT_FLYER_URL, INSTAGRAM_URL, TIMEE_URL } from "./lib/links";
+import { DEFAULT_FLYER_URL, INSTAGRAM_URL, SITE_URL, TIMEE_URL } from "./lib/links";
 import { flyerHref, listActivePosts, type Post } from "./lib/staff-store";
 import { dotDate, listPublishedArticles } from "./lib/articles";
 
 // スタッフページ（/staff）の登録内容を毎回読むため、リクエスト時に描画する
 export const dynamic = "force-dynamic";
 
+const TITLE = "木村グループ｜ハニー食彩館 — ありがとうの、八十年。";
+const DESCRIPTION =
+  "昭和21年、福井の小さな食料品店「木村屋」から。福井市・坂井市で食彩館7店舗を展開する木村グループの公式サイト。";
+
 export const metadata: Metadata = {
-  title: "木村グループ｜ハニー食彩館 — ありがとうの、八十年。",
-  description:
-    "昭和21年、福井の小さな食料品店「木村屋」から。ハニー食彩館を営む木村グループのトップページ提案サンプル（v4）。",
-  robots: {
-    index: false,
-    follow: false,
-  },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SITE_URL },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: SITE_URL },
+  twitter: { title: TITLE, description: DESCRIPTION },
+};
+
+type Store = { name: string; address: string; tel: string; close: string };
+
+const STORES: Store[] = [
+  { name: "食彩館 大宮店", address: "福井県福井市大宮6丁目5-5", tel: "0776-27-1194", close: "24:00" },
+  { name: "食彩館 四ツ居店", address: "福井県福井市北四ツ居1-9-1", tel: "0776-53-5535", close: "22:00" },
+  { name: "食彩館 やしろ店", address: "福井県福井市若杉4丁目1021", tel: "0776-34-3030", close: "24:00" },
+  { name: "食彩館 西福井店", address: "福井県福井市文京4丁目3-1", tel: "0776-26-6400", close: "23:00" },
+  { name: "食彩館 丸岡店", address: "福井県坂井市丸岡町羽崎16字25", tel: "0776-67-3771", close: "24:00" },
+  { name: "食彩館 みくに店", address: "福井県坂井市三国町三国東7-513", tel: "0776-81-6670", close: "24:00" },
+  { name: "食彩館 東部店", address: "福井県福井市成和1丁目3210", tel: "0776-26-1002", close: "24:00" },
+];
+
+const STORES_JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": STORES.map((s) => ({
+    "@type": "GroceryStore",
+    name: s.name,
+    telephone: s.tel,
+    address: { "@type": "PostalAddress", streetAddress: s.address, addressCountry: "JP" },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "08:00",
+      closes: s.close,
+    },
+    parentOrganization: { "@type": "Organization", name: "木村グループ", url: SITE_URL },
+  })),
 };
 
 export default async function Home() {
@@ -26,6 +57,10 @@ export default async function Home() {
   const latest = await listPublishedArticles(undefined, 5);
   return (
     <>
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(STORES_JSON_LD) }}
+  />
   <div className="theater" id="theater" role="dialog" aria-modal="true" aria-label="創業八十周年記念映像">
     <div className="th-glow"></div><div className="th-grain"></div>
     <video className="th-film" id="thFilm" playsInline preload="auto" poster="/img/archive-1946.jpg"><source src="/img/film.mp4" type="video/mp4" /></video>

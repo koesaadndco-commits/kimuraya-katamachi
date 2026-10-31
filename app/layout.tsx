@@ -1,10 +1,30 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SITE_URL } from "./lib/links";
+
+const SITE_TITLE = "木村グループ｜ハニー食彩館 — ありがとうの、八十年。";
+const SITE_DESCRIPTION =
+  "昭和21年、福井の小さな食料品店「木村屋」から。福井市・坂井市で食彩館7店舗を展開する木村グループの公式サイト。";
 
 export const metadata: Metadata = {
-  title: "木村グループ｜ハニー食彩館 — ありがとうの、八十年。",
-  description:
-    "昭和21年、福井の小さな食料品店「木村屋」から。ハニー食彩館を営む木村グループのトップページ提案サンプル。",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    siteName: "木村グループ｜ハニー食彩館",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    images: [{ url: "/img/family.jpg", width: 1344, height: 752, alt: "木村グループ ハニー食彩館" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/img/family.jpg"],
+  },
 };
 
 export default function RootLayout({
