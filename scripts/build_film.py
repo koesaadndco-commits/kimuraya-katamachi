@@ -50,16 +50,23 @@ GAP = 0.6             # narration.mp3 の行間（秒）
 ORIG_KEEP_A_END = 19.9    # 昭和四十年のシーンが終わる直前（この先は令和のトマトのシーンの切り替え）
 ORIG_KEEP_C_START = 28.5  # 家族の夕食のシーンが始まった後（この前は元のトマトのシーンが残る）
 ORIG_END = 38.0
+# 冒頭のタイトル画面（「1946 — 2026 木村グループ 創業八十周年記念映像」）を長く見せる。
+# 元は 0.4〜1.4 秒でゆっくり表示され、文字がはっきり見えるのは約 0.6 秒、約 2 秒で次のシーンへ切り替わっていた。
+# 文字が表示しきった静止の状態（INTRO_HOLD_AT 秒）の画面を INTRO_HOLD 秒のばす（合計で約 4.8 秒）
+INTRO_HOLD_AT = 1.75
+INTRO_HOLD = 2.8
 XFADE = 0.5
 # 映像の中での各行の開始秒の決め方（シーン3の開始・終了からの相対）
 LINE3_AFTER_SCENE3_START = 1.0   # 令和のシーンが見え始めてから 3 行目まで
 LINE5_AFTER_VC_START = 0.8       # 家族のシーンが見え始めてから 5 行目まで
 LINE6_AT_ORIG = 34.2             # 6 行目は、元映像のこの時点（タイトルカードが出る）から
-FIXED_STARTS = {1: 2.2, 2: 5.55, 4: 12.5}
+FIXED_STARTS = {1: 2.2 + INTRO_HOLD, 2: 5.55 + INTRO_HOLD, 4: 12.5 + INTRO_HOLD}  # 元の映像でのシーンの位置＋冒頭ののばした分
 
 
 def run(*cmd):
-    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+    r = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+    if r.returncode != 0:
+        sys.exit(f"コマンドが失敗しました: {cmd[0]}\n{r.stderr[-1500:]}")
 
 
 def dur(path):
@@ -146,7 +153,7 @@ def main():
             print(f"  → {d[i]:.2f}秒")
 
         d3 = dur(SCENE3)
-        s3 = ORIG_KEEP_A_END - XFADE            # 令和のシーンが映像に入ってくる時刻
+        s3 = ORIG_KEEP_A_END + INTRO_HOLD - XFADE  # 令和のシーンが映像に入ってくる時刻（冒頭ののばした分を足す）
         vc_off = s3 + d3 - XFADE                # 家族のシーンが入ってくる時刻
         starts = dict(FIXED_STARTS)
         starts[3] = s3 + LINE3_AFTER_SCENE3_START
@@ -167,7 +174,9 @@ def main():
         delays = ";".join(f"[{idx[i]}:a]adelay={int(starts[i] * 1000)}:all=1[a{i}]" for i in order_in)
         mix = "".join(f"[a{i}]" for i in order_in)
         fc = (
-            f"[0:v]trim=0:{ORIG_KEEP_A_END},setpts=PTS-STARTPTS,settb=AVTB,fps=24[va];"
+            f"[0:v]trim=0:{INTRO_HOLD_AT},setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop_duration={INTRO_HOLD},settb=AVTB,fps=24[v0];"
+            f"[0:v]trim={INTRO_HOLD_AT}:{ORIG_KEEP_A_END},setpts=PTS-STARTPTS,settb=AVTB,fps=24[v1];"
+            "[v0][v1]concat=n=2:v=1:a=0,settb=AVTB,fps=24[va];"
             "[1:v]setpts=PTS-STARTPTS,settb=AVTB,fps=24,scale=1600:900[vb];"
             f"[0:v]trim={ORIG_KEEP_C_START}:{ORIG_END},setpts=PTS-STARTPTS,"
             f"tpad=stop_mode=clone:stop_duration={max(vclen - (ORIG_END - ORIG_KEEP_C_START), 0):.2f},"
