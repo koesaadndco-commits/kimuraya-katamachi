@@ -134,6 +134,7 @@ section.pad{padding-block:clamp(72px,10vw,140px)}
 .hs-card p{font-size:13.5px;color:#b9b2a6;line-height:1.9;margin:0}
 .hs-prog{height:1px;background:rgba(236,230,218,.18);position:relative}
 .hs-prog i{position:absolute;left:0;top:-1px;height:3px;background:var(--mitsu);width:0}
+.hs-more{display:inline-block;margin-top:14px;color:var(--mitsu);font-size:13px;letter-spacing:.1em;text-decoration:none;border-bottom:1px solid rgba(217,162,59,.5);padding-bottom:2px}.hs-more:hover{color:#e6b24d}
 
 /* ===== FUKUI: sticky wipe gallery (after 21st.dev "Scroll Gallery") ===== */
 .wg{position:relative;height:320vh;background:var(--ai)}
@@ -536,3 +537,25 @@ form.mem-form{background:#fff;border:1px solid var(--line);padding:26px;display:
 h1,h2,h3{text-wrap:balance;word-break:auto-phrase;line-break:strict}
 p,li,dd,figcaption,.bl-ex{text-wrap:pretty;word-break:auto-phrase;line-break:strict}
 
+
+/* 会社の沿革（/history） */
+.hi-list{list-style:none;margin:34px 0 0;padding:0;position:relative}
+.hi-list::before{content:"";position:absolute;left:150px;top:10px;bottom:10px;width:1px;background:linear-gradient(var(--mitsu),rgba(217,162,59,.25))}
+.hi-item{display:grid;grid-template-columns:150px 1fr;gap:0 44px;padding:0 0 46px;position:relative}
+.hi-item::before{content:"";position:absolute;left:144px;top:12px;width:13px;height:13px;border-radius:50%;background:var(--kinari,#f5f2ec);border:2px solid var(--mitsu)}
+.hi-item:last-child::before{background:var(--mitsu)}
+.hi-when{text-align:right;padding-right:22px}
+.hi-when b{display:block;font-family:var(--mincho);font-size:22px;letter-spacing:.06em;color:var(--sumi)}
+.hi-when span{display:block;font-family:var(--latin);font-style:italic;color:var(--mitsu-d);letter-spacing:.14em;font-size:15px;margin-top:2px}
+.hi-body h2{font-family:var(--mincho);font-size:clamp(19px,2.2vw,24px);letter-spacing:.04em;line-height:1.5;margin:4px 0 8px}
+.hi-body p{margin:0;color:var(--hai);line-height:1.95;max-width:36em}
+.hi-body img{display:block;width:min(420px,100%);aspect-ratio:16/10;object-fit:cover;border-radius:8px;margin-top:16px}
+.hi-motto{margin:20px 0 0;padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:12px;font-family:var(--mincho);font-weight:700;font-size:clamp(16px,2vw,20px);letter-spacing:.06em;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.hi-motto span{font-family:inherit;font-weight:400;font-size:12px;color:var(--hai);letter-spacing:.1em}
+.hi-note{font-size:12px;color:var(--hai);margin-top:14px}
+@media (max-width:640px){
+  .hi-list::before{left:6px}
+  .hi-item{grid-template-columns:1fr;padding-left:30px;padding-bottom:36px}
+  .hi-item::before{left:0;top:6px}
+  .hi-when{text-align:left;padding:0;display:flex;gap:12px;align-items:baseline}
+}

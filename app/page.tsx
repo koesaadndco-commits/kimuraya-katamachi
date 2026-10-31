@@ -118,7 +118,7 @@ export default async function Home() {
       <div className="wrap read-in">
         <div>
           <div className="eyebrow">OUR PROMISE</div>
-          <p className="read-text" id="readText">「おいしかったよ」のひとことのために、<span className="mk">今日も朝いちばんに</span>売り場に立つ。私たちが販売しているのは、食材だけではありません。食事の時間に生まれる<span className="mk">「いつもの笑顔」</span>です。</p>
+          <p className="read-text" id="readText">「おいしかったよ」のひとことのために、<span className="mk">今日も朝いちばんに</span>売り場に立つ。私たちが販売しているのは、食材だけではありません。食事の時間に<span className="mk">自然と出る笑顔</span>。そして会話です。</p>
           <div className="read-sign"><span>経営理念</span><b>食を通じて、ありがとうの溢れる豊かな社会を実現する</b></div>
         </div>
         <div className="read-side">
@@ -145,7 +145,7 @@ export default async function Home() {
         <article className="hs-card" data-y="1995"><div className="ph type">食彩館</div><div className="era"><b>平成7年〜</b><span>1995 —</span></div><h3>「食彩館」の時代へ</h3><p>みくに店を皮切りに、丸岡・四ツ居・大宮・東部・西福井・やしろへ。</p></article>
         <article className="hs-card" data-y="2026"><div className="ph now"><img src="/img/register.jpg" alt="レジでお客様に袋を手渡すスタッフ（イメージ）" loading="lazy" /></div><div className="era"><b>令和8年</b><span>2026</span></div><h3>創業80年。次の100年へ。</h3><p>経営力・管理者力・現場力。三位一体で、100年ビジョンの実現へ歩みます。</p></article>
       </div>
-      <div className="wrap"><div className="hs-prog"><i id="hsProg"></i></div></div>
+      <div className="wrap"><div className="hs-prog"><i id="hsProg"></i></div><a className="hs-more" href="/history">会社の沿革をくわしく見る ›</a></div>
     </div>
   </section>
   
@@ -367,7 +367,7 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <ul><li><a href="#promise">私たちの約束</a></li><li><a href="#story">80年の物語</a></li><li><a href="#fukui">福井の恵み</a></li><li><a href="#stores">店舗一覧</a></li></ul>
+        <ul><li><a href="#promise">私たちの約束</a></li><li><a href="#story">80年の物語</a></li><li><a href="/history">会社の沿革</a></li><li><a href="#fukui">福井の恵み</a></li><li><a href="#stores">店舗一覧</a></li></ul>
         <ul><li><a href="#news">お知らせ</a></li><li><a href="/blog">お店のたより</a></li><li><a href="/recruit">採用情報</a></li><li><a href="https://kimura-group48.jp/contact.php">お問い合わせ</a></li><li><a href="#top">プライバシーポリシー</a></li></ul>
       </div>
       <div className="copy"><span>© 2026 木村グループ</span><span>Design sample by KOESA Co.,Ltd. — AI SOLUTION STUDIO</span></div>

@@ -18,6 +18,7 @@ export function BlogHeader() {
         <nav className="gnav" aria-label="メインメニュー">
           <a href="/#promise">私たちの約束</a>
           <a href="/#story">80年の物語</a>
+          <a href="/history">会社の沿革</a>
           <a href="/#stores">店舗一覧</a>
           <Link href="/blog">お店のたより</Link>
           <a href="/recruit">採用情報</a>
