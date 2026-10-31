@@ -220,7 +220,7 @@ export default async function Home() {
   {/* PEOPLE: marquee */}
   <section className="people pad">
     <div className="wrap">
-      <div className="sec-hd"><div><div className="eyebrow">PEOPLE</div><h2>売り場には、<br />名前のある人がいる。</h2></div><a className="btn btn-line" href="/recruit">スタッフの声をもっと読む</a></div>
+      <div className="sec-hd"><div><div className="eyebrow">PEOPLE</div><h2>売り場には、<br />活躍できる環境が用意されている。</h2></div><a className="btn btn-line" href="/recruit">スタッフの声をもっと読む</a></div>
       <div className="people-photos">
         <figure className="rv"><img src="/img/register.jpg" alt="レジで笑顔で接客するスタッフ（イメージ）" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
         <figure className="rv"><img src="/img/hands.jpg" alt="惣菜をつくる手（イメージ）" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
