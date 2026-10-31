@@ -26,7 +26,7 @@
 
   var hs=document.getElementById('story'), track=document.getElementById('hsTrack'), hsProg=document.getElementById('hsProg'), hsYear=document.getElementById('hsYear'), cards=track.querySelectorAll('.hs-card');
   var wg=document.getElementById('fukui'), wgT=document.getElementById('wgTitles').children, wgSub=document.getElementById('wgSub'), wgDots=document.getElementById('wgDots').children;
-  var subs=['福井の恵みを知りつくした目利きが、毎朝売り場に並べます。','港から、その日のうちに。越前の海の幸を、いちばん近くで。','木村フーズの手づくり惣菜と一緒に、\n今日の「いただきます」を。'];
+  var subs=['福井の恵みを知りつくした目利きが、\n毎朝売り場に並べます。','港から、その日のうちに。\n越前の海の幸を、いちばん近くで。','木村フーズの手づくり惣菜と一緒に、\n今日の「いただきます」を。'];
   var wgIdx=0;
 
   function sizeHS(){

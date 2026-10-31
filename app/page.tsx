@@ -159,7 +159,7 @@ export default async function Home() {
       <div className="wg-copy"><div className="wrap">
         <div className="eyebrow">FROM FUKUI</div>
         <div className="wg-titles" id="wgTitles"><span>九頭竜の、田んぼから。</span><span className="in">越前の、海から。</span><span className="in">そして、あなたの食卓へ。</span></div>
-        <p className="wg-sub" id="wgSub">福井の恵みを知りつくした目利きが、毎朝売り場に並べます。</p>
+        <p className="wg-sub" id="wgSub">福井の恵みを知りつくした目利きが、{"\n"}毎朝売り場に並べます。</p>
         <div className="wg-dots" id="wgDots"><i className="on"></i><i></i><i></i></div>
       </div></div>
     </div>
