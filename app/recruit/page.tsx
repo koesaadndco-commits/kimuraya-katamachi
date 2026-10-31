@@ -49,6 +49,7 @@ export default function Recruit() {
             <a href="/#story">80年の物語</a>
             <a href="/#fukui">福井の恵み</a>
             <a href="/#stores">店舗一覧</a>
+            <a href="/blog">お店のたより</a>
             <a href="/recruit">採用情報</a>
           </nav>
           <a className="btn btn-mitsu" href="/#quick">今日のチラシ</a>
@@ -170,9 +171,17 @@ export default function Recruit() {
             <div>
               <div className="ft-logos"><a className="logo" href="/" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo.png" alt="木村屋 SINCE 1946" width={1000} height={965} /></a><img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} /></div>
               <p style={{marginTop: '18px', lineHeight: '2'}}>〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
+              <div className="ft-line">
+                <img src="/img/line-qr.svg" alt="木村グループ LINE公式アカウントのQRコード" width={120} height={120} />
+                <div>
+                  <b>LINE公式アカウント</b>
+                  <span>友だち追加で、チラシやお得な情報をお届けします。</span>
+                  <a className="btn btn-line" href="https://lin.ee/rNifBeB" target="_blank" rel="noopener noreferrer">友だち追加</a>
+                </div>
+              </div>
             </div>
             <ul><li><a href="/#promise">私たちの約束</a></li><li><a href="/#story">80年の物語</a></li><li><a href="/#fukui">福井の恵み</a></li><li><a href="/#stores">店舗一覧</a></li></ul>
-            <ul><li><a href="/#news">お知らせ・ブログ</a></li><li><a href="/recruit">採用情報</a></li><li><a href="https://kimura-group48.jp/contact.php">お問い合わせ</a></li><li><a href="/">ホームへ戻る</a></li></ul>
+            <ul><li><a href="/#news">お知らせ</a></li><li><a href="/blog">お店のたより</a></li><li><a href="/recruit">採用情報</a></li><li><a href="https://kimura-group48.jp/contact.php">お問い合わせ</a></li><li><a href="/">ホームへ戻る</a></li></ul>
           </div>
           <div className="copy"><span>© 2026 木村グループ</span><span>Design sample by KOESA Co.,Ltd. — AI SOLUTION STUDIO</span></div>
         </div>

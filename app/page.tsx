@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./kimura.css";
 import { DEFAULT_FLYER_URL, TIMEE_URL } from "./lib/links";
 import { flyerHref, listActivePosts, type Post } from "./lib/staff-store";
+import { dotDate, listPublishedArticles } from "./lib/articles";
 
 // スタッフページ（/staff）の登録内容を毎回読むため、リクエスト時に描画する
 export const dynamic = "force-dynamic";
@@ -21,6 +22,8 @@ export default async function Home() {
   // 掲載期間内の「本日のチラシ・お知らせ」（期間外のものは含まれない）
   const active = await listActivePosts();
   const flyer = flyerHref(active, DEFAULT_FLYER_URL);
+  // 公開中の社長ブログ・スタッフブログ・レシピ（新しい順）
+  const latest = await listPublishedArticles(undefined, 5);
   return (
     <>
   <div className="theater" id="theater" role="dialog" aria-modal="true" aria-label="創業八十周年記念映像">
@@ -57,6 +60,7 @@ export default async function Home() {
         <a href="#fukui">福井の恵み</a>
         <a href="#dinner">今日の献立</a>
         <a href="#stores">店舗一覧</a>
+        <a href="/blog">お店のたより</a>
         <a href="/recruit">採用情報</a>
       </nav>
       <a className="btn btn-mitsu" href="#quick">今日のチラシ</a>
@@ -296,11 +300,19 @@ export default async function Home() {
           <li><a href="https://kimura-group48.jp/news.php?314"><time>2026.08.01</time><span className="tt"><span className="cat">会員</span>最大特典付き！オーナーズクラブのご案内</span></a></li>
           <li><a href="https://kimura-group48.jp/news.php?326"><time>2026.07.19</time><span className="tt"><span className="cat">ご予約</span>秋の特製オードブル、ご予約受付中</span></a></li>
         </ul></div>
-        <div className="rv"><h3 className="col">社長・スタッフのブログ</h3><ul>
-          <li><a href="#news"><time>［日付］</time><span className="tt"><span className="cat">社長</span>［社長ブログのタイトル］</span></a></li>
-          <li><a href="#news"><time>［日付］</time><span className="tt"><span className="cat">青果</span>［今が旬の福井の野菜 ― 青果チーフより］</span></a></li>
-          <li><a href="#news"><time>［日付］</time><span className="tt"><span className="cat">惣菜</span>［今週の手づくり惣菜 ― 惣菜担当より］</span></a></li>
-          <li><a href="#news"><time>［日付］</time><span className="tt"><span className="cat">店舗</span>［店長のひとこと ― 大宮店より］</span></a></li>
+        <div className="rv"><h3 className="col">社長・スタッフのブログ・レシピ</h3><ul>
+          {latest.length > 0 ? (
+            latest.map((a) => (
+              <li key={a.id}><a href={`/blog/${a.id}`}><time>{dotDate(a.publishedAt)}</time><span className="tt"><span className="cat">{a.type === "ceo" ? "社長" : a.type === "recipe" ? "レシピ" : a.category}</span>{a.title}{a.author ? ` ― ${a.author}` : ""}</span></a></li>
+            ))
+          ) : (
+            <>
+              <li><a href="/blog"><time>［日付］</time><span className="tt"><span className="cat">社長</span>［社長ブログのタイトル］</span></a></li>
+              <li><a href="/blog"><time>［日付］</time><span className="tt"><span className="cat">青果</span>［今が旬の福井の野菜 ― 青果チーフより］</span></a></li>
+              <li><a href="/blog"><time>［日付］</time><span className="tt"><span className="cat">レシピ</span>［今週のおすすめレシピ］</span></a></li>
+            </>
+          )}
+          <li className="more"><a href="/blog"><span className="tt">お店のたより一覧へ →</span></a></li>
         </ul></div>
       </div>
     </div>
@@ -338,9 +350,17 @@ export default async function Home() {
         <div>
           <div className="ft-logos"><a className="logo" href="#top" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo.png" alt="木村屋 SINCE 1946" width={1000} height={965} /></a><img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} /></div>
           <p style={{marginTop: '18px', lineHeight: '2'}}>〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
+          <div className="ft-line">
+            <img src="/img/line-qr.svg" alt="木村グループ LINE公式アカウントのQRコード" width={120} height={120} />
+            <div>
+              <b>LINE公式アカウント</b>
+              <span>友だち追加で、チラシやお得な情報をお届けします。</span>
+              <a className="btn btn-line" href="https://lin.ee/rNifBeB" target="_blank" rel="noopener noreferrer">友だち追加</a>
+            </div>
+          </div>
         </div>
         <ul><li><a href="#promise">私たちの約束</a></li><li><a href="#story">80年の物語</a></li><li><a href="#fukui">福井の恵み</a></li><li><a href="#stores">店舗一覧</a></li></ul>
-        <ul><li><a href="#news">お知らせ・ブログ</a></li><li><a href="/recruit">採用情報</a></li><li><a href="https://kimura-group48.jp/contact.php">お問い合わせ</a></li><li><a href="#top">プライバシーポリシー</a></li></ul>
+        <ul><li><a href="#news">お知らせ</a></li><li><a href="/blog">お店のたより</a></li><li><a href="/recruit">採用情報</a></li><li><a href="https://kimura-group48.jp/contact.php">お問い合わせ</a></li><li><a href="#top">プライバシーポリシー</a></li></ul>
       </div>
       <div className="copy"><span>© 2026 木村グループ</span><span>Design sample by KOESA Co.,Ltd. — AI SOLUTION STUDIO</span></div>
     </div>

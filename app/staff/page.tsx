@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import "./staff.css";
-import { getStaffPassword, isStaffLoggedIn } from "../lib/staff-auth";
 import { formatJst, listPosts, nowJst, postStatus, type Post } from "../lib/staff-store";
-import { login, logout } from "./actions";
 import DeleteForm from "./DeleteForm";
 import FlyerForm from "./FlyerForm";
+import StaffShell from "./StaffShell";
+import { staffGate } from "./gate";
 
 export const metadata: Metadata = {
   title: "スタッフ専用｜今日のチラシ登録",
@@ -42,9 +41,10 @@ export default async function StaffPage({ searchParams }: { searchParams: Promis
   const replaced = typeof sp.replaced === "string" ? Number(sp.replaced) : 0;
   const deleted = sp.deleted === "1";
 
-  const password = await getStaffPassword();
-  if (!password) return <NotConfigured />;
-  if (!(await isStaffLoggedIn())) return <Login error={error} />;
+  const next = typeof sp.next === "string" ? sp.next : undefined;
+  const gate = await staffGate({ error, next });
+  if ("screen" in gate) return gate.screen;
+  const role = gate.role;
 
   const now = nowJst();
   const today = now.slice(0, 10);
@@ -53,27 +53,7 @@ export default async function StaffPage({ searchParams }: { searchParams: Promis
   const upcoming = posts.filter((p) => postStatus(p, now) === "scheduled").length;
 
   return (
-    <div className="st-shell">
-      <aside className="st-side">
-        <Link className="st-brand" href="/" aria-label="木村屋 ホームページへ">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="st-brand-k" src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="st-brand-s" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
-        </Link>
-        <small>お店のたより 管理画面</small>
-        <nav aria-label="管理メニュー">
-          <a href="#upload">今日のチラシを登録</a>
-          <a href="#list">登録済みの一覧</a>
-          <a href="/" target="_blank" rel="noopener noreferrer">ホームページを見る ↗</a>
-        </nav>
-      </aside>
-
-      <main className="st-main">
-        <div className="st-top">
-          <span>お店のたより ／ 今日のチラシ</span>
-          <form action={logout}><button type="submit" className="st-btn small">ログアウト</button></form>
-        </div>
+    <StaffShell active="flyer" role={role} crumb="お店のたより ／ 今日のチラシ">
         <h1>今日のチラシを、届けよう。</h1>
         <p className="st-lead">毎日の更新はこの画面だけで完了します。写真を選んで「アップロードして公開する」を押すと、ホームページの「今日のチラシ」がすぐに切り替わります。（日本時間 {formatJst(now)} 現在）</p>
 
@@ -130,8 +110,7 @@ export default async function StaffPage({ searchParams }: { searchParams: Promis
             </section>
           </div>
         </div>
-      </main>
-    </div>
+    </StaffShell>
   );
 }
 
@@ -153,47 +132,5 @@ function PostRow({ post, now }: { post: Post; now: string }) {
       </div>
       <DeleteForm id={post.id} title={post.title} />
     </li>
-  );
-}
-
-function Login({ error }: { error?: string }) {
-  return (
-    <div className="st-login-wrap">
-      <div className="st-card st-login">
-        <div className="st-login-logos">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
-        </div>
-        <h2>スタッフ専用ページ</h2>
-        {error && <div className="st-msg err">{error}</div>}
-        <form action={login} className="st-form">
-          <label>パスワード
-            <input type="password" name="password" required autoComplete="current-password" autoFocus />
-          </label>
-          <div><button type="submit" className="st-btn primary">ログイン</button></div>
-        </form>
-      </div>
-    </div>
-  );
-}
-
-function NotConfigured() {
-  return (
-    <div className="st-login-wrap">
-      <div className="st-card st-login">
-        <div className="st-login-logos">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
-        </div>
-        <h2>スタッフ専用ページ（準備中）</h2>
-        <p className="st-muted">
-          パスワードがまだ設定されていません。Cloudflare ダッシュボードで <code>STAFF_PASSWORD</code> を設定すると使えるようになります（手順は docs/staff-page-setup.md）。
-        </p>
-      </div>
-    </div>
   );
 }

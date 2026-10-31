@@ -28,7 +28,7 @@
   ],
   "vars": {
     "APPLY_NOTIFY_EMAIL": ""
-    // STAFF_PASSWORD（スタッフページのパスワード）は Cloudflare ダッシュボードの
-    // Secrets で設定する（docs/staff-page-setup.md 参照）
+    // STAFF_PASSWORD（スタッフページのパスワード）と、任意の ADMIN_PASSWORD（記事を公開する
+    // 管理者のパスワード）は Cloudflare ダッシュボードの Secrets で設定する（docs/staff-page-setup.md 参照）
   }
 }

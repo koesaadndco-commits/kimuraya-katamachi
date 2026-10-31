@@ -52,10 +52,12 @@ export type KVNamespace = {
 type StaffEnv = {
   STAFF_KV?: KVNamespace;
   STAFF_PASSWORD?: string;
+  /** 任意。設定すると、記事の公開は管理者だけになる（スタッフは確認依頼まで） */
+  ADMIN_PASSWORD?: string;
 };
 
 const POSTS_KEY = "posts";
-const FILE_PREFIX = "file:";
+export const FILE_PREFIX = "file:";
 
 export const ALLOWED_FILE_TYPES = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
 export const MAX_FILE_BYTES = 10 * 1024 * 1024;
@@ -68,7 +70,7 @@ export async function getStaffEnv(): Promise<StaffEnv> {
   return env as StaffEnv;
 }
 
-async function kv(): Promise<KVNamespace | null> {
+export async function kv(): Promise<KVNamespace | null> {
   const env = await getStaffEnv();
   return env.STAFF_KV ?? null;
 }

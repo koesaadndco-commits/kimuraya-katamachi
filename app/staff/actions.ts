@@ -45,9 +45,12 @@ function validTime(v: string): boolean {
 }
 
 export async function login(formData: FormData) {
+  const next = str(formData, "next");
+  // 戻り先は /staff 配下だけ許可（外部サイトへの転送を防ぐ）
+  const safeNext = /^\/staff(\/[\w\-/]*)?(\?[\w=&\-%]*)?$/.test(next) ? next : "/staff";
   const ok = await loginStaff(str(formData, "password"));
-  if (!ok) redirect("/staff?error=password");
-  redirect("/staff");
+  if (!ok) redirect(`/staff?error=password${safeNext !== "/staff" ? `&next=${encodeURIComponent(safeNext)}` : ""}`);
+  redirect(safeNext);
 }
 
 export async function logout() {
