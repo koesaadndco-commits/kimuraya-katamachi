@@ -153,7 +153,7 @@ export default async function Home() {
   <section className="wg" id="fukui" aria-label="福井の恵み">
     <div className="wg-stage">
       <div className="wg-slide"><img src="/img/fields.jpg" alt="朝もやの田んぼと白山を望む福井の風景（イメージ）" loading="lazy" /></div>
-      <div className="wg-slide"><img src="/img/crab.jpg" alt="越前の鮮魚（イメージ）" loading="lazy" /></div>
+      <div className="wg-slide"><img src="/img/crab.jpg" alt="越前がにと香箱がに（イメージ）" loading="lazy" /></div>
       <div className="wg-slide"><img src="/img/table.jpg" alt="家族で囲む夕食の食卓（イメージ）" loading="lazy" /></div>
       <div className="wg-shade"></div>
       <div className="wg-copy"><div className="wrap">
@@ -166,7 +166,7 @@ export default async function Home() {
   </section>
   
   <div className="goods-wrap" id="goods"><div className="wrap goods">
-    <a className="good rv" href="#goods"><div className="ph"><img src="/img/crab.jpg" alt="越前の鮮魚（イメージ）" loading="lazy" /></div><div className="t"><b>越前の鮮魚</b><span>港から、その日のうちに</span></div></a>
+    <a className="good rv" href="#goods"><div className="ph"><img src="/img/crab.jpg" alt="越前がにと香箱がに（イメージ）" loading="lazy" /></div><div className="t"><b>越前の鮮魚</b><span>港から、その日のうちに</span></div></a>
     <a className="good rv" href="#goods"><div className="ph"><img src="/img/hands.jpg" alt="手づくり惣菜（イメージ）" loading="lazy" /></div><div className="t"><b>手づくり惣菜</b><span>木村フーズの台所から</span></div></a>
     <a className="good rv" href="#goods"><div className="ph"><img src="/img/table.jpg" alt="特製オードブル（イメージ）" loading="lazy" /></div><div className="t"><b>特製オードブル</b><span>ネットで予約・店頭で受取</span></div></a>
     <a className="good rv" href="#goods"><div className="ph"><img src="/img/fields.jpg" alt="ふくいの特産（イメージ）" loading="lazy" /></div><div className="t"><b>ふくいの贈りもの</b><span>オンラインショップ［準備中］</span></div></a>
