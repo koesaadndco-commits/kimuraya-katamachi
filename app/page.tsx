@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./kimura.css";
-import { DEFAULT_FLYER_URL, TIMEE_URL } from "./lib/links";
+import { DEFAULT_FLYER_URL, INSTAGRAM_URL, TIMEE_URL } from "./lib/links";
 import { flyerHref, listActivePosts, type Post } from "./lib/staff-store";
 import { dotDate, listPublishedArticles } from "./lib/articles";
 
@@ -354,7 +354,7 @@ export default async function Home() {
             <div>
               <b>LINE公式アカウント</b>
               <span>友だち追加で、チラシやお得な情報をお届けします。</span>
-              <a className="btn btn-line" href="https://lin.ee/rNifBeB" target="_blank" rel="noopener noreferrer">友だち追加</a>
+              <div className="ft-sns"><a className="btn btn-line" href="https://lin.ee/rNifBeB" target="_blank" rel="noopener noreferrer">友だち追加</a><a className="btn btn-insta" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="ハニー食彩館の公式Instagram（新しいタブで開く）"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>Instagram</a></div>
             </div>
           </div>
         </div>

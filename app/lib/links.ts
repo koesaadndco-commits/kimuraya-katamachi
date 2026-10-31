@@ -8,3 +8,6 @@ export const DEFAULT_FLYER_URL = "https://kimura-group48.jp/flyer.php";
 // マイチームのスポットバイト（別途制作・約2ヶ月後）が出来たら、ここを差し替える。
 // ※店舗専用の募集ページURLが決まり次第、このURLを置き換える。
 export const TIMEE_URL = "https://timee.co.jp/";
+
+// 公式Instagram（ハニー食彩館）
+export const INSTAGRAM_URL = "https://www.instagram.com/honey_syokusaikan/";
