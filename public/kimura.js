@@ -39,7 +39,8 @@
     var y=scrollY;
     // header state
     hdr.classList.toggle('solid', y > xp.offsetHeight - 90 || reduce);
-    document.body.classList.toggle('has-ribbon', y < 30);
+    // 黒い帯の下端にヘッダーを追従させる（帯が流れて消えるのと同じ速さで、段差なく動く）
+    var rib=document.querySelector('.ribbon'); if(rib) hdr.style.top=Math.max(0,rib.getBoundingClientRect().bottom)+'px';
 
     if(!reduce){
       // HERO expansion
@@ -126,7 +127,7 @@
   // ---- narration with subtitles ----
   var narr=document.getElementById('narr'), sub=document.getElementById('xpSub'), vbtns=document.querySelectorAll('.js-voice');
   // 字幕の切り替え時刻（秒）は narration.mp3 の各行の開始位置に合わせてある（docs/narration-script.md 参照）
-  var cues=[[0.0,'昭和二十一年、福井。'],[3.68,'小さな食料品店の木村屋から、すべては始まりました。'],[10.62,'毎朝、誰よりも早く売り場に立つ。'],[14.89,'昭和四十年には、片町フードセンターとして歩みはじめました。'],[22.06,'あの日の「いらっしゃい」から、今日の「ありがとう」まで。'],[26.57,'八十年たった今も、私たちは、この町の台所です。']];
+  var cues=[[0.0,'昭和二十一年、福井。'],[3.18,'小さな食料品店の木村屋から、すべては始まりました。'],[9.76,'毎朝、誰よりも早く売り場に立つ。'],[13.94,'昭和四十年には、片町フードセンターとして歩みはじめました。'],[21.12,'あの日の「いらっしゃい」から、今日の「ありがとう」まで。'],[25.9,'八十年たった今も、私たちは、この町の台所です。']];
   function setOn(on){ vbtns.forEach(function(b){ b.classList.toggle('on',on); b.lastChild.textContent= on?'再生中…':'物語を聴く'; }); sub.classList.toggle('on',on); if(!on) sub.textContent=''; }
   vbtns.forEach(function(b){ b.addEventListener('click',function(){
     if(!narr.paused){ narr.pause(); narr.currentTime=0; setOn(false); return; }

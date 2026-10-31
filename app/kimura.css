@@ -26,8 +26,8 @@ h1,h2,h3{font-family:var(--mincho);font-weight:700;margin:0;text-wrap:balance}
 .ribbon b{color:var(--mitsu);font-weight:500}
 header.site{position:fixed;left:0;right:0;top:0;z-index:50;transition:background .4s,color .4s,transform .4s,border-color .4s;background:rgba(247,244,238,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--sumi);border-bottom:1px solid var(--line)}
 header.site.solid{background:rgba(239,234,224,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--sumi);border-bottom-color:var(--line)}
-body.has-ribbon header.site{top:30px}
-body.has-ribbon header.site.solid{top:0}
+/* 黒い帯があるページ（ホーム）は、帯の下端にヘッダーが追従する（JSが top を更新）。帯が無いページは top:0 */
+body:has(.ribbon) header.site{top:30px}
 .hd{display:flex;align-items:center;gap:24px;height:70px}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
 .logo .mark{width:38px;height:38px;border-radius:50%;background:var(--ai);color:var(--mitsu);display:grid;place-items:center;font-family:var(--mincho);font-weight:800;font-size:19px;border:1px solid rgba(217,162,59,.5)}
@@ -223,20 +223,20 @@ section.pad{padding-block:clamp(72px,10vw,140px)}
 .recruit{background:var(--sumi);color:#fff}
 .recruit .grid{display:grid;grid-template-columns:1fr 1fr;min-height:520px}
 .recruit figure{margin:0;overflow:hidden}
-.recruit figure img{width:100%;height:100%;object-fit:cover}
+.recruit figure img{width:100%;height:100%;object-fit:contain;filter:brightness(1.08)}
 .recruit .txt{padding:clamp(48px,7vw,96px) var(--gut);display:flex;flex-direction:column;justify-content:center;gap:18px}
 .recruit h2{font-size:clamp(30px,4vw,54px);line-height:1.45;letter-spacing:.05em}
 .recruit p{color:#cfc8ba;max-width:28em;margin:0}
 .recruit .eyebrow{color:var(--mitsu)}
 
 /* ===== RECRUIT DETAIL PAGE (/recruit) ===== */
-.rc-hero{position:relative;min-height:clamp(420px,58vh,640px);display:flex;align-items:flex-end;background:var(--sumi);color:#fff;overflow:hidden}
-.rc-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;opacity:.5}
-.rc-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,20,23,.2),rgba(18,20,23,.9))}
-.rc-hero .wrap{position:relative;z-index:1;padding-block:clamp(96px,15vw,168px) 48px}
-.rc-hero .eyebrow{color:var(--mitsu)}
-.rc-hero h1{font-size:clamp(30px,5vw,56px);line-height:1.55;letter-spacing:.05em;margin-top:12px}
-.rc-hero p{color:#e7e0d2;max-width:36em;margin:16px 0 0}
+.rc-hero{position:relative;background:var(--kinari);color:var(--sumi);padding:calc(70px + clamp(24px,4vw,56px)) 0 clamp(36px,5vw,72px);border-bottom:1px solid var(--line)}
+.rc-hero-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,4vw,64px);align-items:center}
+.rc-hero img{width:100%;height:auto;aspect-ratio:2016/1512;object-fit:contain;display:block;border-radius:14px;box-shadow:0 12px 36px rgba(18,20,23,.16);filter:brightness(1.08) saturate(1.04)}
+.rc-hero .eyebrow{color:var(--mitsu-d)}
+.rc-hero h1{font-size:clamp(26px,3.5vw,44px);line-height:1.55;letter-spacing:.05em;margin:12px 0 0}
+.rc-hero p{color:var(--hai);max-width:32em;margin:16px 0 0}
+@media(max-width:860px){.rc-hero-in{grid-template-columns:1fr}.rc-hero img{order:-1}}
 
 .rc-persona{background:var(--kinari);border:1px solid var(--line);padding:clamp(26px,4vw,44px)}
 .rc-persona ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:12px}
