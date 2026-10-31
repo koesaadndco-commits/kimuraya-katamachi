@@ -44,7 +44,6 @@ export default async function Home() {
     <div className="th-note">※映像・写真はAIによるイメージです（提案用サンプル）</div>
   </div>
   
-  <div className="ribbon">提案用トップページ・デザインサンプル v4 <b>／</b> 株式会社KOESA　※写真・映像はAI生成のイメージです（本番では御社の写真・映像に差し替えます）</div>
   
   <header className="site" id="hdr">
     <div className="wrap hd">
