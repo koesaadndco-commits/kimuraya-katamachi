@@ -105,6 +105,7 @@ export default async function Home() {
       <li className="uber"><a href="#quick"><svg viewBox="0 0 28 28"><path d="M4 9h15l-1.5 10h-12z"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/><path d="M20 13h4M21 17h3"/></svg><span><span className="k">お届け注文</span><br /><span className="s">Uber Eatsでお家まで</span></span></a></li>
       <li><a href="#goods"><svg viewBox="0 0 28 28"><rect x="4" y="6" width="20" height="18" rx="1"/><path d="M4 11h20M9 3v5M19 3v5M9 16h3M16 16h3M9 20h3"/></svg><span><span className="k">オードブル予約</span><br /><span className="s">ネットで24時間受付</span></span></a></li>
       <li><a href="https://lin.ee/rNifBeB"><svg viewBox="0 0 28 28"><path d="M14 5C8 5 3.5 8.8 3.5 13.4c0 4.1 3.6 7.5 8.5 8.2l-.6 3 4.2-2.8c5.4-.4 9.9-4 9.9-8.4C25.5 8.8 20 5 14 5z"/></svg><span><span className="k">LINE友だち</span><br /><span className="s">お得な情報をいち早く</span></span></a></li>
+      <li><a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 28 28"><rect x="5" y="5" width="18" height="18" rx="5"/><circle cx="14" cy="14" r="4.2"/><circle cx="19.2" cy="8.8" r=".9"/></svg><span><span className="k">Instagram</span><br /><span className="s">お店の最新情報を発信</span></span></a></li>
     </ul>
   </nav>
 
