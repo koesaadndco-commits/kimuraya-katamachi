@@ -35,7 +35,7 @@ export default async function Home() {
       <div className="th-title">ありがとうの、八十年。</div>
       <div className="th-rule"></div>
       <div className="th-actions">
-        <button type="button" className="th-play" id="thPlay"><i></i>音声つきで上映する　<span style={{opacity: '.6', fontSize: '12px'}}>46秒</span></button>
+        <button type="button" className="th-play" id="thPlay"><i></i>音声つきで上映する　<span style={{opacity: '.6', fontSize: '12px'}}>48秒</span></button>
         <button type="button" className="th-skip" id="thSkip">映像をとばしてサイトへ</button>
       </div>
     </div>

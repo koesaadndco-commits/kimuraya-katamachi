@@ -127,7 +127,7 @@
   // ---- narration with subtitles ----
   var narr=document.getElementById('narr'), sub=document.getElementById('xpSub'), vbtns=document.querySelectorAll('.js-voice');
   // 字幕の切り替え時刻（秒）は narration.mp3 の各行の開始位置に合わせてある（docs/narration-script.md 参照）
-  var cues=[[0.0,'昭和二十一年、福井。'],[3.0,'小さな食料品店の木村屋から、すべては始まりました。'],[8.64,'毎朝、誰よりも早く売り場に立つ。'],[12.8,'昭和四十年には、片町フードセンターとして歩みはじめました。'],[19.27,'あの日の「いらっしゃい」から、今日の「ありがとう」まで。'],[23.5,'八十年たった今も、私たちは、この町の台所です。']];
+  var cues=[[0.0,'昭和二十一年、福井。'],[3.39,'小さな食料品店の木村屋から、すべては始まりました。'],[9.77,'毎朝、誰よりも早く売り場に立つ。'],[14.59,'昭和四十年には、片町フードセンターとして歩みはじめました。'],[22.02,'あの日の「いらっしゃい」から、今日の「ありがとう」まで。'],[26.82,'八十年たった今も、私たちは、この町の台所です。']];
   function setOn(on){ vbtns.forEach(function(b){ b.classList.toggle('on',on); b.lastChild.textContent= on?'再生中…':'物語を聴く'; }); sub.classList.toggle('on',on); if(!on) sub.textContent=''; }
   vbtns.forEach(function(b){ b.addEventListener('click',function(){
     if(!narr.paused){ narr.pause(); narr.currentTime=0; setOn(false); return; }
