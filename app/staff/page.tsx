@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./staff.css";
 import { getStaffPassword, isStaffLoggedIn } from "../lib/staff-auth";
 import { formatJst, listPosts, nowJst, postStatus, type Post } from "../lib/staff-store";
@@ -54,7 +55,12 @@ export default async function StaffPage({ searchParams }: { searchParams: Promis
   return (
     <div className="st-shell">
       <aside className="st-side">
-        <strong>木村グループ</strong>
+        <Link className="st-brand" href="/" aria-label="木村屋 ホームページへ">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="st-brand-k" src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="st-brand-s" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
+        </Link>
         <small>お店のたより 管理画面</small>
         <nav aria-label="管理メニュー">
           <a href="#upload">今日のチラシを登録</a>
@@ -154,6 +160,12 @@ function Login({ error }: { error?: string }) {
   return (
     <div className="st-login-wrap">
       <div className="st-card st-login">
+        <div className="st-login-logos">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
+        </div>
         <h2>スタッフ専用ページ</h2>
         {error && <div className="st-msg err">{error}</div>}
         <form action={login} className="st-form">
@@ -171,6 +183,12 @@ function NotConfigured() {
   return (
     <div className="st-login-wrap">
       <div className="st-card st-login">
+        <div className="st-login-logos">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
+        </div>
         <h2>スタッフ専用ページ（準備中）</h2>
         <p className="st-muted">
           パスワードがまだ設定されていません。Cloudflare ダッシュボードで <code>STAFF_PASSWORD</code> を設定すると使えるようになります（手順は docs/staff-page-setup.md）。

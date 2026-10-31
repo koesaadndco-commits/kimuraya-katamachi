@@ -2,12 +2,15 @@
 body{background:#f4f5ef}
 .st-shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;font-family:system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;color:#243b31;background:#f4f5ef;line-height:1.6;box-sizing:border-box}
 .st-shell *,.st-login-wrap *{box-sizing:border-box}
-.st-side{background:#203c31;color:#fff;padding:35px 24px}
-.st-side strong{font-size:23px}
-.st-side small{display:block;opacity:.7;margin-top:8px}
-.st-side nav{margin-top:45px}
-.st-side nav a{display:block;color:#e0e7df;padding:14px 12px;text-decoration:none;border-radius:8px}
-.st-side nav a:first-child{background:#3b5749;color:#fff}
+.st-side{background:#fff;color:#243b31;padding:28px 22px;border-right:1px solid #e0e4da}
+.st-brand{display:grid;gap:16px;text-decoration:none}
+.st-brand-k{width:100%;max-width:176px;height:auto;display:block}
+.st-brand-s{width:100%;max-width:120px;height:auto;display:block}
+.st-side small{display:block;color:#69756b;margin-top:18px;font-size:12.5px}
+.st-side nav{margin-top:34px}
+.st-side nav a{display:block;color:#3b5749;padding:13px 12px;text-decoration:none;border-radius:8px}
+.st-side nav a:hover{background:#f1f4ed}
+.st-side nav a:first-child{background:#edf2e7;color:#203c31;font-weight:700}
 .st-main{max-width:1100px;width:100%;margin:auto;padding:30px 42px}
 .st-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#58685f}
 .st-top form{margin:0}
@@ -82,9 +85,16 @@ hr{border:0;border-top:1px solid #e4e7df;margin:18px 0}
 .st-prev-body{white-space:pre-wrap;line-height:2}
 .st-login-wrap{min-height:100vh;background:#f4f5ef;padding:12vh 16px 0;font-family:system-ui,-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;color:#243b31}
 .st-login{max-width:420px;margin:0 auto}
+.st-login-logos{display:flex;align-items:center;gap:20px;margin-bottom:22px;padding-bottom:20px;border-bottom:1px solid #e0e4da}
+.st-login-logos img:first-child{height:44px;width:auto}
+.st-login-logos img:last-child{height:38px;width:auto}
 @media(max-width:850px){
   .st-shell{grid-template-columns:1fr}
-  .st-side{padding:18px 24px}
+  .st-side{padding:14px 18px;border-right:0;border-bottom:1px solid #e0e4da}
+  .st-brand{display:flex;align-items:center;gap:18px}
+  .st-brand-k{max-width:132px}
+  .st-brand-s{max-width:92px}
+  .st-side small{margin-top:8px}
   .st-side nav{display:none}
   .st-main{padding:22px 16px}
   .st-columns{grid-template-columns:1fr}

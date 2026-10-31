@@ -46,9 +46,9 @@ export default async function Home() {
   <header className="site" id="hdr">
     <div className="wrap hd">
       <a className="logo" href="#top" aria-label="木村屋（木村グループ）ホーム">
-        <img className="lg" src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={423} height={136} />
+        <img className="lg" src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
         <span className="lg-sub">
-          <img className="lg2" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={2012} height={957} />
+          <img className="lg2" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
         </span>
       </a>
       <nav className="gnav" aria-label="メインメニュー">
@@ -245,7 +245,7 @@ export default async function Home() {
   {/* STORES */}
   <section className="stores pad" id="stores">
     <div className="wrap">
-      <div className="sec-hd"><div><img className="st-logo" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={2012} height={957} /><div className="eyebrow">STORES</div><h2>いつもの店が、<br />あなたの近くに。</h2></div><p style={{margin: '0', color: 'var(--hai)', maxWidth: '26em'}}>すべて年中無休。いまの営業状況を表示しています。</p></div>
+      <div className="sec-hd"><div><img className="st-logo" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} /><div className="eyebrow">STORES</div><h2>いつもの店が、<br />あなたの近くに。</h2></div><p style={{margin: '0', color: 'var(--hai)', maxWidth: '26em'}}>すべて年中無休。いまの営業状況を表示しています。</p></div>
       <div className="store-grid">
       <div className="map rv" id="map" aria-label="店舗マップ（福井市・坂井市）"><svg id="mapSvg" viewBox="0 0 480 600" role="img" aria-label="福井市・坂井市の食彩館7店舗の位置"></svg>
         <div className="map-tools"><button type="button" id="nearBtn">現在地から近い店を探す</button><span id="nearOut"></span></div>
@@ -336,7 +336,7 @@ export default async function Home() {
     <div className="wrap">
       <div className="grid">
         <div>
-          <div className="ft-logos"><a className="logo" href="#top" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo.png" alt="木村屋 SINCE 1946" width={317} height={280} /></a><img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={2012} height={957} /></div>
+          <div className="ft-logos"><a className="logo" href="#top" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo.png" alt="木村屋 SINCE 1946" width={1000} height={965} /></a><img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} /></div>
           <p style={{marginTop: '18px', lineHeight: '2'}}>〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
         </div>
         <ul><li><a href="#promise">私たちの約束</a></li><li><a href="#story">80年の物語</a></li><li><a href="#fukui">福井の恵み</a></li><li><a href="#stores">店舗一覧</a></li></ul>

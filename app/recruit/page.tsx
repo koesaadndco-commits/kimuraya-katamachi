@@ -39,9 +39,9 @@ export default function Recruit() {
       <header className="site" id="hdr">
         <div className="wrap hd">
           <a className="logo" href="/" aria-label="木村屋（木村グループ）ホーム">
-            <img className="lg" src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={423} height={136} />
+            <img className="lg" src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
             <span className="lg-sub">
-              <img className="lg2" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={2012} height={957} />
+              <img className="lg2" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
             </span>
           </a>
           <nav className="gnav" aria-label="メインメニュー">
@@ -168,7 +168,7 @@ export default function Recruit() {
         <div className="wrap">
           <div className="grid">
             <div>
-              <div className="ft-logos"><a className="logo" href="/" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo.png" alt="木村屋 SINCE 1946" width={317} height={280} /></a><img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={2012} height={957} /></div>
+              <div className="ft-logos"><a className="logo" href="/" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo.png" alt="木村屋 SINCE 1946" width={1000} height={965} /></a><img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} /></div>
               <p style={{marginTop: '18px', lineHeight: '2'}}>〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
             </div>
             <ul><li><a href="/#promise">私たちの約束</a></li><li><a href="/#story">80年の物語</a></li><li><a href="/#fukui">福井の恵み</a></li><li><a href="/#stores">店舗一覧</a></li></ul>
