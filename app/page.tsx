@@ -41,7 +41,7 @@ export default async function Home() {
     </div>
     <div className="th-ctrl" id="thCtrl"><button type="button" id="thMute">音を消す</button><button type="button" id="thEnd">スキップ ›</button></div>
     <div className="th-bar" id="thBar"></div>
-    <div className="th-note">※映像・写真はAIによるイメージです（提案用サンプル）</div>
+    <div className="th-note">※映像・写真はAIによるイメージです</div>
   </div>
   
   
