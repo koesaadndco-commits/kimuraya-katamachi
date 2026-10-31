@@ -476,9 +476,10 @@ form.mem-form{background:#fff;border:1px solid var(--line);padding:26px;display:
 .ft-line b{display:block;color:var(--sumi);font-size:14px;letter-spacing:.06em}
 .ft-line span{display:block;font-size:12px;line-height:1.7;margin:2px 0 8px}
 .ft-line .btn{min-height:36px;padding:0 16px;font-size:12.5px}
-.ft-sns{display:flex;gap:8px;flex-wrap:wrap}
 .btn-insta{gap:6px;color:#fff;border:0;background:linear-gradient(45deg,#f9a13a,#e1306c 50%,#833ab4)}.btn-insta:hover{filter:brightness(1.08)}
-.btn-insta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+.ft-insta{margin-top:12px}
+.ft-insta-ico{flex:none;width:96px;height:96px;border-radius:22px;display:grid;place-items:center;color:#fff;background:linear-gradient(45deg,#f9a13a,#e1306c 50%,#833ab4)}
+.ft-insta-ico svg{width:52px;height:52px;fill:none;stroke:currentColor;stroke-width:1.8}
 
 
 /* お店のたより（/blog）：社長ブログ・スタッフブログ・レシピ */
