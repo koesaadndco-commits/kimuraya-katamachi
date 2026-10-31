@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: ["/img/family.jpg"],
   },
+  verification: {
+    google: "gGsQl4NudA9ZPoDGyZaR9PGt8Q3gT_Im7a1sQhUhkL4",
+  },
 };
 
 export default function RootLayout({
