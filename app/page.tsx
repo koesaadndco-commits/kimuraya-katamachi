@@ -359,22 +359,27 @@ function TodayNotice({ posts }: { posts: Post[] }) {
         <div className="notice-hd"><span className="eyebrow">TODAY</span><h2>本日のチラシ・お知らせ</h2></div>
         <ul>
           {posts.map((p) => {
-            const isPdf = p.fileType === "application/pdf";
-            const href = p.fileId ? `/f/${p.fileId}` : p.linkUrl || "";
+            const images = p.files.filter((f) => f.type !== "application/pdf");
+            const pdf = p.files.find((f) => f.type === "application/pdf");
+            const isFlyer = p.kind === "flyer";
+            const href = isFlyer && p.files.length > 0 ? "/flyer" : p.files.length > 0 ? `/f/${p.files[0].id}` : p.linkUrl || "";
+            const external = href.startsWith("http");
             return (
               <li key={p.id} className={p.kind}>
-                {p.fileId && !isPdf && (
-                  <a className="thumb" href={href} target="_blank" rel="noopener noreferrer">
-                    <img src={href} alt={p.title} loading="lazy" />
+                {images.length > 0 && (
+                  <a className="thumbs" href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+                    {images.slice(0, 2).map((f) => (
+                      <img key={f.id} src={`/f/${f.id}`} alt={p.title} loading="lazy" />
+                    ))}
                   </a>
                 )}
                 <div className="txt">
-                  <span className="tag">{p.kind === "flyer" ? "チラシ" : "お知らせ"}</span>
+                  <span className="tag">{isFlyer ? "チラシ" : "お知らせ"}</span>
                   <h3>{p.title}</h3>
                   {p.body && <p>{p.body}</p>}
                   {href && (
-                    <a className="go" href={href} target="_blank" rel="noopener noreferrer">
-                      {p.kind === "flyer" ? (isPdf ? "チラシ（PDF）を開く →" : "チラシを大きく見る →") : "くわしく見る →"}
+                    <a className="go" href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+                      {isFlyer ? (images.length === 0 && pdf ? "チラシ（PDF）を開く →" : "チラシを大きく見る →") : "くわしく見る →"}
                     </a>
                   )}
                 </div>

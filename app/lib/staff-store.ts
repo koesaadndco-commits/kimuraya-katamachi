@@ -4,21 +4,36 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export type PostKind = "flyer" | "info";
 
+export type PostFile = { id: string; name: string; type: string };
+
 export type Post = {
   id: string;
   kind: PostKind;
   title: string;
   body: string;
   linkUrl: string;
-  /** アップロードしたファイル（画像・PDF）のID。無ければ空文字 */
-  fileId: string;
-  fileName: string;
-  fileType: string;
+  /** アップロードした画像・PDF（チラシの表・裏など、最大4枚） */
+  files: PostFile[];
   /** 掲載開始・終了（日本時間、"YYYY-MM-DDTHH:mm"） */
   startAt: string;
   endAt: string;
   createdAt: string;
 };
+
+/** 旧形式（ファイル1つ）で保存されたデータも読めるようにする */
+type StoredPost = Omit<Post, "files"> & {
+  files?: PostFile[];
+  fileId?: string;
+  fileName?: string;
+  fileType?: string;
+};
+
+function normalize(p: StoredPost): Post {
+  const files = p.files ?? (p.fileId ? [{ id: p.fileId, name: p.fileName ?? "", type: p.fileType ?? "" }] : []);
+  const { fileId: _a, fileName: _b, fileType: _c, ...rest } = p;
+  void _a; void _b; void _c;
+  return { ...rest, files };
+}
 
 export type PostStatus = "scheduled" | "live" | "ended";
 
@@ -44,6 +59,7 @@ const FILE_PREFIX = "file:";
 
 export const ALLOWED_FILE_TYPES = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
 export const MAX_FILE_BYTES = 10 * 1024 * 1024;
+export const MAX_FILES = 4;
 
 // ---- 環境 ----
 
@@ -88,7 +104,7 @@ export function postStatus(p: Post, now = nowJst()): PostStatus {
 export async function listPosts(): Promise<Post[]> {
   const store = await kv();
   if (!store) return [];
-  const posts = (await store.get<Post[]>(POSTS_KEY, "json")) ?? [];
+  const posts = ((await store.get<StoredPost[]>(POSTS_KEY, "json")) ?? []).map(normalize);
   // 新しい開始日時が上
   return posts.sort((a, b) => (a.startAt < b.startAt ? 1 : a.startAt > b.startAt ? -1 : 0));
 }
@@ -100,42 +116,44 @@ export async function listActivePosts(): Promise<Post[]> {
 }
 
 export async function addPost(
-  input: Omit<Post, "id" | "createdAt" | "fileId" | "fileName" | "fileType">,
-  file: { bytes: ArrayBuffer; name: string; type: string } | null,
-): Promise<Post> {
+  input: Omit<Post, "id" | "createdAt" | "files">,
+  files: { bytes: ArrayBuffer; name: string; type: string }[],
+  opts: { replaceSameDay: boolean } = { replaceSameDay: false },
+): Promise<{ post: Post; replaced: number }> {
   const store = await kv();
   if (!store) throw new Error("STAFF_KV is not configured");
 
-  const id = crypto.randomUUID();
-  let fileId = "";
-  if (file) {
-    fileId = crypto.randomUUID();
-    await store.put(FILE_PREFIX + fileId, file.bytes, {
-      metadata: { type: file.type, name: file.name },
-    });
+  const fileRefs: PostFile[] = [];
+  for (const f of files) {
+    const id = crypto.randomUUID();
+    await store.put(FILE_PREFIX + id, f.bytes, { metadata: { type: f.type, name: f.name } });
+    fileRefs.push({ id, name: f.name, type: f.type });
   }
-  const post: Post = {
-    ...input,
-    id,
-    fileId,
-    fileName: file?.name ?? "",
-    fileType: file?.type ?? "",
-    createdAt: nowJst(),
-  };
-  const posts = (await store.get<Post[]>(POSTS_KEY, "json")) ?? [];
+  const post: Post = { ...input, id: crypto.randomUUID(), files: fileRefs, createdAt: nowJst() };
+
+  let posts = ((await store.get<StoredPost[]>(POSTS_KEY, "json")) ?? []).map(normalize);
+  let removed: Post[] = [];
+  if (opts.replaceSameDay && input.kind === "flyer") {
+    // 毎日の更新用：同じ開始日のチラシは新しいものに置き換える
+    const day = input.startAt.slice(0, 10);
+    removed = posts.filter((p) => p.kind === "flyer" && p.startAt.slice(0, 10) === day);
+    posts = posts.filter((p) => !removed.includes(p));
+  }
   posts.push(post);
   await store.put(POSTS_KEY, JSON.stringify(posts));
-  return post;
+  // 新しい登録を保存できてから、置き換えられた古いファイルを消す
+  for (const r of removed) for (const f of r.files) await store.delete(FILE_PREFIX + f.id);
+  return { post, replaced: removed.length };
 }
 
 export async function deletePost(id: string): Promise<void> {
   const store = await kv();
   if (!store) throw new Error("STAFF_KV is not configured");
-  const posts = (await store.get<Post[]>(POSTS_KEY, "json")) ?? [];
+  const posts = ((await store.get<StoredPost[]>(POSTS_KEY, "json")) ?? []).map(normalize);
   const target = posts.find((p) => p.id === id);
   if (!target) return;
   await store.put(POSTS_KEY, JSON.stringify(posts.filter((p) => p.id !== id)));
-  if (target.fileId) await store.delete(FILE_PREFIX + target.fileId);
+  for (const f of target.files) await store.delete(FILE_PREFIX + f.id);
 }
 
 export async function getFile(
@@ -151,11 +169,10 @@ export async function getFile(
   return { bytes: value, type: metadata?.type ?? "application/octet-stream", name: metadata?.name ?? "" };
 }
 
-/** 公開ページ用：チラシへのリンク先（掲載中のチラシが無ければ既定URL） */
+/** 公開ページ用：「今日のチラシ」のリンク先。掲載中のチラシが無ければ既定のURL */
 export function flyerHref(active: Post[], fallback: string): string {
   const flyer = active.find((p) => p.kind === "flyer");
   if (!flyer) return fallback;
-  if (flyer.fileId) return `/f/${flyer.fileId}`;
-  if (flyer.linkUrl) return flyer.linkUrl;
-  return "#notice";
+  if (flyer.files.length === 0 && flyer.linkUrl) return flyer.linkUrl;
+  return "/flyer";
 }

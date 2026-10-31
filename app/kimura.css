@@ -442,12 +442,23 @@ form.mem-form{background:#fff;border:1px solid var(--line);padding:26px;display:
 .notice-hd h2{font-family:var(--mincho);font-size:clamp(20px,2.4vw,28px);letter-spacing:.08em;margin:0}
 .notice ul{list-style:none;margin:0;padding:0;display:grid;gap:16px}
 .notice li{display:flex;gap:20px;align-items:flex-start;background:#fff;border:1px solid var(--line);padding:18px 20px}
-.notice .thumb{flex:none;width:min(180px,32vw)}
-.notice .thumb img{width:100%;height:auto;border:1px solid var(--line)}
+.notice .thumbs{flex:none;display:flex;gap:8px;width:min(240px,40vw)}
+.notice .thumbs img{flex:1;min-width:0;width:100%;height:auto;border:1px solid var(--line)}
 .notice .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--mitsu-d);border:1px solid var(--mitsu-d);padding:0 7px;margin-bottom:6px}
 .notice h3{font-family:var(--mincho);font-size:clamp(17px,2.4vw,22px);letter-spacing:.06em;margin:0 0 6px;line-height:1.5}
 .notice p{margin:0 0 8px;font-size:14.5px;white-space:pre-wrap}
 .notice .go{font-weight:700;font-size:13.5px;letter-spacing:.06em;color:var(--mitsu-d);text-decoration:none}
 .notice .go:hover{text-decoration:underline}
-@media(max-width:600px){.notice li{flex-direction:column}.notice .thumb{width:100%}}
+@media(max-width:600px){.notice li{flex-direction:column}.notice .thumbs{width:100%}}
+
+/* 今日のチラシ（/flyer）：スマホで大きく見られるように */
+.flyer-hd{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px var(--gut);background:var(--kinari);border-bottom:1px solid var(--line);font-size:13px}
+.flyer-back{text-decoration:none;font-weight:700}
+.flyer-main{max-width:860px;margin:0 auto;padding:28px var(--gut) 72px}
+.flyer-item+.flyer-item{margin-top:56px;padding-top:40px;border-top:1px solid var(--line)}
+.flyer-item h1{font-family:var(--mincho);font-size:clamp(22px,3.4vw,32px);letter-spacing:.06em;line-height:1.5;margin:0 0 6px}
+.flyer-period{font-size:12.5px;color:var(--hai);margin:0 0 14px}
+.flyer-body{white-space:pre-wrap;margin:0 0 18px}
+.flyer-pages{display:grid;gap:18px;justify-items:start}
+.flyer-pages img{width:100%;height:auto;border:1px solid var(--line);background:#fff}
 

@@ -7,8 +7,8 @@ initOpenNextCloudflareForDev();
 const nextConfig: NextConfig = {
   experimental: {
     serverActions: {
-      // スタッフページからのチラシ画像・PDFアップロード用（既定は1MB）
-      bodySizeLimit: "12mb",
+      // スタッフページからのチラシ画像・PDF（最大4枚）アップロード用（既定は1MB）
+      bodySizeLimit: "40mb",
     },
   },
 };
