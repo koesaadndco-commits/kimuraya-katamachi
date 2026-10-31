@@ -62,7 +62,7 @@ export default function Recruit() {
           <div className="wrap rc-hero-in">
             <div>
               <div className="eyebrow">RECRUIT</div>
-              <h1>「ありがとう」を、<br />仕事にしよう。</h1>
+              <h1><span>「ありがとう」を、</span><br /><span>仕事にしよう。</span></h1>
               <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。正社員・パート・アルバイトを募集しています。</p>
             </div>
             <img src="/img/team-recruit.jpg" alt="経営陣・幹部の集合写真" width={2016} height={1512} />
