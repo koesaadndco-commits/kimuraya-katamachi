@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import ApplyForm from "./ApplyForm";
-import { TIMEE_URL } from "../lib/links";
+import { SITE_URL, TIMEE_URL } from "../lib/links";
 import "../kimura.css";
 
+const TITLE = "採用情報｜木村グループ — ありがとうを、仕事にしよう。";
+const DESCRIPTION =
+  "木村グループ（ハニー食彩館）の採用情報。正社員（新卒採用）・パート・アルバイトを福井市内・坂井市内の各店舗で募集しています。";
+
 export const metadata: Metadata = {
-  title: "採用情報｜木村グループ — ありがとうを、仕事にしよう。",
-  description:
-    "木村グループ（ハニー食彩館）の採用情報。正社員（新卒採用）・パート・アルバイトを福井市内・坂井市内の各店舗で募集しています。",
-  robots: {
-    index: false,
-    follow: false,
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: `${SITE_URL}/recruit` },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${SITE_URL}/recruit`,
+    images: [{ url: "/img/team-recruit.jpg", width: 2016, height: 1512, alt: "経営陣・幹部の集合写真" }],
   },
+  twitter: { title: TITLE, description: DESCRIPTION, images: ["/img/team-recruit.jpg"] },
 };
 
 const STORES = [

@@ -1,5 +1,8 @@
 // 外部リンクの一元管理
 
+// 本番ドメイン（sitemap・OGP・構造化データの絶対URL生成に使う）
+export const SITE_URL = "https://kimuraya-katamachi.co.jp";
+
 // 「今日のチラシ」の既定リンク。スタッフページでチラシが掲載中のときは
 // そちらが優先され、掲載が無いときはこの外部ページに飛ぶ。
 export const DEFAULT_FLYER_URL = "https://kimura-group48.jp/flyer.php";

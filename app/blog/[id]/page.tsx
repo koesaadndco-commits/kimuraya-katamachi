@@ -5,6 +5,7 @@ import "../../kimura.css";
 import { TYPE_LABEL, formatDate, getArticle, paragraphs, youtubeId } from "../../lib/articles";
 import { getRole } from "../../lib/staff-auth";
 import { BlogFooter, BlogHeader } from "../SiteChrome";
+import { SITE_URL } from "../../lib/links";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +14,32 @@ type Params = { params: Promise<{ id: string }> };
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { id } = await params;
   const a = await getArticle(id);
-  return { title: a ? `${a.title}｜お店のたより｜木村グループ` : "お店のたより", robots: { index: false, follow: false } };
+  if (!a) return { title: "お店のたより", robots: { index: false, follow: false } };
+
+  const title = `${a.title}｜お店のたより｜木村グループ`;
+  const description = a.body.replace(/\s+/g, " ").trim().slice(0, 110);
+  const image = a.photos[0] ? `${SITE_URL}/f/${a.photos[0].id}` : undefined;
+  // 下書き・確認待ちの記事はスタッフのプレビュー専用なので検索エンジンには出さない
+  const indexable = a.status === "published";
+
+  return {
+    title,
+    description,
+    alternates: { canonical: `${SITE_URL}/blog/${id}` },
+    robots: indexable ? undefined : { index: false, follow: false },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/blog/${id}`,
+      type: "article",
+      images: image ? [{ url: image, alt: a.alt || a.title }] : undefined,
+    },
+    twitter: {
+      title,
+      description,
+      images: image ? [image] : undefined,
+    },
+  };
 }
 
 export default async function ArticlePage({ params }: Params) {
