@@ -6,7 +6,7 @@ import ConfirmButtons from "./ConfirmButtons";
 import type { Role } from "../lib/staff-auth";
 import { logout } from "./actions";
 
-export type NavKey = "flyer" | "posts" | "new-ceo" | "new-staff" | "new-recipe";
+export type NavKey = "flyer" | "posts" | "new-ceo" | "new-staff" | "new-recipe" | "site";
 
 const NAV: { key: NavKey; href: string; label: string }[] = [
   { key: "flyer", href: "/staff", label: "今日のチラシ" },
@@ -14,6 +14,7 @@ const NAV: { key: NavKey; href: string; label: string }[] = [
   { key: "new-ceo", href: "/staff/posts/new?type=ceo", label: "社長ブログを書く" },
   { key: "new-staff", href: "/staff/posts/new?type=staff", label: "スタッフブログを書く" },
   { key: "new-recipe", href: "/staff/posts/new?type=recipe", label: "レシピを書く" },
+  { key: "site", href: "/staff/site", label: "ホームページの写真・文章" },
 ];
 
 export default function StaffShell({

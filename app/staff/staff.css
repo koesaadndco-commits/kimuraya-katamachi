@@ -120,3 +120,20 @@ a.st-btn{text-decoration:none;display:inline-block}
 .st-inline input{font:inherit;font-size:14px;padding:10px 12px;border:1px solid #cbd4ca;border-radius:6px;min-width:220px}
 .st-dialog h3{margin:18px 0 6px;font-size:15px}
 .st-dialog ul,.st-dialog ol{margin:0 0 12px;padding-left:1.4em;line-height:1.9}
+
+/* ホームページの写真・文章（/staff/site） */
+.st-site-toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.st-site-toc a{font-size:12.5px;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid #d9e0da;color:inherit;text-decoration:none}
+.st-site-toc a:hover{border-color:#a9beac}
+.st-site-sec{scroll-margin-top:16px}
+.st-site-sec.locked{background:#f3f4f2;opacity:.85}
+.st-site-fields{border:0;padding:0;margin:0;display:grid;gap:16px;min-width:0}
+.st-site-fields:disabled{opacity:.7}
+.st-site-field{display:grid;gap:6px;padding-bottom:14px;border-bottom:1px dashed #e3e7e3}
+.st-site-field textarea{min-height:64px}
+.st-site-label{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:650}
+.st-site-img{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.st-site-img img{width:200px;max-width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid #d9e0da;background:#eee}
+.st-site-img>div{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.st-site-img label.st-btn{display:inline-flex!important;cursor:pointer}
+.st-check.small{font-size:12.5px!important}

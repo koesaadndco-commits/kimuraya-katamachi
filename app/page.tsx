@@ -4,6 +4,8 @@ import "./kimura.css";
 import { DEFAULT_FLYER_URL, INSTAGRAM_URL, SITE_URL, TIMEE_URL } from "./lib/links";
 import { flyerHref, listActivePosts, type Post } from "./lib/staff-store";
 import { dotDate, listPublishedArticles } from "./lib/articles";
+import { contentGetter, loadOverrides } from "./lib/site-content";
+import type { ReactNode } from "react";
 
 // スタッフページ（/staff）の登録内容を毎回読むため、リクエスト時に描画する
 export const dynamic = "force-dynamic";
@@ -55,6 +57,8 @@ export default async function Home() {
   const flyer = flyerHref(active, DEFAULT_FLYER_URL);
   // 公開中の社長ブログ・スタッフブログ・レシピ（新しい順）
   const latest = await listPublishedArticles(undefined, 5);
+  // スタッフ管理画面（/staff/site）で差し替えた写真・文章（ヒーロー部分は対象外）
+  const c = contentGetter(await loadOverrides());
   return (
     <>
   <script
@@ -153,12 +157,12 @@ export default async function Home() {
       <div className="wrap read-in">
         <div>
           <div className="eyebrow">OUR PROMISE</div>
-          <p className="read-text" id="readText">「おいしかったよ」のひとことのために、<span className="mk">今日も朝いちばんに</span>売り場に立つ。私たちが販売しているのは、食材だけではありません。食事の時間に<span className="mk">自然と出る笑顔</span>。そして会話です。</p>
-          <div className="read-sign"><span>経営理念</span><b>食を通じて、ありがとうの溢れる豊かな社会を実現する</b></div>
+          <p className="read-text" id="readText">{rich(c("promise.text"))}</p>
+          <div className="read-sign"><span>{c("promise.signLabel")}</span><b>{c("promise.sign")}</b></div>
         </div>
         <div className="read-side">
-          <figure><img src="/img/morning.jpg" alt="開店前、青果売り場でトマトを並べるスタッフ" id="readImg" /></figure>
-          <figcaption>開店前の青果売り場（イメージ）</figcaption>
+          <figure><img src={c("promise.img")} alt={c("promise.caption")} id="readImg" /></figure>
+          <figcaption>{c("promise.caption")}</figcaption>
         </div>
       </div>
     </div>
@@ -168,17 +172,17 @@ export default async function Home() {
   <section className="hs" id="story">
     <div className="hs-stage">
       <div className="wrap hs-hd">
-        <div><div className="eyebrow">OUR STORY · 1946 — 2026</div><h2>木村屋から、ハニー食彩館へ。</h2></div>
+        <div><div className="eyebrow">OUR STORY · 1946 — 2026</div><h2>{c("story.heading")}</h2></div>
         <div className="hs-count" id="hsYear" aria-hidden="true">1946</div>
       </div>
       <div className="hs-track" id="hsTrack">
-        <article className="hs-card" data-y="1946"><div className="ph"><img src="/img/old-shop.jpg" alt="戦後の小さな食料品店（イメージ）" loading="lazy" /></div><div className="era"><b>昭和21年</b><span>1946</span></div><h3>食料品店「木村屋」創業</h3><p>戦後の福井で、町の人の暮らしを支える小さな店として始まりました。</p></article>
-        <article className="hs-card" data-y="1965"><div className="ph"><img src="/img/old-opening.jpg" alt="昭和のスーパーマーケット開店日（イメージ）" loading="lazy" /></div><div className="era"><b>昭和40年</b><span>1965</span></div><h3>株式会社片町フードセンター設立</h3><p>対面販売から、セルフサービスのスーパーマーケットへ。</p></article>
-        <article className="hs-card" data-y="1971"><div className="ph type">昭和46</div><div className="era"><b>昭和46年</b><span>1971</span></div><h3>株式会社松本フードセンター設立</h3><p>地域に根ざした店づくりを広げていきました。</p></article>
-        <article className="hs-card" data-y="1983"><div className="ph"><img src="/img/hands.jpg" alt="惣菜づくり（イメージ）" loading="lazy" /></div><div className="era"><b>昭和58年</b><span>1983</span></div><h3>株式会社木村フーズ設立</h3><p>惣菜と精肉を自社で供給。手づくりの味を毎日の食卓へ。</p></article>
-        <article className="hs-card" data-y="1986"><div className="ph type">足羽</div><div className="era"><b>昭和61年</b><span>1986</span></div><h3>ハニー足羽店 開店</h3><p>協同組合ハニーの中核企業として、店舗展開が始まります。</p></article>
-        <article className="hs-card" data-y="1995"><div className="ph type">食彩館</div><div className="era"><b>平成7年〜</b><span>1995 —</span></div><h3>「食彩館」の時代へ</h3><p>みくに店を皮切りに、丸岡・四ツ居・大宮・東部・西福井・やしろへ。</p></article>
-        <article className="hs-card" data-y="2026"><div className="ph now"><img src="/img/register.jpg" alt="レジでお客様に袋を手渡すスタッフ（イメージ）" loading="lazy" /></div><div className="era"><b>令和8年</b><span>2026</span></div><h3>創業80年。次の100年へ。</h3><p>経営力・管理者力・現場力。三位一体で、100年ビジョンの実現へ歩みます。</p></article>
+        <article className="hs-card" data-y="1946"><div className="ph"><img src={c("story.1.img")} alt={c("story.1.title")} loading="lazy" /></div><div className="era"><b>昭和21年</b><span>1946</span></div><h3>{c("story.1.title")}</h3><p>{c("story.1.text")}</p></article>
+        <article className="hs-card" data-y="1965"><div className="ph"><img src={c("story.2.img")} alt={c("story.2.title")} loading="lazy" /></div><div className="era"><b>昭和40年</b><span>1965</span></div><h3>{c("story.2.title")}</h3><p>{c("story.2.text")}</p></article>
+        <article className="hs-card" data-y="1971"><div className="ph type">昭和46</div><div className="era"><b>昭和46年</b><span>1971</span></div><h3>{c("story.3.title")}</h3><p>{c("story.3.text")}</p></article>
+        <article className="hs-card" data-y="1983"><div className="ph"><img src={c("story.4.img")} alt={c("story.4.title")} loading="lazy" /></div><div className="era"><b>昭和58年</b><span>1983</span></div><h3>{c("story.4.title")}</h3><p>{c("story.4.text")}</p></article>
+        <article className="hs-card" data-y="1986"><div className="ph type">足羽</div><div className="era"><b>昭和61年</b><span>1986</span></div><h3>{c("story.5.title")}</h3><p>{c("story.5.text")}</p></article>
+        <article className="hs-card" data-y="1995"><div className="ph type">食彩館</div><div className="era"><b>平成7年〜</b><span>1995 —</span></div><h3>{c("story.6.title")}</h3><p>{c("story.6.text")}</p></article>
+        <article className="hs-card" data-y="2026"><div className="ph now"><img src={c("story.7.img")} alt={c("story.7.title")} loading="lazy" /></div><div className="era"><b>令和8年</b><span>2026</span></div><h3>{c("story.7.title")}</h3><p>{c("story.7.text")}</p></article>
       </div>
       <div className="wrap"><div className="hs-prog"><i id="hsProg"></i></div><a className="hs-more" href="/history">会社の沿革をくわしく見る ›</a></div>
     </div>
@@ -187,24 +191,24 @@ export default async function Home() {
   {/* FUKUI: sticky wipe gallery */}
   <section className="wg" id="fukui" aria-label="福井の恵み">
     <div className="wg-stage">
-      <div className="wg-slide"><img src="/img/fields.jpg" alt="朝もやの田んぼと白山を望む福井の風景（イメージ）" loading="lazy" /></div>
-      <div className="wg-slide"><img src="/img/crab.jpg" alt="黄色いタグの付いた越前がに" loading="lazy" /></div>
-      <div className="wg-slide"><img src="/img/table.jpg" alt="家族で囲む夕食の食卓（イメージ）" loading="lazy" /></div>
+      <div className="wg-slide"><img src={c("fukui.1.img")} alt={c("fukui.1.title")} loading="lazy" /></div>
+      <div className="wg-slide"><img src={c("fukui.2.img")} alt={c("fukui.2.title")} loading="lazy" /></div>
+      <div className="wg-slide"><img src={c("fukui.3.img")} alt={c("fukui.3.title")} loading="lazy" /></div>
       <div className="wg-shade"></div>
       <div className="wg-copy"><div className="wrap">
         <div className="eyebrow">FROM FUKUI</div>
-        <div className="wg-titles" id="wgTitles"><span>九頭竜の、田んぼから。</span><span className="in">越前の、海から。</span><span className="in">そして、あなたの食卓へ。</span></div>
-        <p className="wg-sub" id="wgSub">福井の恵みを知りつくした目利きが、{"\n"}毎朝売り場に並べます。</p>
+        <div className="wg-titles" id="wgTitles"><span>{c("fukui.1.title")}</span><span className="in">{c("fukui.2.title")}</span><span className="in">{c("fukui.3.title")}</span></div>
+        <p className="wg-sub" id="wgSub" data-subs={JSON.stringify([c("fukui.1.sub"), c("fukui.2.sub"), c("fukui.3.sub")])}>{c("fukui.1.sub")}</p>
         <div className="wg-dots" id="wgDots"><i className="on"></i><i></i><i></i></div>
       </div></div>
     </div>
   </section>
   
   <div className="goods-wrap" id="goods"><div className="wrap goods">
-    <a className="good rv" href="#goods"><div className="ph"><img src="/img/crab.jpg" alt="黄色いタグの付いた越前がに" loading="lazy" /></div><div className="t"><b>越前の鮮魚</b><span>港から、その日のうちに</span></div></a>
-    <a className="good rv" href="#goods"><div className="ph"><img src="/img/hands.jpg" alt="手づくり惣菜（イメージ）" loading="lazy" /></div><div className="t"><b>手づくり惣菜</b><span>木村フーズの台所から</span></div></a>
-    <a className="good rv" href="#goods"><div className="ph"><img src="/img/table.jpg" alt="特製オードブル（イメージ）" loading="lazy" /></div><div className="t"><b>特製オードブル</b><span>ネットで予約・店頭で受取</span></div></a>
-    <a className="good rv" href="#goods"><div className="ph"><img src="/img/fields.jpg" alt="ふくいの特産（イメージ）" loading="lazy" /></div><div className="t"><b>ふくいの贈りもの</b><span>オンラインショップ［準備中］</span></div></a>
+    <a className="good rv" href="#goods"><div className="ph"><img src={c("goods.1.img")} alt={c("goods.1.title")} loading="lazy" /></div><div className="t"><b>{c("goods.1.title")}</b><span>{c("goods.1.sub")}</span></div></a>
+    <a className="good rv" href="#goods"><div className="ph"><img src={c("goods.2.img")} alt={c("goods.2.title")} loading="lazy" /></div><div className="t"><b>{c("goods.2.title")}</b><span>{c("goods.2.sub")}</span></div></a>
+    <a className="good rv" href="#goods"><div className="ph"><img src={c("goods.3.img")} alt={c("goods.3.title")} loading="lazy" /></div><div className="t"><b>{c("goods.3.title")}</b><span>{c("goods.3.sub")}</span></div></a>
+    <a className="good rv" href="#goods"><div className="ph"><img src={c("goods.4.img")} alt={c("goods.4.title")} loading="lazy" /></div><div className="t"><b>{c("goods.4.title")}</b><span>{c("goods.4.sub")}</span></div></a>
   </div></div>
   
   {/* DINNER PICKER */}
@@ -212,8 +216,8 @@ export default async function Home() {
     <div className="wrap grid">
       <div className="rv">
         <div className="eyebrow">TONIGHT&apos;S TABLE</div>
-        <h2 style={{fontSize: 'clamp(28px,3.6vw,46px)', lineHeight: '1.45', letterSpacing: '.04em', marginTop: '10px'}}>今日の晩ごはん、<br />なににしよう？</h2>
-        <p style={{color: '#3c3a36', maxWidth: '26em'}}>いまの気分を選ぶと、食彩館でそろう献立をご提案します。毎日の「困った」に、いちばん近い台所から。</p>
+        <h2 style={{fontSize: 'clamp(28px,3.6vw,46px)', lineHeight: '1.45', letterSpacing: '.04em', marginTop: '10px'}}>{lines(c("dinner.heading"))}</h2>
+        <p style={{color: '#3c3a36', maxWidth: '26em'}}>{c("dinner.lead")}</p>
         <div className="chips" role="group" aria-label="今日の気分">
           <button type="button" className="chip" data-k="warm" aria-pressed="true">あったまりたい</button>
           <button type="button" className="chip" data-k="fresh" aria-pressed="false">さっぱりしたい</button>
@@ -239,16 +243,16 @@ export default async function Home() {
   <section className="pres pad" id="message">
     <div className="wrap grid">
       <div className="screen rv">
-        <img src="/img/morning.jpg" alt="" loading="lazy" />
+        <img src={c("message.img")} alt="" loading="lazy" />
         <span className="tag">毎月配信</span>
-        <div className="play"><i><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></i><span style={{fontFamily: 'var(--mincho)', fontSize: '18px', letterSpacing: '.1em'}}>社長メッセージ　令和8年9月号</span><span style={{fontSize: '12px', color: '#d6d0c4'}}>［社長メッセージ動画をここに配信］</span></div>
+        <div className="play"><i><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></i><span style={{fontFamily: 'var(--mincho)', fontSize: '18px', letterSpacing: '.1em'}}>{c("message.videoTitle")}</span><span style={{fontSize: '12px', color: '#d6d0c4'}}>［社長メッセージ動画をここに配信］</span></div>
       </div>
       <div className="rv">
         <div className="eyebrow">MESSAGE FROM THE PRESIDENT</div>
-        <blockquote>お客様、社員さん、取引業者さん、<br />そして地域のみなさまから<br />喜ばれる店でありたい。</blockquote>
-        <p className="body">当社は食料品木村屋として創業以来、この想いで商いを続けてきました。「食」という普遍的なテーマを、時代の変化に合わせて追求し続けます。</p>
+        <blockquote>{lines(c("message.quote"))}</blockquote>
+        <p className="body">{c("message.body")}</p>
         <div className="pillars"><div><b>経営力</b><span>次の100年を描く</span></div><div><b>管理者力</b><span>人を育て、店を磨く</span></div><div><b>現場力</b><span>今日の一品に心を込める</span></div></div>
-        <div className="who">代表取締役社長<b>木村 博常</b></div>
+        <div className="who">{c("message.title")}<b>{c("message.name")}</b></div>
       </div>
     </div>
   </section>
@@ -256,27 +260,23 @@ export default async function Home() {
   {/* PEOPLE: marquee */}
   <section className="people pad">
     <div className="wrap">
-      <div className="sec-hd"><div><div className="eyebrow">PEOPLE</div><h2>売り場には、<br />活躍できる環境が用意されている。</h2></div><a className="btn btn-line" href="/recruit">スタッフの声をもっと読む</a></div>
+      <div className="sec-hd"><div><div className="eyebrow">PEOPLE</div><h2>{lines(c("people.heading"))}</h2></div><a className="btn btn-line" href="/recruit">スタッフの声をもっと読む</a></div>
       <div className="people-photos">
-        <figure className="rv"><img src="/img/register.jpg" alt="レジで笑顔で接客するスタッフ（イメージ）" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
-        <figure className="rv"><img src="/img/hands.jpg" alt="惣菜をつくる手（イメージ）" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
-        <figure className="rv"><img src="/img/morning.jpg" alt="青果を並べるスタッフ（イメージ）" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
+        <figure className="rv"><img src={c("people.1.img")} alt="スタッフの写真" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
+        <figure className="rv"><img src={c("people.2.img")} alt="スタッフの写真" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
+        <figure className="rv"><img src={c("people.3.img")} alt="スタッフの写真" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
       </div>
     </div>
     <div className="mq" aria-label="スタッフの声">
       <div className="mq-row">
-        <div className="vc"><q>落ち込む日もあるけれど、その何倍もの「ありがとう」で、また笑顔になれるんです。</q><div className="who"><i>レ</i>レジチーフ ／ 平成22年入社</div></div>
-        <div className="vc"><q>仕入れた野菜を、次の日に「おいしかった」と言ってもらえた。やっててよかった、と思いました。</q><div className="who"><i>青</i>青果チーフ ／ 平成8年入社</div></div>
-        <div className="vc"><q>一品一品に愛情をこめて。気軽に声をかけてくださいね。</q><div className="who"><i>惣</i>惣菜担当 ／ 平成20年入社</div></div>
-        <div className="vc"><q>お客様の「おはようございます」や「いつも大変だね」の声に、毎日励まされています。</q><div className="who"><i>店</i>店長 ／ 平成12年入社</div></div>
-        <div className="vc"><q>頑張った分だけ売上が伸びる。売り場づくりには、とてもやりがいがあります。</q><div className="who"><i>副</i>副店長 ／ 平成22年入社</div></div>
-        <div className="vc"><q>良い商品と笑顔の接客で、地域のお客様に喜んでいただけることがやりがいです。</q><div className="who"><i>パ</i>パン担当・レジチーフ ／ 平成26年入社</div></div>
-        <div className="vc" aria-hidden="true"><q>落ち込む日もあるけれど、その何倍もの「ありがとう」で、また笑顔になれるんです。</q><div className="who"><i>レ</i>レジチーフ ／ 平成22年入社</div></div>
-        <div className="vc" aria-hidden="true"><q>仕入れた野菜を、次の日に「おいしかった」と言ってもらえた。やっててよかった、と思いました。</q><div className="who"><i>青</i>青果チーフ ／ 平成8年入社</div></div>
-        <div className="vc" aria-hidden="true"><q>一品一品に愛情をこめて。気軽に声をかけてくださいね。</q><div className="who"><i>惣</i>惣菜担当 ／ 平成20年入社</div></div>
-        <div className="vc" aria-hidden="true"><q>お客様の「おはようございます」や「いつも大変だね」の声に、毎日励まされています。</q><div className="who"><i>店</i>店長 ／ 平成12年入社</div></div>
-        <div className="vc" aria-hidden="true"><q>頑張った分だけ売上が伸びる。売り場づくりには、とてもやりがいがあります。</q><div className="who"><i>副</i>副店長 ／ 平成22年入社</div></div>
-        <div className="vc" aria-hidden="true"><q>良い商品と笑顔の接客で、地域のお客様に喜んでいただけることがやりがいです。</q><div className="who"><i>パ</i>パン担当・レジチーフ ／ 平成26年入社</div></div>
+        {[false, true].map((dup) =>
+          [1, 2, 3, 4, 5, 6].map((n) => {
+            const who = c(`people.v${n}.who`);
+            return (
+              <div key={`${dup}-${n}`} className="vc" {...(dup ? { "aria-hidden": true } : {})}><q>{c(`people.v${n}.text`)}</q><div className="who"><i>{Array.from(who)[0] ?? ""}</i>{who}</div></div>
+            );
+          }),
+        )}
       </div>
     </div>
   </section>
@@ -284,7 +284,7 @@ export default async function Home() {
   {/* STORES */}
   <section className="stores pad" id="stores">
     <div className="wrap">
-      <div className="sec-hd"><div><img className="st-logo" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} /><div className="eyebrow">STORES</div><h2>いつもの店が、<br />あなたの近くに。</h2></div><p style={{margin: '0', color: 'var(--hai)', maxWidth: '26em'}}>すべて年中無休。いまの営業状況を表示しています。</p></div>
+      <div className="sec-hd"><div><img className="st-logo" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} /><div className="eyebrow">STORES</div><h2>{lines(c("stores.heading"))}</h2></div><p style={{margin: '0', color: 'var(--hai)', maxWidth: '26em'}}>{c("stores.lead")}</p></div>
       <div className="store-grid">
       <div className="map rv" id="map" aria-label="店舗マップ（福井市・坂井市）"><svg id="mapSvg" viewBox="0 0 480 600" role="img" aria-label="福井市・坂井市の食彩館7店舗の位置"></svg>
         <div className="map-tools"><button type="button" id="nearBtn">現在地から近い店を探す</button><span id="nearOut"></span></div>
@@ -307,8 +307,8 @@ export default async function Home() {
     <div className="wrap grid">
       <div className="rv">
         <div className="eyebrow">YOUR MEMORIES</div>
-        <h2 style={{fontSize: 'clamp(28px,3.6vw,46px)', lineHeight: '1.45', letterSpacing: '.04em', marginTop: '10px'}}>あなたの<br />「食彩館の思い出」を<br />聞かせてください。</h2>
-        <p style={{color: '#3c3a36', maxWidth: '28em'}}>母と通った片町フードセンター。部活帰りのコロッケ。はじめてのおつかい。80年のあいだに、この町の人たちとつくってきた思い出を、次の世代へつなぎます。</p>
+        <h2 style={{fontSize: 'clamp(28px,3.6vw,46px)', lineHeight: '1.45', letterSpacing: '.04em', marginTop: '10px'}}>{lines(c("memories.heading"))}</h2>
+        <p style={{color: '#3c3a36', maxWidth: '28em'}}>{c("memories.lead")}</p>
         <div className="mem-cards">
           <div className="mem-card"><div className="ph">［お客様から届いた思い出を、ここに掲載します］</div><div className="meta">— 掲載イメージ</div></div>
           <div className="mem-card"><div className="ph">［写真つきの投稿も掲載できます］</div><div className="meta">— 掲載イメージ</div></div>
@@ -327,7 +327,7 @@ export default async function Home() {
   {/* NEWS */}
   <section className="news pad" id="news">
     <div className="wrap">
-      <div className="sec-hd"><div><div className="eyebrow">NEWS &amp; JOURNAL</div><h2>お店から、今日のたより。</h2></div></div>
+      <div className="sec-hd"><div><div className="eyebrow">NEWS &amp; JOURNAL</div><h2>{c("news.heading")}</h2></div></div>
       <div className="grid">
         <div className="rv"><h3 className="col">お知らせ</h3><ul>
           <li><a href="https://kimura-group48.jp/news.php?335"><time>2026.09.01</time><span className="tt"><span className="cat">イベント</span>9月のコジカ・週間イベントのご案内</span></a></li>
@@ -356,11 +356,11 @@ export default async function Home() {
   {/* RECRUIT */}
   <section className="recruit" id="recruit">
     <div className="grid">
-      <figure><img src="/img/team-recruit.jpg" alt="経営陣・幹部の集合写真" loading="lazy" /></figure>
+      <figure><img src={c("recruit.img")} alt="木村グループのスタッフ" loading="lazy" /></figure>
       <div className="txt rv">
         <div className="eyebrow">RECRUIT</div>
-        <h2>「ありがとう」を、<br />仕事にしよう。</h2>
-        <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。正社員・パート・アルバイトを募集しています。</p>
+        <h2>{lines(c("recruit.heading"))}</h2>
+        <p>{c("recruit.text")}</p>
         <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '8px'}}><a className="btn btn-mitsu" href="/recruit">採用情報を見る</a><a className="btn btn-ghost" href="/recruit">先輩の声を読む</a><a className="btn btn-ghost" href={TIMEE_URL} target="_blank" rel="noopener noreferrer">タイミーでお試しバイト</a></div>
       </div>
     </div>
@@ -368,12 +368,12 @@ export default async function Home() {
   
   {/* FINALE FILM */}
   <section className="finale" id="finale" aria-label="今日も、いただきます">
-    <img className="poster" src="/img/family.jpg" alt="" />
-    <video id="finaleFilm" muted playsInline loop preload="none" poster="/img/family.jpg"><source src="/img/finale.mp4" type="video/mp4" /></video>
+    <img className="poster" src={c("finale.img")} alt="" />
+    <video id="finaleFilm" muted playsInline loop preload="none" poster={c("finale.img")}><source src="/img/finale.mp4" type="video/mp4" /></video>
     <div className="in rv">
       <div className="count">1946 — 2026 — </div>
-      <h2>今日も、<br />いただきます。</h2>
-      <p>八十年分の「ありがとう」をこめて。これからも、福井の台所であり続けます。</p>
+      <h2>{lines(c("finale.heading"))}</h2>
+      <p>{c("finale.text")}</p>
       <div className="ctas"><a className="btn btn-mitsu" href="#stores">お近くの食彩館へ</a><button type="button" className="replay js-replay">▶ 記念映像をもう一度</button></div>
     </div>
   </section>
@@ -410,6 +410,21 @@ export default async function Home() {
   </footer>
       <Script src="/kimura.js" strategy="afterInteractive" />
     </>
+  );
+}
+
+/** 改行（\n）を <br /> にして表示する */
+function lines(text: string): ReactNode {
+  const parts = text.split("\n");
+  return parts.map((p, i) => (
+    <span key={i}>{i > 0 && <br />}{p}</span>
+  ));
+}
+
+/** 《 》で囲んだ部分に金色の下線（.mk）を付けて表示する */
+function rich(text: string): ReactNode {
+  return text.split(/(《[^》]*》)/).map((part, i) =>
+    part.startsWith("《") && part.endsWith("》") ? <span key={i} className="mk">{part.slice(1, -1)}</span> : <span key={i}>{part}</span>,
   );
 }
 
