@@ -8,7 +8,7 @@ export type ArticleStatus = "draft" | "review" | "published";
 export const TYPE_LABEL: Record<ArticleType, string> = {
   ceo: "社長ブログ",
   staff: "スタッフブログ",
-  recipe: "レシピ",
+  recipe: "エリちゃんの今日のレシピ",
 };
 export const STATUS_LABEL: Record<ArticleStatus, string> = {
   draft: "下書き",

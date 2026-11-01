@@ -3,7 +3,7 @@ import Script from "next/script";
 import "./kimura.css";
 import { DEFAULT_FLYER_URL, INSTAGRAM_URL, SITE_URL, TIMEE_URL } from "./lib/links";
 import { flyerHref, listActivePosts, type Post } from "./lib/staff-store";
-import { dotDate, listPublishedArticles } from "./lib/articles";
+import { dotDate, getArticle, listPublishedArticles } from "./lib/articles";
 import { contentGetter, loadOverrides } from "./lib/site-content";
 import type { ReactNode } from "react";
 
@@ -57,6 +57,9 @@ export default async function Home() {
   const flyer = flyerHref(active, DEFAULT_FLYER_URL);
   // 公開中の社長ブログ・スタッフブログ・レシピ（新しい順）
   const latest = await listPublishedArticles(undefined, 5);
+  // 「エリちゃんの今日のレシピ」：公開中のいちばん新しいレシピ（無ければ献立選びの見本を表示）
+  const recipeSummary = (await listPublishedArticles("recipe", 1))[0];
+  const todayRecipe = recipeSummary ? await getArticle(recipeSummary.id) : null;
   // スタッフ管理画面（/staff/site）で差し替えた写真・文章（ヒーロー部分は対象外）
   const c = contentGetter(await loadOverrides());
   return (
@@ -215,27 +218,53 @@ export default async function Home() {
   <section className="dinner pad" id="dinner">
     <div className="wrap grid">
       <div className="rv">
-        <div className="eyebrow">TONIGHT&apos;S TABLE</div>
-        <h2 style={{fontSize: 'clamp(28px,3.6vw,46px)', lineHeight: '1.45', letterSpacing: '.04em', marginTop: '10px'}}>{lines(c("dinner.heading"))}</h2>
+        <div className="eri-hd">
+          <img className="eri-chara" src="/img/eri.webp" alt="エリちゃんのイラスト" width={443} height={720} loading="lazy" />
+          <div>
+            <div className="eyebrow">ERI&apos;S RECIPE OF THE DAY</div>
+            <h2 style={{fontSize: 'clamp(28px,3.6vw,46px)', lineHeight: '1.45', letterSpacing: '.04em', marginTop: '10px'}}>{lines(c("dinner.heading"))}</h2>
+          </div>
+        </div>
         <p style={{color: '#3c3a36', maxWidth: '26em'}}>{c("dinner.lead")}</p>
+        {todayRecipe ? (
+          <a className="btn btn-mitsu" href={`/blog/${todayRecipe.id}`} style={{marginTop: '8px'}}>作り方をくわしく見る</a>
+        ) : (
+          <>
         <div className="chips" role="group" aria-label="今日の気分">
-          <button type="button" className="chip" data-k="warm" aria-pressed="true">あったまりたい</button>
-          <button type="button" className="chip" data-k="fresh" aria-pressed="false">さっぱりしたい</button>
-          <button type="button" className="chip" data-k="feast" aria-pressed="false">ごちそうの日</button>
-          <button type="button" className="chip" data-k="quick" aria-pressed="false">10分で済ませたい</button>
-        </div>
-        <p className="note-s">［サンプル］本番では、その日のチラシのお買い得品と連動して毎朝更新できます。</p>
+            <button type="button" className="chip" data-k="warm" aria-pressed="true">あったまりたい</button>
+            <button type="button" className="chip" data-k="fresh" aria-pressed="false">さっぱりしたい</button>
+            <button type="button" className="chip" data-k="feast" aria-pressed="false">ごちそうの日</button>
+            <button type="button" className="chip" data-k="quick" aria-pressed="false">10分で済ませたい</button>
+          </div>
+          <p className="note-s">［サンプル］本番では、その日のチラシのお買い得品と連動して毎朝更新できます。</p>
+          </>
+        )}
       </div>
+      {todayRecipe ? (
+        <article className="dish rv">
+          <div className="ph">{todayRecipe.photos[0] && <img src={`/f/${todayRecipe.photos[0].id}`} alt={todayRecipe.alt || todayRecipe.title} />}</div>
+          <div className="bd">
+            <div className="tag">エリちゃんの今日のレシピ{todayRecipe.recipe?.time ? `　調理時間 ${todayRecipe.recipe.time}` : ""}</div>
+            <h3>{todayRecipe.title}</h3>
+            {todayRecipe.body && <p>{todayRecipe.body.split("\n")[0].slice(0, 90)}</p>}
+            {todayRecipe.recipe && todayRecipe.recipe.ingredients.length > 0 && (
+              <ul>{todayRecipe.recipe.ingredients.slice(0, 6).map((it, i) => <li key={i}>{it}</li>)}</ul>
+            )}
+            <a className="go" href={`/blog/${todayRecipe.id}`}>作り方を見る →</a>
+          </div>
+        </article>
+      ) : (
       <article className="dish rv" id="dish" aria-live="polite">
-        <div className="ph"><img id="dishImg" src="/img/table.jpg" alt="" /></div>
-        <div className="bd">
-          <div className="tag" id="dishTag">あったまりたい夜に</div>
-          <h3 id="dishName">秋鮭と根菜の粕汁</h3>
-          <p id="dishText">脂ののった秋鮭と、大根・人参・ごぼう。酒粕でコクを足せば、体の芯からぽかぽかに。</p>
-          <ul id="dishList"><li><b>鮮魚</b>秋鮭</li><li><b>青果</b>大根・人参・ごぼう</li><li><b>日配</b>酒粕・油揚げ</li></ul>
-          <a className="go" href={flyer}>今日のチラシでお買い得をチェック →</a>
-        </div>
-      </article>
+          <div className="ph"><img id="dishImg" src="/img/table.jpg" alt="" /></div>
+          <div className="bd">
+            <div className="tag" id="dishTag">あったまりたい夜に</div>
+            <h3 id="dishName">秋鮭と根菜の粕汁</h3>
+            <p id="dishText">脂ののった秋鮭と、大根・人参・ごぼう。酒粕でコクを足せば、体の芯からぽかぽかに。</p>
+            <ul id="dishList"><li><b>鮮魚</b>秋鮭</li><li><b>青果</b>大根・人参・ごぼう</li><li><b>日配</b>酒粕・油揚げ</li></ul>
+            <a className="go" href={flyer}>今日のチラシでお買い得をチェック →</a>
+          </div>
+        </article>
+      )}
     </div>
   </section>
   
@@ -338,13 +367,13 @@ export default async function Home() {
         <div className="rv"><h3 className="col">社長・スタッフのブログ・レシピ</h3><ul>
           {latest.length > 0 ? (
             latest.map((a) => (
-              <li key={a.id}><a href={`/blog/${a.id}`}><time>{dotDate(a.publishedAt)}</time><span className="tt"><span className="cat">{a.type === "ceo" ? "社長" : a.type === "recipe" ? "レシピ" : a.category}</span>{a.title}{a.author ? ` ― ${a.author}` : ""}</span></a></li>
+              <li key={a.id}><a href={`/blog/${a.id}`}><time>{dotDate(a.publishedAt)}</time><span className="tt"><span className="cat">{a.type === "ceo" ? "社長" : a.type === "recipe" ? "エリちゃんのレシピ" : a.category}</span>{a.title}{a.author ? ` ― ${a.author}` : ""}</span></a></li>
             ))
           ) : (
             <>
               <li><a href="/blog"><time>［日付］</time><span className="tt"><span className="cat">社長</span>［社長ブログのタイトル］</span></a></li>
               <li><a href="/blog"><time>［日付］</time><span className="tt"><span className="cat">青果</span>［今が旬の福井の野菜 ― 青果チーフより］</span></a></li>
-              <li><a href="/blog"><time>［日付］</time><span className="tt"><span className="cat">レシピ</span>［今週のおすすめレシピ］</span></a></li>
+              <li><a href="/blog"><time>［日付］</time><span className="tt"><span className="cat">エリちゃんのレシピ</span>［エリちゃんの今日のレシピ］</span></a></li>
             </>
           )}
           <li className="more"><a href="/blog"><span className="tt">お店のたより一覧へ →</span></a></li>

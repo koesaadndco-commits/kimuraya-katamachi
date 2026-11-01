@@ -13,7 +13,7 @@ const NAV: { key: NavKey; href: string; label: string }[] = [
   { key: "posts", href: "/staff/posts", label: "記事の一覧・確認" },
   { key: "new-ceo", href: "/staff/posts/new?type=ceo", label: "社長ブログを書く" },
   { key: "new-staff", href: "/staff/posts/new?type=staff", label: "スタッフブログを書く" },
-  { key: "new-recipe", href: "/staff/posts/new?type=recipe", label: "レシピを書く" },
+  { key: "new-recipe", href: "/staff/posts/new?type=recipe", label: "エリちゃんの今日のレシピを書く" },
   { key: "site", href: "/staff/site", label: "ホームページの写真・文章" },
 ];
 

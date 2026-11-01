@@ -58,7 +58,7 @@ export default async function PostsPage({ searchParams }: { searchParams: Promis
       <div className="st-actions" style={{ marginBottom: 22 }}>
         <Link className="st-btn primary" href="/staff/posts/new?type=ceo">＋ 社長ブログを書く</Link>
         <Link className="st-btn primary" href="/staff/posts/new?type=staff">＋ スタッフブログを書く</Link>
-        <Link className="st-btn primary" href="/staff/posts/new?type=recipe">＋ レシピを書く</Link>
+        <Link className="st-btn primary" href="/staff/posts/new?type=recipe">＋ エリちゃんの今日のレシピを書く</Link>
       </div>
 
       <section className="st-card">
