@@ -219,7 +219,7 @@ export default async function Home() {
     <div className="wrap grid">
       <div className="rv">
         <div className="eri-hd">
-          <img className="eri-chara" src="/img/eri.webp" alt="エリちゃんのイラスト" width={443} height={720} loading="lazy" />
+          <img className="eri-chara" src="/img/eri.webp" alt="エリちゃんのイラスト" width={446} height={720} loading="lazy" />
           <div>
             <div className="eyebrow">ERI&apos;S RECIPE OF THE DAY</div>
             <h2 style={{fontSize: 'clamp(28px,3.6vw,46px)', lineHeight: '1.45', letterSpacing: '.04em', marginTop: '10px'}}>{lines(c("dinner.heading"))}</h2>
