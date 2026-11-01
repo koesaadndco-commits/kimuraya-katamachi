@@ -120,7 +120,7 @@ export default async function Home() {
         <div className="wrap">
           <div className="year"><i></i>昭和二十一年 → 令和八年</div>
           <h2>あの日の「いらっしゃい」から、<br />今日の「ありがとう」まで。</h2>
-          <p>戦後まもない福井の町に、小さな食料品店「木村屋」が生まれました。八十年たった今も、私たちはこの町の台所です。</p>
+          <p>戦後まもない福井の町に、小さな食料品店「木村屋」が生まれました。<br />八十年たった今も、私たちはこの町の台所です。</p>
           <div className="ctas"><a className="btn btn-mitsu" href="#story">80年の物語を見る</a><a className="btn btn-ghost" href="#quick">今日のチラシ</a><button type="button" className="voice-btn js-voice" aria-label="ナレーションを聴く"><span className="eq"><i></i><i></i><i></i></span>物語を聴く</button></div>
         </div>
       </div>
