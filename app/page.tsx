@@ -162,10 +162,10 @@ export default async function Home() {
       <div className="hs-track" id="hsTrack">
         <article className="hs-card" data-y="1946"><div className="ph"><img src={c("story.1.img")} alt={c("story.1.title")} loading="lazy" /></div><div className="era"><b>昭和21年</b><span>1946</span></div><h3>{c("story.1.title")}</h3><p>{c("story.1.text")}</p></article>
         <article className="hs-card" data-y="1965"><div className="ph"><img src={c("story.2.img")} alt={c("story.2.title")} loading="lazy" /></div><div className="era"><b>昭和40年</b><span>1965</span></div><h3>{c("story.2.title")}</h3><p>{c("story.2.text")}</p></article>
-        <article className="hs-card" data-y="1971"><div className="ph type">昭和46</div><div className="era"><b>昭和46年</b><span>1971</span></div><h3>{c("story.3.title")}</h3><p>{c("story.3.text")}</p></article>
+        <article className="hs-card" data-y="1971"><div className="ph"><img src={c("story.3.img")} alt={c("story.3.title")} loading="lazy" /></div><div className="era"><b>昭和46年</b><span>1971</span></div><h3>{c("story.3.title")}</h3><p>{c("story.3.text")}</p></article>
         <article className="hs-card" data-y="1983"><div className="ph"><img src={c("story.4.img")} alt={c("story.4.title")} loading="lazy" /></div><div className="era"><b>昭和58年</b><span>1983</span></div><h3>{c("story.4.title")}</h3><p>{c("story.4.text")}</p></article>
-        <article className="hs-card" data-y="1986"><div className="ph type">足羽</div><div className="era"><b>昭和61年</b><span>1986</span></div><h3>{c("story.5.title")}</h3><p>{c("story.5.text")}</p></article>
-        <article className="hs-card" data-y="1995"><div className="ph type">食彩館</div><div className="era"><b>平成7年〜</b><span>1995 —</span></div><h3>{c("story.6.title")}</h3><p>{c("story.6.text")}</p></article>
+        <article className="hs-card" data-y="1986"><div className="ph"><img src={c("story.5.img")} alt={c("story.5.title")} loading="lazy" /></div><div className="era"><b>昭和61年</b><span>1986</span></div><h3>{c("story.5.title")}</h3><p>{c("story.5.text")}</p></article>
+        <article className="hs-card" data-y="1998"><div className="ph"><img src={c("story.6.img")} alt={c("story.6.title")} loading="lazy" /></div><div className="era"><b>平成10年</b><span>1998</span></div><h3>{c("story.6.title")}</h3><p>{c("story.6.text")}</p></article>
         <article className="hs-card" data-y="2026"><div className="ph now"><img src={c("story.7.img")} alt={c("story.7.title")} loading="lazy" /></div><div className="era"><b>令和8年</b><span>2026</span></div><h3>{c("story.7.title")}</h3><p>{c("story.7.text")}</p></article>
       </div>
       <div className="wrap"><div className="hs-prog"><i id="hsProg"></i></div><a className="hs-more" href="/history">会社の沿革をくわしく見る ›</a></div>

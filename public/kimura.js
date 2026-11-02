@@ -26,7 +26,7 @@
 
   var hs=document.getElementById('story'), track=document.getElementById('hsTrack'), hsProg=document.getElementById('hsProg'), hsYear=document.getElementById('hsYear'), cards=track.querySelectorAll('.hs-card');
   var wg=document.getElementById('fukui'), wgT=document.getElementById('wgTitles').children, wgSub=document.getElementById('wgSub'), wgDots=document.getElementById('wgDots').children;
-  var subs=['福井の恵みを知りつくした目利きが、\n毎朝売り場に並べます。','港から、その日のうちに。\n越前の海の幸を、いちばん近くで。','木村フーズの手づくり惣菜と一緒に、\n今日の「いただきます」を。'];
+  var subs=['福井の恵みを知りつくした目利きが、\n毎朝売り場に並べます。','港から、その日のうちに。\n越前の海の幸を、いちばん近くで。','キムラフーズの手づくり惣菜と一緒に、\n今日の「いただきます」を。'];
   // 管理画面で差し替えた説明文は、ページの data-subs から受け取る
   try{ var ds=JSON.parse(wgSub.getAttribute('data-subs')||'null'); if(ds&&ds.length===3) subs=ds; }catch(e){}
   var wgIdx=0;
@@ -158,7 +158,7 @@
     warm:{tag:'あったまりたい夜に',name:'秋鮭と根菜の粕汁',text:'脂ののった秋鮭と、大根・人参・ごぼう。酒粕でコクを足せば、体の芯からぽかぽかに。',items:[['鮮魚','秋鮭'],['青果','大根・人参・ごぼう'],['日配','酒粕・油揚げ']],img:'/img/table.jpg'},
     fresh:{tag:'さっぱりしたい日に',name:'越前おろしそば',text:'たっぷりの大根おろしに、かつお節とねぎ。福井の食卓でおなじみの、つるっと食べられる一杯。',items:[['乾麺','そば'],['青果','辛み大根・ねぎ'],['乾物','かつお節']],img:'/img/fields.jpg'},
     feast:{tag:'ごちそうの日に',name:'ソースカツ丼',text:'薄めのカツをくぐらせた甘辛ソース。福井のごちそうといえば、やっぱりこれ。家族みんなで。',items:[['精肉','豚ロース'],['日配','パン粉・卵'],['調味料','ウスターソース']],img:'/img/hands.jpg'},
-    quick:{tag:'10分で済ませたい日に',name:'手づくり惣菜で、あと一品',text:'木村フーズの煮物や揚げもの、旬のサラダをひと皿。温めて盛るだけで、ちゃんとした食卓に。',items:[['惣菜','煮物・唐揚げ'],['青果','カット野菜'],['ベーカリー','焼きたてパン']],img:'/img/crab.jpg'}
+    quick:{tag:'10分で済ませたい日に',name:'手づくり惣菜で、あと一品',text:'キムラフーズの煮物や揚げもの、旬のサラダをひと皿。温めて盛るだけで、ちゃんとした食卓に。',items:[['惣菜','煮物・唐揚げ'],['青果','カット野菜'],['ベーカリー','焼きたてパン']],img:'/img/crab.jpg'}
   };
   var dish=document.getElementById('dish'), chips=document.querySelectorAll('.chip');
   chips.forEach(function(c){ c.addEventListener('click',function(){

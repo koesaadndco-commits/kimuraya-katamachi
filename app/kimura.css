@@ -646,3 +646,15 @@ html.menu-open{overflow:hidden}
 .th-ai svg{opacity:.85;flex:none}
 .ft-ai{display:inline-flex;align-items:center;gap:10px;line-height:1.6}
 .ft-ai svg{flex:none}
+
+/* 沿革：複数の出来事・記念写真 */
+.hi-ev+.hi-ev{margin-top:14px}
+.hi-body .hi-ev h2{margin-top:2px}
+.hi-fig{margin:16px 0 0;max-width:460px}
+.hi-fig img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:6px;margin:0;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.hi-fig.tall{max-width:300px}
+.hi-fig figcaption{margin-top:8px;font-size:12.5px;color:var(--hai);letter-spacing:.04em}
+.hi-group{margin-top:28px;padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.hi-group h2{font-family:var(--mincho);font-size:18px;margin:0 0 10px}
+.hi-group ul{margin:0 0 10px;padding-left:1.2em;line-height:2}
+.hi-group p{margin:0;font-weight:700}
