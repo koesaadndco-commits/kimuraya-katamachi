@@ -116,14 +116,6 @@ export function SiteFooter() {
               <img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
             </div>
             <p className="ft-addr">〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
-            <div className="ft-line ft-insta">
-              <span className="ft-insta-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></span>
-              <div>
-                <b>Instagram公式アカウント</b>
-                <span>@honey_syokusaikan<br />ハニー食彩館の最新情報をお届けします。</span>
-                <a className="btn btn-insta" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">フォローする</a>
-              </div>
-            </div>
           </div>
           <nav className="ft-nav" aria-label="フッターメニュー">
             {NAV_GROUPS.map((g) => (
