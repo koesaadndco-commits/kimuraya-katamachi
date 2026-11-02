@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./kimura.css";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
-import AiMark from "./components/AiMark";
 import { DEFAULT_FLYER_URL, INSTAGRAM_URL, SITE_URL, TIMEE_URL } from "./lib/links";
 import { flyerHref, listActivePosts, type Post } from "./lib/staff-store";
 import { dotDate, getArticle, listPublishedArticles } from "./lib/articles";
@@ -85,7 +84,7 @@ export default async function Home() {
     </div>
     <div className="th-ctrl" id="thCtrl"><button type="button" id="thMute">音を消す</button><button type="button" id="thEnd">スキップ ›</button></div>
     <div className="th-bar" id="thBar"></div>
-    <div className="th-note th-ai"><AiMark size={64} /><span>本サイトの一部にAIを使用しています</span></div>
+    <div className="th-note th-ai"><img src="/ai-mark/ai-mark-ornate-gold-sm.webp" alt="AI使用マーク" width={120} height={95} /><span>本サイトの一部にAIを使用しています</span></div>
   </div>
   
   
