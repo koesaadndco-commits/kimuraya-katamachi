@@ -126,7 +126,7 @@ export function SiteFooter() {
             ))}
           </nav>
         </div>
-        <div className="copy"><span>© 2026 木村グループ</span></div>
+        <div className="copy"><span>© 2026 木村グループ</span><span>Produced by AISSK</span></div>
       </div>
     </footer>
   );
