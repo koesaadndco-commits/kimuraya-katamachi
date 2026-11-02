@@ -658,3 +658,7 @@ html.menu-open{overflow:hidden}
 .hi-group h2{font-family:var(--mincho);font-size:18px;margin:0 0 10px}
 .hi-group ul{margin:0 0 10px;padding-left:1.2em;line-height:2}
 .hi-group p{margin:0;font-weight:700}
+/* AI使用マーク：オープニング画面では左下に置く */
+.th-note.th-ai{left:clamp(14px,2.4vw,32px);right:auto;bottom:clamp(14px,2.4vw,28px);justify-content:flex-start;text-align:left}
+.th-ai img{width:clamp(90px,10vw,130px);height:auto}
+@media (max-width:520px){.th-ai span{font-size:10px;max-width:9em;line-height:1.6}}
