@@ -13,13 +13,13 @@ type Item = { wa: string; year: string; title: string; text: string; img?: { src
 
 // トップページ「80年の物語」と同じ内容。年表を更新するときは両方をそろえる。
 const HISTORY: Item[] = [
-  { wa: "昭和21年", year: "1946", title: "食料品店「木村屋」創業", text: "戦後の福井で、町の人の暮らしを支える小さな店として始まりました。", img: { src: "/img/old-shop.jpg", alt: "戦後の小さな食料品店（イメージ）" } },
-  { wa: "昭和40年", year: "1965", title: "株式会社片町フードセンター設立", text: "対面販売から、セルフサービスのスーパーマーケットへ。", img: { src: "/img/old-opening.jpg", alt: "昭和のスーパーマーケット開店日（イメージ）" } },
+  { wa: "昭和21年", year: "1946", title: "食料品店「木村屋」創業", text: "戦後の福井で、町の人の暮らしを支える小さな店として始まりました。", img: { src: "/img/old-shop.jpg", alt: "戦後の小さな食料品店" } },
+  { wa: "昭和40年", year: "1965", title: "株式会社片町フードセンター設立", text: "対面販売から、セルフサービスのスーパーマーケットへ。", img: { src: "/img/old-opening.jpg", alt: "昭和のスーパーマーケット開店日" } },
   { wa: "昭和46年", year: "1971", title: "株式会社松本フードセンター設立", text: "地域に根ざした店づくりを広げていきました。" },
-  { wa: "昭和58年", year: "1983", title: "株式会社木村フーズ設立", text: "惣菜と精肉を自社で供給。手づくりの味を毎日の食卓へ。", img: { src: "/img/hands.jpg", alt: "惣菜づくり（イメージ）" } },
+  { wa: "昭和58年", year: "1983", title: "株式会社木村フーズ設立", text: "惣菜と精肉を自社で供給。手づくりの味を毎日の食卓へ。", img: { src: "/img/hands.jpg", alt: "惣菜づくり" } },
   { wa: "昭和61年", year: "1986", title: "ハニー足羽店 開店", text: "協同組合ハニーの中核企業として、店舗展開が始まります。" },
   { wa: "平成7年〜", year: "1995 —", title: "「食彩館」の時代へ", text: "みくに店を皮切りに、丸岡・四ツ居・大宮・東部・西福井・やしろへ。" },
-  { wa: "令和8年", year: "2026", title: "創業80年。次の100年へ。", text: "経営力・管理者力・現場力。三位一体で、100年ビジョンの実現へ歩みます。", img: { src: "/img/register.jpg", alt: "レジでお客様に袋を手渡すスタッフ（イメージ）" } },
+  { wa: "令和8年", year: "2026", title: "創業80年。次の100年へ。", text: "経営力・管理者力・現場力。三位一体で、100年ビジョンの実現へ歩みます。", img: { src: "/img/register.jpg", alt: "レジでお客様に袋を手渡すスタッフ" } },
 ];
 
 export default function HistoryPage() {
@@ -47,7 +47,6 @@ export default function HistoryPage() {
             ))}
           </ol>
           <p className="hi-motto"><span>経営理念</span>食を通じて、ありがとうの溢れる豊かな社会を実現する</p>
-          <p className="hi-note">※写真はイメージです。</p>
         </div>
       </main>
       <BlogFooter />

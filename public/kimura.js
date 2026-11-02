@@ -215,12 +215,12 @@
     },function(){ out.textContent='現在地を取得できませんでした。一覧からお選びください。'; },{timeout:8000});
   });
 
-  // ---- memories form (sample) ----
+  // ---- memories form ----
   document.getElementById('memForm').addEventListener('submit',function(e){
     e.preventDefault();
     var t=document.getElementById('mText');
     if(!t.value.trim()){ t.focus(); t.setAttribute('aria-invalid','true'); t.placeholder='ひとことでも大丈夫です。思い出を書いてください。'; return; }
-    this.innerHTML='<p class="mem-thanks">すてきな思い出を、ありがとうございます。</p><p class="note-s" style="margin:0">［サンプル］本番では、スタッフが確認したあとにこのページへ掲載されます。</p>';
+    this.innerHTML='<p class="mem-thanks">すてきな思い出を、ありがとうございます。</p><p class="note-s" style="margin:0">スタッフが確認したあと、このページでご紹介することがあります。</p>';
   });
 
   // ---- finale film: play when visible ----

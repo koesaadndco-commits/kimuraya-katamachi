@@ -113,7 +113,7 @@ export default function ApplyForm() {
       </label>
       <label className="rc-apply-consent">
         <input type="checkbox" name="consent" required />
-        ご記入いただいた個人情報は、採用選考のご連絡以外の目的には使用しません。
+        <span>ご記入いただいた個人情報は、採用選考のご連絡以外の目的には使用しません（<a href="/privacy" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>に同意のうえ送信）。</span>
       </label>
       {status === "error" && <p className="rc-apply-error">{errorMsg}</p>}
       <button className="btn btn-mitsu" type="submit" disabled={status === "sending"}>

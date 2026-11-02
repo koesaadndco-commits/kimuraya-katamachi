@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./kimura.css";
+import { SiteFooter, SiteHeader } from "./components/SiteChrome";
 import { DEFAULT_FLYER_URL, INSTAGRAM_URL, SITE_URL, TIMEE_URL } from "./lib/links";
 import { flyerHref, listActivePosts, type Post } from "./lib/staff-store";
 import { dotDate, getArticle, listPublishedArticles } from "./lib/articles";
@@ -83,31 +84,10 @@ export default async function Home() {
     </div>
     <div className="th-ctrl" id="thCtrl"><button type="button" id="thMute">音を消す</button><button type="button" id="thEnd">スキップ ›</button></div>
     <div className="th-bar" id="thBar"></div>
-    <div className="th-note">※映像・写真はAIによるイメージです</div>
   </div>
   
   
-  <header className="site" id="hdr">
-    <div className="wrap hd">
-      <a className="logo" href="#top" aria-label="木村屋（木村グループ）ホーム">
-        <img className="lg" src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
-        <span className="lg-sub">
-          <img className="lg2" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
-        </span>
-      </a>
-      <nav className="gnav" aria-label="メインメニュー">
-        <a href="#promise">私たちの約束</a>
-        <a href="#story">80年の物語</a>
-        <a href="#fukui">福井の恵み</a>
-        <a href="#dinner">今日の献立</a>
-        <a href="#stores">店舗一覧</a>
-        <a href="/blog">お店のたより</a>
-        <a href="/recruit">採用情報</a>
-      </nav>
-      <a className="btn btn-mitsu" href="#quick">今日のチラシ</a>
-      <button className="menu-btn" type="button" aria-label="メニューを開く">MENU</button>
-    </div>
-  </header>
+  <SiteHeader flyerHref={flyer} />
   
   <main id="top">
   
@@ -236,7 +216,6 @@ export default async function Home() {
             <button type="button" className="chip" data-k="feast" aria-pressed="false">ごちそうの日</button>
             <button type="button" className="chip" data-k="quick" aria-pressed="false">10分で済ませたい</button>
           </div>
-          <p className="note-s">［サンプル］本番では、その日のチラシのお買い得品と連動して毎朝更新できます。</p>
           </>
         )}
       </div>
@@ -274,7 +253,7 @@ export default async function Home() {
       <div className="screen rv">
         <img src={c("message.img")} alt="" loading="lazy" />
         <span className="tag">毎月配信</span>
-        <div className="play"><i><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></i><span style={{fontFamily: 'var(--mincho)', fontSize: '18px', letterSpacing: '.1em'}}>{c("message.videoTitle")}</span><span style={{fontSize: '12px', color: '#d6d0c4'}}>［社長メッセージ動画をここに配信］</span></div>
+        <div className="play"><i><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></i><span style={{fontFamily: 'var(--mincho)', fontSize: '18px', letterSpacing: '.1em'}}>{c("message.videoTitle")}</span></div>
       </div>
       <div className="rv">
         <div className="eyebrow">MESSAGE FROM THE PRESIDENT</div>
@@ -291,9 +270,9 @@ export default async function Home() {
     <div className="wrap">
       <div className="sec-hd"><div><div className="eyebrow">PEOPLE</div><h2>{lines(c("people.heading"))}</h2></div><a className="btn btn-line" href="/recruit">スタッフの声をもっと読む</a></div>
       <div className="people-photos">
-        <figure className="rv"><img src={c("people.1.img")} alt="スタッフの写真" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
-        <figure className="rv"><img src={c("people.2.img")} alt="スタッフの写真" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
-        <figure className="rv"><img src={c("people.3.img")} alt="スタッフの写真" loading="lazy" /><figcaption>（イメージ）</figcaption></figure>
+        <figure className="rv"><img src={c("people.1.img")} alt="スタッフの写真" loading="lazy" /></figure>
+        <figure className="rv"><img src={c("people.2.img")} alt="スタッフの写真" loading="lazy" /></figure>
+        <figure className="rv"><img src={c("people.3.img")} alt="スタッフの写真" loading="lazy" /></figure>
       </div>
     </div>
     <div className="mq" aria-label="スタッフの声">
@@ -338,17 +317,12 @@ export default async function Home() {
         <div className="eyebrow">YOUR MEMORIES</div>
         <h2 style={{fontSize: 'clamp(28px,3.6vw,46px)', lineHeight: '1.45', letterSpacing: '.04em', marginTop: '10px'}}>{lines(c("memories.heading"))}</h2>
         <p style={{color: '#3c3a36', maxWidth: '28em'}}>{c("memories.lead")}</p>
-        <div className="mem-cards">
-          <div className="mem-card"><div className="ph">［お客様から届いた思い出を、ここに掲載します］</div><div className="meta">— 掲載イメージ</div></div>
-          <div className="mem-card"><div className="ph">［写真つきの投稿も掲載できます］</div><div className="meta">— 掲載イメージ</div></div>
-        </div>
       </div>
       <form className="mem-form rv" id="memForm" noValidate>
         <label htmlFor="mName">お名前（ニックネーム可）<input id="mName" name="name" autoComplete="nickname" placeholder="例：大宮のおばあちゃん子" /></label>
         <label htmlFor="mStore">思い出のお店<select id="mStore" name="store"><option>片町フードセンター・木村屋のころ</option><option>食彩館 大宮店</option><option>食彩館 四ツ居店</option><option>食彩館 やしろ店</option><option>食彩館 西福井店</option><option>食彩館 丸岡店</option><option>食彩館 みくに店</option><option>食彩館 東部店</option></select></label>
         <label htmlFor="mText">思い出<textarea id="mText" name="text" placeholder="いつ、だれと、どんなことがありましたか？"></textarea></label>
         <button type="submit" className="btn btn-mitsu">思い出を届ける</button>
-        <p className="note-s" style={{margin: '0'}}>［サンプル］本番では投稿を管理画面で確認してから掲載します。</p>
       </form>
     </div>
   </section>
@@ -369,13 +343,7 @@ export default async function Home() {
             latest.map((a) => (
               <li key={a.id}><a href={`/blog/${a.id}`}><time>{dotDate(a.publishedAt)}</time><span className="tt"><span className="cat">{a.type === "ceo" ? "社長" : a.type === "recipe" ? "エリちゃんのレシピ" : a.category}</span>{a.title}{a.author ? ` ― ${a.author}` : ""}</span></a></li>
             ))
-          ) : (
-            <>
-              <li><a href="/blog"><time>［日付］</time><span className="tt"><span className="cat">社長</span>［社長ブログのタイトル］</span></a></li>
-              <li><a href="/blog"><time>［日付］</time><span className="tt"><span className="cat">青果</span>［今が旬の福井の野菜 ― 青果チーフより］</span></a></li>
-              <li><a href="/blog"><time>［日付］</time><span className="tt"><span className="cat">エリちゃんのレシピ</span>［エリちゃんの今日のレシピ］</span></a></li>
-            </>
-          )}
+          ) : null}
           <li className="more"><a href="/blog"><span className="tt">お店のたより一覧へ →</span></a></li>
         </ul></div>
       </div>
@@ -408,35 +376,7 @@ export default async function Home() {
   </section>
   </main>
   
-  <footer>
-    <div className="wrap">
-      <div className="grid">
-        <div>
-          <div className="ft-logos"><a className="logo" href="#top" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo.png" alt="木村屋 SINCE 1946" width={1000} height={965} /></a><img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} /></div>
-          <p style={{marginTop: '18px', lineHeight: '2'}}>〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
-          <div className="ft-line">
-            <img src="/img/line-qr.svg" alt="木村グループ LINE公式アカウントのQRコード" width={120} height={120} />
-            <div>
-              <b>LINE公式アカウント</b>
-              <span>友だち追加で、チラシやお得な情報をお届けします。</span>
-              <a className="btn btn-line" href="https://lin.ee/rNifBeB" target="_blank" rel="noopener noreferrer">友だち追加</a>
-            </div>
-          </div>
-          <div className="ft-line ft-insta">
-            <span className="ft-insta-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></span>
-            <div>
-              <b>Instagram公式アカウント</b>
-              <span>@honey_syokusaikan<br />ハニー食彩館の最新情報をお届けします。</span>
-              <a className="btn btn-insta" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">フォローする</a>
-            </div>
-          </div>
-        </div>
-        <ul><li><a href="#promise">私たちの約束</a></li><li><a href="#story">80年の物語</a></li><li><a href="/history">会社の沿革</a></li><li><a href="#fukui">福井の恵み</a></li><li><a href="#stores">店舗一覧</a></li></ul>
-        <ul><li><a href="#news">お知らせ</a></li><li><a href="/blog">お店のたより</a></li><li><a href="/recruit">採用情報</a></li><li><a href="https://kimura-group48.jp/contact.php">お問い合わせ</a></li><li><a href="#top">プライバシーポリシー</a></li></ul>
-      </div>
-      <div className="copy"><span>© 2026 木村グループ</span><span>Design sample by KOESA Co.,Ltd. — AI SOLUTION STUDIO</span></div>
-    </div>
-  </footer>
+  <SiteFooter />
       <Script src="/kimura.js" strategy="afterInteractive" />
     </>
   );

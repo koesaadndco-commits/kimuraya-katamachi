@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import ApplyForm from "./ApplyForm";
 import { SITE_URL, TIMEE_URL } from "../lib/links";
+import { youtubeId } from "../lib/articles";
+import { contentGetter, loadOverrides } from "../lib/site-content";
 import "../kimura.css";
+import { SiteFooter, SiteHeader } from "../components/SiteChrome";
 
 const TITLE = "採用情報｜木村グループ — ありがとうを、仕事にしよう。";
 const DESCRIPTION =
@@ -16,7 +19,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: `${SITE_URL}/recruit`,
-    images: [{ url: "/img/team-recruit.jpg", width: 2016, height: 1512, alt: "経営陣・幹部の集合写真" }],
+    images: [{ url: "/img/team-recruit.jpg", width: 2016, height: 1512, alt: "木村グループのスタッフ" }],
   },
   twitter: { title: TITLE, description: DESCRIPTION, images: ["/img/team-recruit.jpg"] },
 };
@@ -40,53 +43,75 @@ const VOICES = [
   { i: "パ", q: "良い商品と笑顔の接客で、地域のお客様に喜んでいただけることがやりがいです。", who: "パン担当・レジチーフ ／ 平成26年入社" },
 ];
 
-export default function Recruit() {
+// 管理画面で登録した動画（YouTube）を毎回読むため、リクエスト時に描画する
+export const dynamic = "force-dynamic";
+
+const NUMBERS = [
+  { n: "1946", u: "年創業", s: "福井の小さな食料品店から" },
+  { n: "7", u: "店舗", s: "福井市・坂井市の食彩館" },
+  { n: "2", u: "回／年", s: "賞与（8月・12月）" },
+  { n: "96", u: "日", s: "年間休日（基本週休2日）" },
+];
+
+export default async function Recruit() {
+  const c = contentGetter(await loadOverrides());
+  const videos = [1, 2, 3, 4, 5, 6]
+    .map((n) => ({ id: youtubeId(c(`rv.${n}.url`)), title: c(`rv.${n}.title`) }))
+    .filter((v): v is { id: string; title: string } => !!v.id);
   return (
     <>
-      <header className="site" id="hdr">
-        <div className="wrap hd">
-          <a className="logo" href="/" aria-label="木村屋（木村グループ）ホーム">
-            <img className="lg" src="/img/logo/kimuraya-lockup.png" alt="木村屋" width={1200} height={355} />
-            <span className="lg-sub">
-              <img className="lg2" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
-            </span>
-          </a>
-          <nav className="gnav" aria-label="メインメニュー">
-            <a href="/#promise">私たちの約束</a>
-            <a href="/#story">80年の物語</a>
-            <a href="/#fukui">福井の恵み</a>
-            <a href="/#stores">店舗一覧</a>
-            <a href="/blog">お店のたより</a>
-            <a href="/recruit">採用情報</a>
-          </nav>
-          <a className="btn btn-mitsu" href="/#quick">今日のチラシ</a>
-          <button className="menu-btn" type="button" aria-label="メニューを開く">MENU</button>
-        </div>
-      </header>
+      <SiteHeader solid />
 
       <main id="top">
-        <section className="rc-hero" aria-label="採用情報">
-          <div className="wrap rc-hero-in">
-            <div>
-              <div className="eyebrow">RECRUIT</div>
-              <h1><span>「ありがとう」を、</span><br /><span>仕事にしよう。</span></h1>
-              <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。正社員・パート・アルバイトを募集しています。</p>
+        <section className="rc2-hero" aria-label="採用情報">
+          <img className="rc2-bg" src="/img/team-recruit.jpg" alt="" width={2016} height={1512} />
+          <div className="rc2-shade"></div>
+          <div className="wrap rc2-in">
+            <div className="eyebrow">RECRUIT 2026 — 木村グループ 採用特設ページ</div>
+            <h1><span>「ありがとう」を、</span><span>仕事にしよう。</span></h1>
+            <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。<br />正社員（新卒）・パート・アルバイトを募集しています。</p>
+            <div className="rc2-ctas">
+              <a className="btn btn-mitsu" href="#apply">応募する</a>
+              <a className="btn btn-ghost" href="#movie">▶ 動画を見る</a>
+              <a className="btn btn-ghost" href="#jobs">募集要項</a>
             </div>
-            <img src="/img/team-recruit.jpg" alt="経営陣・幹部の集合写真" width={2016} height={1512} />
           </div>
         </section>
 
-        <section className="pad" style={{paddingBottom: 0}}>
+        <section className="rc2-nums" aria-label="数字で見る木村グループ">
+          <div className="wrap rc2-nums-in">
+            {NUMBERS.map((x) => (
+              <div key={x.s} className="rv"><b>{x.n}<small>{x.u}</small></b><span>{x.s}</span></div>
+            ))}
+          </div>
+        </section>
+
+        <section className="rc2-movie pad" id="movie">
           <div className="wrap">
-            <div className="rc-block rv">
-              <h3 className="rc-title">応募フォーム</h3>
-              <p style={{margin: '0 0 22px'}}>お電話が苦手な方も、こちらから気軽にご応募いただけます。内容を確認のうえ、担当者よりご連絡します。</p>
-              <ApplyForm />
-            </div>
+            <div className="sec-hd"><div><div className="eyebrow">MOVIE</div><h2>動画で知る、<br />私たちの仕事。</h2></div><p className="rc2-lead">{c("rv.lead")}</p></div>
+            {videos.length > 0 ? (
+              <div className={`rc2-vids n${Math.min(videos.length, 3)}`}>
+                {videos.map((v, i) => (
+                  <figure key={v.id + i} className={`rv${i === 0 ? " main" : ""}`}>
+                    <div className="rc2-frame">
+                      <iframe src={`https://www.youtube-nocookie.com/embed/${v.id}?rel=0`} title={v.title || "採用動画"} loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowFullScreen></iframe>
+                    </div>
+                    {v.title && <figcaption>{v.title}</figcaption>}
+                  </figure>
+                ))}
+              </div>
+            ) : (
+              <div className="rc2-vids n1">
+                <figure className="rv main">
+                  <div className="rc2-frame"><video controls playsInline preload="none" poster="/img/archive-1946.jpg"><source src="/img/film.mp4" type="video/mp4" /></video></div>
+                  <figcaption>木村グループ 創業八十周年記念映像（48秒）</figcaption>
+                </figure>
+              </div>
+            )}
           </div>
         </section>
 
-        <section className="pad">
+        <section className="pad" id="jobs">
           <div className="wrap">
             <div className="rc-persona rv">
               <div className="eyebrow">求める人物像・採用基準</div>
@@ -102,8 +127,8 @@ export default function Recruit() {
               <h3 className="rc-title">正社員（新卒採用）</h3>
               <div className="rc-special">
                 <div>
-                  <p style={{margin: '0 0 8px', fontWeight: 700}}>採用に関する特設サイトはこちら</p>
-                  <a className="btn btn-mitsu" href="https://wandering-lotus-ad7.notion.site/acb272cd21c74f3cbc17b413c5796e45" target="_blank" rel="noopener noreferrer">新卒採用特設サイトを見る</a>
+                  <p style={{margin: '0 0 8px', fontWeight: 700}}>会社説明会は随時実施しています。まずはお気軽にご応募ください。</p>
+                  <a className="btn btn-mitsu" href="#apply">応募フォームへ</a>
                 </div>
               </div>
               <div className="rc-job">
@@ -172,29 +197,19 @@ export default function Recruit() {
             </div>
           </div>
         </section>
+        <section className="pad rc2-apply" id="apply">
+          <div className="wrap">
+            <div className="rc-block rv">
+              <h3 className="rc-title">応募フォーム</h3>
+              <p style={{margin: '0 0 22px'}}>お電話が苦手な方も、こちらから気軽にご応募いただけます。内容を確認のうえ、担当者よりご連絡します。</p>
+              <ApplyForm />
+            </div>
+          </div>
+        </section>
+
       </main>
 
-      <footer>
-        <div className="wrap">
-          <div className="grid">
-            <div>
-              <div className="ft-logos"><a className="logo" href="/" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo.png" alt="木村屋 SINCE 1946" width={1000} height={965} /></a><img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} /></div>
-              <p style={{marginTop: '18px', lineHeight: '2'}}>〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
-              <div className="ft-line">
-                <img src="/img/line-qr.svg" alt="木村グループ LINE公式アカウントのQRコード" width={120} height={120} />
-                <div>
-                  <b>LINE公式アカウント</b>
-                  <span>友だち追加で、チラシやお得な情報をお届けします。</span>
-                  <a className="btn btn-line" href="https://lin.ee/rNifBeB" target="_blank" rel="noopener noreferrer">友だち追加</a>
-                </div>
-              </div>
-            </div>
-            <ul><li><a href="/#promise">私たちの約束</a></li><li><a href="/#story">80年の物語</a></li><li><a href="/#fukui">福井の恵み</a></li><li><a href="/#stores">店舗一覧</a></li></ul>
-            <ul><li><a href="/#news">お知らせ</a></li><li><a href="/blog">お店のたより</a></li><li><a href="/recruit">採用情報</a></li><li><a href="https://kimura-group48.jp/contact.php">お問い合わせ</a></li><li><a href="/">ホームへ戻る</a></li></ul>
-          </div>
-          <div className="copy"><span>© 2026 木村グループ</span><span>Design sample by KOESA Co.,Ltd. — AI SOLUTION STUDIO</span></div>
-        </div>
-      </footer>
+      <SiteFooter />
       <Script src="/recruit.js" strategy="afterInteractive" />
     </>
   );
