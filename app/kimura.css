@@ -640,3 +640,9 @@ html.menu-open{overflow:hidden}
 .rc2-vids figcaption{margin-top:10px;font-size:13.5px;color:#d6d0c4;letter-spacing:.04em}
 .rc2-apply{background:var(--kinari)}
 @media (max-width:760px){.rc2-nums-in{grid-template-columns:repeat(2,minmax(0,1fr))}.rc2-nums-in>div:nth-child(3){border-left:0}.rc2-nums-in>div{border-top:1px solid rgba(255,255,255,.1)}.rc2-vids{grid-template-columns:1fr}}
+
+/* AI使用マーク */
+.th-ai{display:flex;align-items:center;justify-content:center;gap:12px;color:rgba(233,226,210,.6);bottom:18px}
+.th-ai svg{opacity:.85;flex:none}
+.ft-ai{display:inline-flex;align-items:center;gap:10px;line-height:1.6}
+.ft-ai svg{flex:none}
