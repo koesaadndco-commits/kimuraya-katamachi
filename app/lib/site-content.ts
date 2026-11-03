@@ -183,7 +183,7 @@ export const SECTIONS: Section[] = [
     fields: [
       I("recruit.img", "写真", "/img/team-recruit.jpg"),
       A("recruit.heading", "見出し", "「ありがとう」を、\n仕事にしよう。", BR),
-      A("recruit.text", "説明", "「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。正社員・パート・アルバイトを募集しています。"),
+      A("recruit.text", "説明", "「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。新卒正社員・中途正社員・パート・アルバイトを募集しています。"),
     ],
   },
   {

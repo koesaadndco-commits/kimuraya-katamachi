@@ -9,7 +9,7 @@ import { SiteFooter, SiteHeader } from "../components/SiteChrome";
 
 const TITLE = "採用情報｜木村グループ — ありがとうを、仕事にしよう。";
 const DESCRIPTION =
-  "木村グループ（ハニー食彩館）の採用情報。正社員（新卒採用）・パート・アルバイトを福井市内・坂井市内の各店舗で募集しています。";
+  "木村グループ（ハニー食彩館）の採用情報。新卒正社員・中途正社員・パート・アルバイトを福井市内・坂井市内の各店舗で募集しています。";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -69,7 +69,7 @@ export default async function Recruit() {
           <div className="wrap rc2-in">
             <div className="eyebrow">RECRUIT 2026 — 木村グループ 採用特設ページ</div>
             <h1><span>「ありがとう」を、</span><span>仕事にしよう。</span></h1>
-            <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。<br />正社員（新卒）・パート・アルバイトを募集しています。</p>
+            <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。<br />新卒正社員・中途正社員・パート・アルバイトを募集しています。</p>
             <div className="rc2-ctas">
               <a className="btn btn-mitsu" href="#apply">応募する</a>
               <a className="btn btn-ghost" href="#movie">▶ 動画を見る</a>
@@ -124,7 +124,7 @@ export default async function Recruit() {
             </div>
 
             <div className="rc-block rv">
-              <h3 className="rc-title">正社員（新卒採用）</h3>
+              <h3 className="rc-title">新卒正社員</h3>
               <div className="rc-special">
                 <div>
                   <p style={{margin: '0 0 8px', fontWeight: 700}}>会社説明会は随時実施しています。まずはお気軽にご応募ください。</p>
@@ -158,11 +158,22 @@ export default async function Recruit() {
             </div>
 
             <div className="rc-block rv">
+              <h3 className="rc-title">中途正社員</h3>
+              <p>社会人経験のある方、異業種から転職を考えている方も歓迎します。勤務地・勤務時間・給与は、これまでのご経験やご希望をうかがったうえでご相談します。</p>
+              <div className="rc-special">
+                <div>
+                  <p style={{margin: '0 0 8px', fontWeight: 700}}>まずは応募フォームからお気軽にどうぞ。</p>
+                  <a className="btn btn-mitsu" href={`?type=${encodeURIComponent("中途正社員")}#apply`}>中途正社員に応募する</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="rc-block rv">
               <h3 className="rc-title">パート・アルバイト</h3>
-              <p>お気軽にお問い合わせ下さい。働きたいお店を選ぶと、このページの応募フォームからそのままご応募いただけます。</p>
+              <p>お気軽にお問い合わせ下さい。働きたいお店を選ぶと、このページの応募フォームからそのままご応募いただけます（パート・アルバイトの別はフォームでお選びください）。</p>
               <div className="rc-stores">
                 {STORES.map((s) => (
-                  <a key={s.name} href={`?store=${encodeURIComponent(s.name)}&type=${encodeURIComponent("パート・アルバイト")}#apply`}>
+                  <a key={s.name} href={`?store=${encodeURIComponent(s.name)}#apply`}>
                     {s.name}<span>このお店に応募する ›</span>
                   </a>
                 ))}

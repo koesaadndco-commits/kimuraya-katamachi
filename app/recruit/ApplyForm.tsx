@@ -104,8 +104,10 @@ export default function ApplyForm() {
           希望雇用形態
           <select name="employmentType" defaultValue="" ref={typeRef}>
             <option value="">選択してください</option>
-            <option>正社員（新卒）</option>
-            <option>パート・アルバイト</option>
+            <option>新卒正社員</option>
+            <option>中途正社員</option>
+            <option>パート</option>
+            <option>アルバイト</option>
           </select>
         </label>
         <label>

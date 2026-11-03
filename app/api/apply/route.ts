@@ -10,7 +10,7 @@ const STORES = [
   "食彩館みくに店",
   "食彩館東部店",
 ];
-const EMPLOYMENT_TYPES = ["正社員（新卒）", "パート・アルバイト"];
+const EMPLOYMENT_TYPES = ["新卒正社員", "中途正社員", "パート", "アルバイト"];
 
 const SENDER_ADDRESS = "no-reply@kimuraya-katamachi.co.jp";
 
