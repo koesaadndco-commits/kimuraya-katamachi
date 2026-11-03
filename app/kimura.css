@@ -951,3 +951,6 @@ footer .copy{align-items:flex-end}
 .rc-cool .rc-apply .req{background:var(--red);color:#fff}
 .rc-cool .rc-apply a{color:var(--gold)}
 .rc-cool .rc-apply .req{justify-self:start;display:inline-block;width:auto;margin-left:8px}
+.ft-honey{display:inline-flex;align-items:center;gap:10px;margin:8px 0 0;text-decoration:none;color:inherit}
+.ft-honey-logo{height:40px;width:auto}
+a.ft-honey:hover{opacity:.8}

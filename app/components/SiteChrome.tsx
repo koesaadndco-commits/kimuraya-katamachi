@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages, @next/next/no-img-element -- ホーム（/）は kimura.js の初期化が必要なため、通常のページ読み込みで遷移させる */
 import Script from "next/script";
-import { INSTAGRAM_URL } from "../lib/links";
+import { HONEY_LOGO, HONEY_URL, INSTAGRAM_URL } from "../lib/links";
 
 // 全ページ共通のヘッダー（メニューボタンで、どのページからでも一瞬で行き来できる）とフッター
 
@@ -115,7 +115,8 @@ export function SiteFooter() {
               <a className="logo" href="/" aria-label="木村屋（木村グループ）"><img className="lg-full" src="/img/logo/kimuraya-logo.png" alt="木村屋 SINCE 1946" width={1000} height={965} /></a>
               <img className="ft-shoku" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
             </div>
-            <p className="ft-addr">〒910-0016 福井県福井市大宮6丁目5-5<br />協同組合ハニー加盟</p>
+            <p className="ft-addr">〒910-0016 福井県福井市大宮6丁目5-5</p>
+            <HoneyMark />
           </div>
           <nav className="ft-nav" aria-label="フッターメニュー">
             {NAV_GROUPS.map((g) => (
@@ -129,5 +130,19 @@ export function SiteFooter() {
         <div className="copy"><span className="ft-ai"><img src="/ai-mark/ai-mark-ornate-navy-sm.webp" alt="AI使用マーク" width={96} height={76} /><span>本サイトの一部にAIを使用しています</span></span><span className="ft-cr">© 2026 木村グループ<br />Produced by AISSK</span></div>
       </div>
     </footer>
+  );
+}
+
+/** 協同組合ハニー加盟の表示（ロゴを押すとハニー本部のサイトへ） */
+function HoneyMark() {
+  const inner = HONEY_LOGO ? (
+    <><img src={HONEY_LOGO} alt="協同組合ハニー" className="ft-honey-logo" /><span>協同組合ハニー加盟</span></>
+  ) : (
+    <span>協同組合ハニー加盟</span>
+  );
+  return HONEY_URL ? (
+    <a className="ft-honey" href={HONEY_URL} target="_blank" rel="noopener noreferrer" aria-label="協同組合ハニー 本部サイト（新しいタブで開く）">{inner}</a>
+  ) : (
+    <p className="ft-honey">{inner}</p>
   );
 }

@@ -18,3 +18,8 @@ export const INSTAGRAM_URL = "https://www.instagram.com/honey_syokusaikan/";
 
 // お問い合わせ・採用応募の受付メールアドレス（フォームの通知先は wrangler.jsonc の *_NOTIFY_EMAIL）
 export const CONTACT_EMAIL = "info@kimura-group48.jp";
+
+// 協同組合ハニー（本部）の公式サイトURLとロゴ。URLが空のあいだは文字だけを表示する。
+// ロゴは public/img/logo/honey-logo.png に保存し、HONEY_LOGO にそのパスを入れる。
+export const HONEY_URL = "";
+export const HONEY_LOGO = "";
