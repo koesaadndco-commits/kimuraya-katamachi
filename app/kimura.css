@@ -1043,3 +1043,68 @@ a.ft-honey:hover{opacity:.8}
 .rc-gold .rc-stores a{border-color:rgba(200,149,46,.3)}
 .rc-gold .rc-stores a:hover{box-shadow:0 10px 26px rgba(200,149,46,.3)}
 .rc-gold .rc-apply input:focus,.rc-gold .rc-apply select:focus,.rc-gold .rc-apply textarea:focus{border-color:#d9a23b;box-shadow:0 0 0 4px rgba(217,162,59,.2)}
+
+/* ===== 採用ページ：ヴィンテージ版（?style=vintage）木村屋の原点・昭和の商店 ===== */
+.rc-vintage{--v-paper:#f3e9d2;--v-paper2:#ebdcbc;--v-ink:#2b2318;--v-sub:#5e4b33;--v-red:#a8322a;--v-navy:#1f3350;--v-gold:#b8862e;--v-rule:rgba(43,35,24,.35);
+  color:var(--v-ink);
+  background:
+    radial-gradient(1200px 800px at 50% 0%,rgba(255,250,235,.6),transparent 70%),
+    repeating-linear-gradient(0deg,rgba(120,90,40,.025) 0 2px,transparent 2px 4px),
+    radial-gradient(rgba(120,90,40,.10) 1px,transparent 1.2px) 0 0/7px 7px,
+    var(--v-paper)}
+.rc-vintage h1,.rc-vintage h2,.rc-vintage h3,.rc-vintage .rc-title{font-family:var(--mincho);font-weight:800;color:var(--v-ink);letter-spacing:.08em}
+.rc-vintage .sec-hd h2{font-family:'Yuji Syuku',var(--mincho);font-weight:400;font-size:clamp(32px,4.4vw,60px);line-height:1.35}
+.rc-vintage .eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;letter-spacing:.2em;color:var(--v-red)!important;display:inline-flex;align-items:center;gap:12px;font-size:15px}
+.rc-vintage .eyebrow::before,.rc-vintage .eyebrow::after{content:"";width:28px;border-top:3px double var(--v-red)}
+.rc-vintage p,.rc-vintage .rc2-lead,.rc-vintage .rc2-lead2{color:var(--v-sub)}
+/* 額縁風の枠（二重線） */
+.rc-vintage .rc2-card,.rc-vintage .rc-persona,.rc-vintage .rc-block,.rc-vintage .rc-apply,.rc-vintage .vc,.rc-vintage .rc2-nums-in>div{
+  background:#fbf5e6;border:1px solid var(--v-ink);border-radius:2px;box-shadow:0 0 0 4px #fbf5e6,0 0 0 5px var(--v-ink),6px 8px 0 5px rgba(43,35,24,.12)}
+/* ボタン：判子・ほうろう看板風 */
+.rc-vintage .btn{border-radius:2px;font-family:var(--mincho);font-weight:800;letter-spacing:.2em;border:1.5px solid var(--v-ink);background:#fbf5e6;color:var(--v-ink);box-shadow:3px 3px 0 var(--v-ink)}
+.rc-vintage .btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--v-ink)}
+.rc-vintage .btn-mitsu{background:var(--v-red);color:#fbf5e6;border-color:var(--v-red);box-shadow:3px 3px 0 var(--v-ink)}
+.rc-vintage .rc2-btn2{background:#fbf5e6}
+/* ヒーロー：写真に少しセピア */
+.rc-vintage .rc2-hero{background:transparent}
+.rc-vintage .rc2-bg{filter:sepia(.28) saturate(.9) contrast(1.03);border-bottom:6px double var(--v-ink)}
+.rc-vintage .rc2-card h1{font-size:clamp(28px,3vw,42px)}
+.rc-vintage .rc2-tags li{background:transparent;border:1.5px solid var(--v-red);color:var(--v-red);border-radius:50px;box-shadow:none;font-family:var(--mincho);font-weight:800}
+/* 3つのいいところ：古い写真のカード */
+.rc-vintage .rc2-points{background:transparent}
+.rc-vintage .rc2-point{border-radius:2px;border:10px solid #fbf5e6;outline:1px solid var(--v-ink);box-shadow:6px 8px 0 rgba(43,35,24,.15);filter:sepia(.35) saturate(.85)}
+.rc-vintage .rc2-point:nth-child(1){transform:rotate(-1.5deg)}.rc-vintage .rc2-point:nth-child(2){transform:rotate(1deg)}.rc-vintage .rc2-point:nth-child(3){transform:rotate(-.8deg)}
+.rc-vintage .rc2-point-in{background:linear-gradient(180deg,rgba(251,245,230,0),rgba(251,245,230,.9) 30%,#fbf5e6 60%);padding-top:90px}
+.rc-vintage .rc2-point-no{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;border:2px solid var(--v-red);color:var(--v-red);font-family:var(--mincho);font-style:normal;font-weight:800;font-size:18px;transform:rotate(-8deg)}
+.rc-vintage .rc2-point h3{font-family:'Yuji Syuku',var(--mincho);font-weight:400;font-size:28px}
+/* 数字：昔の値札・判子 */
+.rc-vintage .rc2-nums{background:transparent;border:0;padding:34px 0}
+.rc-vintage .rc2-nums-in{gap:22px}
+.rc-vintage .rc2-nums b{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--v-red);font-weight:600}
+.rc-vintage .rc2-nums b small{color:var(--v-ink);font-family:var(--mincho);font-style:normal}
+.rc-vintage .rc2-nums span{color:var(--v-sub)}
+/* 動画：額装 */
+.rc-vintage .rc2-movie{background:transparent}
+.rc-vintage .rc2-frame{border-radius:2px;border:12px solid #fbf5e6;outline:1px solid var(--v-ink);box-shadow:8px 10px 0 rgba(43,35,24,.18)}
+.rc-vintage .rc2-vids figcaption{color:var(--v-sub);font-family:var(--mincho)}
+/* 募集要項 */
+.rc-vintage .pad,.rc-vintage .people,.rc-vintage .rc2-apply{background:transparent}
+.rc-vintage .rc-persona li::before{background:var(--v-red);border-radius:50%}
+.rc-vintage .rc-block{padding:clamp(24px,3vw,40px)}
+.rc-vintage .rc-title{font-family:'Yuji Syuku',var(--mincho);font-weight:400;font-size:clamp(24px,2.6vw,32px);display:inline-flex;align-items:center;gap:12px}
+.rc-vintage .rc-title::before{content:"";width:12px;height:12px;background:var(--v-red);transform:rotate(45deg)}
+.rc-vintage .rc-special{background:var(--v-paper);border:1px dashed var(--v-rule);border-radius:2px}
+.rc-vintage .rc-job dl.row{border-top:3px double var(--v-rule)}
+.rc-vintage .rc-job dt{color:var(--v-red);font-family:var(--mincho)}
+.rc-vintage .rc-job dd{border-bottom:1px dotted var(--v-rule)}
+.rc-vintage .rc-stores a{background:#fbf5e6;border:1.5px solid var(--v-ink);border-radius:2px;box-shadow:3px 3px 0 var(--v-ink);flex-direction:column;align-items:flex-start;gap:4px;white-space:nowrap;font-family:var(--mincho);font-weight:800}
+.rc-vintage .rc-stores a span{color:var(--v-red)}
+/* 先輩の声：便箋風 */
+.rc-vintage .vc{background:repeating-linear-gradient(180deg,#fbf5e6 0 30px,rgba(168,50,42,.18) 30px 31px)}
+.rc-vintage .vc q{font-family:'Yuji Syuku',var(--mincho);font-weight:400}
+.rc-vintage .vc .who i{background:var(--v-red);color:#fbf5e6;border-radius:4px;transform:rotate(-6deg)}
+/* 応募フォーム */
+.rc-vintage .rc-apply input,.rc-vintage .rc-apply select,.rc-vintage .rc-apply textarea{background:#fffaf0;border:1px solid var(--v-rule);border-radius:2px}
+.rc-vintage .rc-apply input:focus,.rc-vintage .rc-apply select:focus,.rc-vintage .rc-apply textarea:focus{outline:none;border-color:var(--v-red);box-shadow:0 0 0 3px rgba(168,50,42,.15)}
+.rc-vintage .rc-apply .req{background:var(--v-red);color:#fbf5e6;border-radius:2px;justify-self:start;display:inline-block;width:auto;margin-left:8px}
+@media (prefers-reduced-motion:reduce){.rc-vintage .rc2-point{transform:none}}

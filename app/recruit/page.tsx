@@ -62,7 +62,7 @@ const NUMBERS = [
 export default async function Recruit({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   // デザインの見比べ用：?style=cool で「かっこいい版」
   const style = (await searchParams).style;
-  const theme = style === "cool" ? "rc-cool" : style === "future" ? "rc-future" : style === "gold" ? "rc-future rc-gold" : "rc-pop";
+  const theme = style === "cool" ? "rc-cool" : style === "future" ? "rc-future" : style === "gold" ? "rc-future rc-gold" : style === "vintage" ? "rc-vintage" : "rc-pop";
   const c = contentGetter(await loadOverrides());
   const videos = [1, 2, 3, 4, 5, 6]
     .map((n) => ({ id: youtubeId(c(`rv.${n}.url`)), title: c(`rv.${n}.title`) }))
@@ -72,7 +72,7 @@ export default async function Recruit({ searchParams }: { searchParams: Promise<
       <SiteHeader solid />
 
       {/* POP用の丸ゴシック（採用ページだけで使用） */}
-      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@900&family=Oswald:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" />
+      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@900&family=Oswald:wght@500;700&family=Space+Grotesk:wght@500;700&family=Yuji+Syuku&family=Cormorant+Garamond:ital,wght@0,600;1,600&display=swap" />
       <main id="top" className={theme}>
         <section className="rc2-hero" aria-label="採用情報">
           <img className="rc2-bg" src="/img/team-recruit.jpg" alt="" width={2016} height={1512} />
