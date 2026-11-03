@@ -954,3 +954,92 @@ footer .copy{align-items:flex-end}
 .ft-honey{display:inline-flex;align-items:center;gap:10px;margin:8px 0 0;text-decoration:none;color:inherit}
 .ft-honey-logo{height:40px;width:auto}
 a.ft-honey:hover{opacity:.8}
+
+/* ===== 採用ページ：未来的な版（?style=future）明るい光と透明感 ===== */
+.rc-future{--f-ink:#14213d;--f-sub:#4a5878;--f-c1:#36c3ff;--f-c2:#7b61ff;--f-c3:#ff7ac6;--f-glass:rgba(255,255,255,.62);--f-line:rgba(120,140,200,.25);
+  color:var(--f-ink);position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 600px at 10% 5%,rgba(54,195,255,.22),transparent 60%),
+    radial-gradient(800px 600px at 95% 20%,rgba(123,97,255,.18),transparent 60%),
+    radial-gradient(900px 700px at 50% 85%,rgba(255,122,198,.14),transparent 60%),
+    linear-gradient(rgba(120,140,200,.08) 1px,transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg,rgba(120,140,200,.08) 1px,transparent 1px) 0 0/48px 48px,
+    #f6f8ff}
+.rc-future h1,.rc-future h2,.rc-future h3,.rc-future .rc-title{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;color:var(--f-ink);letter-spacing:.02em}
+.rc-future .sec-hd h2{font-size:clamp(30px,4.2vw,58px);line-height:1.25;background:linear-gradient(90deg,var(--f-ink) 30%,var(--f-c2) 70%,var(--f-c1));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rc-future .eyebrow{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.3em;color:var(--f-c2)!important;display:inline-flex;align-items:center;gap:10px}
+.rc-future .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--f-c1);box-shadow:0 0 0 4px rgba(54,195,255,.2),0 0 14px var(--f-c1)}
+.rc-future p,.rc-future .rc2-lead,.rc-future .rc2-lead2{color:var(--f-sub)}
+/* ガラス風のパネル共通 */
+.rc-future .rc2-card,.rc-future .rc-persona,.rc-future .rc-block,.rc-future .rc-apply,.rc-future .vc,.rc-future .rc2-nums-in>div{
+  background:var(--f-glass);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.9);border-radius:22px;box-shadow:0 10px 40px rgba(60,80,160,.12),inset 0 1px 0 #fff}
+/* ボタン：光るグラデーション */
+.rc-future .btn{border-radius:999px;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;letter-spacing:.1em;border:1px solid rgba(123,97,255,.35);background:#fff;color:var(--f-ink);transition:transform .2s,box-shadow .2s}
+.rc-future .btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(123,97,255,.25)}
+.rc-future .btn-mitsu{border:0;color:#fff;background:linear-gradient(110deg,var(--f-c1),var(--f-c2) 55%,var(--f-c3));box-shadow:0 8px 24px rgba(123,97,255,.35)}
+.rc-future .rc2-btn2{background:rgba(255,255,255,.8)}
+/* ヒーロー */
+.rc-future .rc2-hero{background:transparent}
+.rc-future .rc2-bg{border-radius:0 0 40px 40px}
+.rc-future .rc2-card h1{font-size:clamp(28px,3vw,42px)}
+.rc-future .rc2-tags li{background:rgba(255,255,255,.85);border:1px solid rgba(123,97,255,.3);color:var(--f-c2);box-shadow:none;border-radius:999px;font-weight:700}
+/* 3つのいいところ */
+.rc-future .rc2-points{background:transparent}
+.rc-future .rc2-point{border-radius:28px;box-shadow:0 18px 50px rgba(60,80,160,.18);border:1px solid #fff}
+.rc-future .rc2-point-in{background:linear-gradient(180deg,rgba(246,248,255,0),rgba(246,248,255,.85) 30%,rgba(246,248,255,.97) 60%);padding-top:90px}
+.rc-future .rc2-point-no{font-family:'Space Grotesk',sans-serif;font-style:normal;font-size:44px;font-weight:700;background:linear-gradient(120deg,var(--f-c1),var(--f-c2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rc-future .rc2-point h3{font-size:26px}
+/* 数字 */
+.rc-future .rc2-nums{background:transparent;border:0;padding:30px 0}
+.rc-future .rc2-nums-in{gap:18px}
+.rc-future .rc2-nums b{font-family:'Space Grotesk',sans-serif;font-style:normal;font-weight:700;background:linear-gradient(120deg,var(--f-c1),var(--f-c2) 60%,var(--f-c3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rc-future .rc2-nums b small{-webkit-text-fill-color:var(--f-ink);color:var(--f-ink)}
+.rc-future .rc2-nums span{color:var(--f-sub)}
+/* 動画 */
+.rc-future .rc2-movie{background:transparent}
+.rc-future .rc2-frame{border-radius:24px;box-shadow:0 0 0 1px rgba(255,255,255,.9),0 24px 70px rgba(60,80,160,.25),0 0 60px rgba(54,195,255,.25)}
+.rc-future .rc2-vids figcaption{color:var(--f-sub)}
+/* 募集要項 */
+.rc-future .pad,.rc-future .people,.rc-future .rc2-apply{background:transparent}
+.rc-future .rc-persona li::before{background:linear-gradient(120deg,var(--f-c1),var(--f-c2));border-radius:50%}
+.rc-future .rc-block{padding:clamp(22px,3vw,38px)}
+.rc-future .rc-title{font-size:clamp(22px,2.4vw,30px);display:inline-block;padding-bottom:6px;border-bottom:3px solid;border-image:linear-gradient(90deg,var(--f-c1),var(--f-c2),var(--f-c3)) 1}
+.rc-future .rc-special{background:rgba(255,255,255,.6);border:1px dashed rgba(123,97,255,.4);border-radius:16px}
+.rc-future .rc-job dl.row{border-top:1px solid var(--f-line)}
+.rc-future .rc-job dt{color:var(--f-c2)}
+.rc-future .rc-job dd{border-bottom-color:var(--f-line)}
+.rc-future .rc-stores a{background:rgba(255,255,255,.8);border:1px solid rgba(123,97,255,.25);border-radius:16px;flex-direction:column;align-items:flex-start;gap:4px;white-space:nowrap;transition:transform .2s,box-shadow .2s}
+.rc-future .rc-stores a:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(54,195,255,.25)}
+.rc-future .rc-stores a span{color:var(--f-c2)}
+/* 先輩の声 */
+.rc-future .vc .who i{background:linear-gradient(120deg,var(--f-c1),var(--f-c2));color:#fff}
+/* 応募フォーム */
+.rc-future .rc-apply input,.rc-future .rc-apply select,.rc-future .rc-apply textarea{background:rgba(255,255,255,.9);border:1px solid var(--f-line);border-radius:12px}
+.rc-future .rc-apply input:focus,.rc-future .rc-apply select:focus,.rc-future .rc-apply textarea:focus{outline:none;border-color:var(--f-c1);box-shadow:0 0 0 4px rgba(54,195,255,.18)}
+.rc-future .rc-apply .req{background:linear-gradient(120deg,var(--f-c2),var(--f-c3));color:#fff;border-radius:999px;justify-self:start;display:inline-block;width:auto;margin-left:8px}
+
+/* ===== 採用ページ：金の版（?style=gold）明るいシャンパンゴールド ===== */
+.rc-gold{--f-ink:#2a2116;--f-sub:#6b5a40;--f-c1:#f3d27a;--f-c2:#c8952e;--f-c3:#9a6a14;--f-line:rgba(180,140,60,.25);
+  background:
+    radial-gradient(900px 600px at 10% 5%,rgba(255,226,150,.45),transparent 60%),
+    radial-gradient(800px 600px at 95% 25%,rgba(240,200,110,.30),transparent 60%),
+    radial-gradient(900px 700px at 50% 90%,rgba(255,236,190,.5),transparent 60%),
+    linear-gradient(rgba(190,150,70,.07) 1px,transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg,rgba(190,150,70,.07) 1px,transparent 1px) 0 0/48px 48px,
+    #fffcf4}
+.rc-gold .sec-hd h2{background:linear-gradient(90deg,var(--f-ink) 25%,#b07d1c 60%,#e3b34c 80%,#9a6a14);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rc-gold .eyebrow::before{box-shadow:0 0 0 4px rgba(243,210,122,.35),0 0 14px #e8bf5c}
+.rc-gold .btn{border-color:rgba(200,149,46,.45)}
+.rc-gold .btn:hover{box-shadow:0 10px 28px rgba(200,149,46,.3)}
+.rc-gold .btn-mitsu{color:#2a2116;background:linear-gradient(110deg,#f7e2a1,#d9a23b 45%,#f5d27c 65%,#b8811f);box-shadow:0 8px 24px rgba(200,149,46,.4),inset 0 1px 0 rgba(255,255,255,.7)}
+.rc-gold .rc2-tags li{border-color:rgba(200,149,46,.45);color:#a0701a}
+.rc-gold .rc2-point{box-shadow:0 18px 50px rgba(160,120,40,.2)}
+.rc-gold .rc2-point-in{background:linear-gradient(180deg,rgba(255,252,244,0),rgba(255,252,244,.88) 30%,rgba(255,252,244,.97) 60%)}
+.rc-gold .rc2-point-no,.rc-gold .rc2-nums b{background:linear-gradient(120deg,#e9c26a,#b8811f 50%,#f2d48a 75%,#9a6a14);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rc-gold .rc2-frame{box-shadow:0 0 0 1px rgba(255,255,255,.9),0 24px 70px rgba(160,120,40,.25),0 0 60px rgba(243,210,122,.45)}
+.rc-gold .rc2-card,.rc-gold .rc-persona,.rc-gold .rc-block,.rc-gold .rc-apply,.rc-gold .vc,.rc-gold .rc2-nums-in>div{box-shadow:0 10px 40px rgba(160,120,40,.14),inset 0 1px 0 #fff;border-color:rgba(255,255,255,.95)}
+.rc-gold .rc-special{border-color:rgba(200,149,46,.45)}
+.rc-gold .rc-stores a{border-color:rgba(200,149,46,.3)}
+.rc-gold .rc-stores a:hover{box-shadow:0 10px 26px rgba(200,149,46,.3)}
+.rc-gold .rc-apply input:focus,.rc-gold .rc-apply select:focus,.rc-gold .rc-apply textarea:focus{border-color:#d9a23b;box-shadow:0 0 0 4px rgba(217,162,59,.2)}
