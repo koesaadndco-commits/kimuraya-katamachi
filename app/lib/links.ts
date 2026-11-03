@@ -5,6 +5,7 @@ export const SITE_URL = "https://kimuraya-katamachi.co.jp";
 
 // 「今日のチラシ」の既定リンク。スタッフページでチラシが掲載中のときは
 // そちらが優先され、掲載が無いときはこの外部ページに飛ぶ。
+// （旧）外部のチラシページ。サイト内で完結させるため、現在は使っていない
 export const DEFAULT_FLYER_URL = "https://kimura-group48.jp/flyer.php";
 
 // スポットバイト：当面はタイミーの「お試しバイト」に誘導する。

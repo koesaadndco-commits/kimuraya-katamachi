@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- ホーム（/）は kimura.js の初期化が必要なため、通常のページ読み込みで遷移させる */
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
 import "../kimura.css";
-import { DEFAULT_FLYER_URL } from "../lib/links";
 import { formatJst, listActivePosts } from "../lib/staff-store";
 
 export const dynamic = "force-dynamic";
@@ -14,10 +12,6 @@ export const metadata: Metadata = {
 
 export default async function FlyerPage() {
   const flyers = (await listActivePosts()).filter((p) => p.kind === "flyer");
-  // 掲載中のチラシが無いときは、これまでどおり外部のチラシページへ
-  if (flyers.length === 0) redirect(DEFAULT_FLYER_URL);
-  // 画像・PDFが無く、リンク先だけが登録されているチラシはそのリンクへ
-  if (flyers.length === 1 && flyers[0].files.length === 0 && flyers[0].linkUrl) redirect(flyers[0].linkUrl);
 
   return (
     <>
@@ -26,6 +20,13 @@ export default async function FlyerPage() {
         <span>木村グループ ／ ハニー食彩館</span>
       </header>
       <main className="flyer-main">
+        {flyers.length === 0 && (
+          <div className="flyer-empty">
+            <h1>今日のチラシ</h1>
+            <p>本日のチラシは準備中です。<br />毎朝、店舗の開店前に更新しています。しばらくしてから、もう一度ご覧ください。</p>
+            <p><a className="btn btn-mitsu" href="/#stores">店舗一覧を見る</a></p>
+          </div>
+        )}
         {flyers.map((p) => (
           <article key={p.id} className="flyer-item">
             <h1>{p.title}</h1>

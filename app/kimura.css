@@ -694,3 +694,17 @@ footer .copy{align-items:flex-end}
 .hi-motto2-sign span{font-size:clamp(14px,1.5vw,17px);letter-spacing:.12em}
 .hi-motto2-sign b{font-weight:400;font-size:clamp(26px,3.2vw,38px);letter-spacing:.2em}
 @media (max-width:560px){.hi-motto2-sign{align-items:center;text-align:center}.hi-motto2-sign p{flex-direction:column;align-items:center;gap:4px}}
+
+/* お知らせ（/news）・チラシ準備中 */
+.nw{max-width:860px}
+.nw-list{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid var(--line)}
+.nw-list a{display:flex;gap:20px;padding:16px 4px;border-bottom:1px solid var(--line);text-decoration:none}
+.nw-list a:hover{background:#fff}
+.nw-list time{flex:none;font-family:var(--latin);color:var(--mitsu-d);letter-spacing:.06em}
+.nw-date{font-family:var(--latin);color:var(--mitsu-d);margin:8px 0 0}
+.nw-body{line-height:2;white-space:pre-line}
+.nw-files{display:grid;gap:14px;margin:18px 0}
+.nw-files img{width:100%;max-width:760px;height:auto;border:1px solid var(--line)}
+.flyer-empty{text-align:center;padding:60px 16px}
+.flyer-empty p{line-height:2}
+.quick .k .soon{font-style:normal;font-size:9px;letter-spacing:.08em;margin-left:6px;padding:1px 6px;border:1px solid rgba(255,255,255,.5);border-radius:3px;vertical-align:2px;color:#d6dbe4}

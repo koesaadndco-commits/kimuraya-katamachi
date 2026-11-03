@@ -106,7 +106,7 @@ export const SECTIONS: Section[] = [
       T("goods.2.sub", "2つ目 説明", "キムラフーズの台所から"),
       I("goods.3.img", "3つ目 写真", "/img/table.jpg"),
       T("goods.3.title", "3つ目 見出し", "特製オードブル"),
-      T("goods.3.sub", "3つ目 説明", "ネットで予約・店頭で受取"),
+      T("goods.3.sub", "3つ目 説明", "ネット予約［準備中］"),
       I("goods.4.img", "4つ目 写真", "/img/fields.jpg"),
       T("goods.4.title", "4つ目 見出し", "ふくいの贈りもの"),
       T("goods.4.sub", "4つ目 説明", "オンラインショップ［準備中］"),

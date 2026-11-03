@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./kimura.css";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
-import { DEFAULT_FLYER_URL, INSTAGRAM_URL, SITE_URL, TIMEE_URL } from "./lib/links";
-import { flyerHref, listActivePosts, type Post } from "./lib/staff-store";
+import { INSTAGRAM_URL, SITE_URL, TIMEE_URL } from "./lib/links";
+import { flyerHref, listActivePosts, listPublishedInfo, type Post } from "./lib/staff-store";
 import { dotDate, getArticle, listPublishedArticles } from "./lib/articles";
 import { contentGetter, loadOverrides } from "./lib/site-content";
 import type { ReactNode } from "react";
@@ -55,7 +55,9 @@ const STORES_JSON_LD = {
 export default async function Home() {
   // 掲載期間内の「本日のチラシ・お知らせ」（期間外のものは含まれない）
   const active = await listActivePosts();
-  const flyer = flyerHref(active, DEFAULT_FLYER_URL);
+  const flyer = flyerHref();
+  // お知らせ（スタッフページで登録したもの）
+  const news = await listPublishedInfo(4);
   // 公開中の社長ブログ・スタッフブログ・レシピ（新しい順）
   const latest = await listPublishedArticles(undefined, 5);
   // 「エリちゃんの今日のレシピ」：公開中のいちばん新しいレシピ（無ければ献立選びの見本を表示）
@@ -126,7 +128,7 @@ export default async function Home() {
       <li><a href={flyer}><svg viewBox="0 0 28 28"><rect x="5" y="3" width="18" height="22" rx="1"/><path d="M9 9h10M9 13h10M9 17h6"/></svg><span><span className="k">今日のチラシ</span><br /><span className="s">スマホで見やすく毎朝更新</span></span></a></li>
       <li><a href="#stores"><svg viewBox="0 0 28 28"><path d="M14 25s8-7.5 8-13.5A8 8 0 0 0 6 11.5C6 17.5 14 25 14 25z"/><circle cx="14" cy="11.5" r="3"/></svg><span><span className="k">店舗を探す</span><br /><span className="s">福井市・坂井市 7店舗</span></span></a></li>
       <li className="uber"><a href="#quick"><svg viewBox="0 0 28 28"><path d="M4 9h15l-1.5 10h-12z"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/><path d="M20 13h4M21 17h3"/></svg><span><span className="k">お届け注文</span><br /><span className="s">Uber Eatsでお家まで</span></span></a></li>
-      <li><a href="#goods"><svg viewBox="0 0 28 28"><rect x="4" y="6" width="20" height="18" rx="1"/><path d="M4 11h20M9 3v5M19 3v5M9 16h3M16 16h3M9 20h3"/></svg><span><span className="k">オードブル予約</span><br /><span className="s">ネットで24時間受付</span></span></a></li>
+      <li><a href="#goods"><svg viewBox="0 0 28 28"><rect x="4" y="6" width="20" height="18" rx="1"/><path d="M4 11h20M9 3v5M19 3v5M9 16h3M16 16h3M9 20h3"/></svg><span><span className="k">オードブル予約<em className="soon">準備中</em></span><br /><span className="s">ネット予約は準備中です</span></span></a></li>
       <li><a href="https://lin.ee/rNifBeB"><svg viewBox="0 0 28 28"><path d="M14 5C8 5 3.5 8.8 3.5 13.4c0 4.1 3.6 7.5 8.5 8.2l-.6 3 4.2-2.8c5.4-.4 9.9-4 9.9-8.4C25.5 8.8 20 5 14 5z"/></svg><span><span className="k">LINE友だち</span><br /><span className="s">お得な情報をいち早く</span></span></a></li>
       <li><a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 28 28"><rect x="5" y="5" width="18" height="18" rx="5"/><circle cx="14" cy="14" r="4.2"/><circle cx="19.2" cy="8.8" r=".9"/></svg><span><span className="k">Instagram</span><br /><span className="s">お店の最新情報を発信</span></span></a></li>
     </ul>
@@ -334,10 +336,14 @@ export default async function Home() {
       <div className="sec-hd"><div><div className="eyebrow">NEWS &amp; JOURNAL</div><h2>{c("news.heading")}</h2></div></div>
       <div className="grid">
         <div className="rv"><h3 className="col">お知らせ</h3><ul>
-          <li><a href="https://kimura-group48.jp/news.php?335"><time>2026.09.01</time><span className="tt"><span className="cat">イベント</span>9月のコジカ・週間イベントのご案内</span></a></li>
-          <li><a href="https://kimura-group48.jp/news.php?336"><time>2026.08.26</time><span className="tt"><span className="cat">おトク</span>9月のピンクレシートのご案内</span></a></li>
-          <li><a href="https://kimura-group48.jp/news.php?314"><time>2026.08.01</time><span className="tt"><span className="cat">会員</span>最大特典付き！オーナーズクラブのご案内</span></a></li>
-          <li><a href="https://kimura-group48.jp/news.php?326"><time>2026.07.19</time><span className="tt"><span className="cat">ご予約</span>秋の特製オードブル、ご予約受付中</span></a></li>
+          {news.length > 0 ? (
+            news.map((n) => (
+              <li key={n.id}><a href={`/news/${n.id}`}><time>{n.startAt.slice(0, 10).replace(/-/g, ".")}</time><span className="tt"><span className="cat">お知らせ</span>{n.title}</span></a></li>
+            ))
+          ) : (
+            <li><span className="tt" style={{color: 'var(--hai)'}}>現在、お知らせはありません。</span></li>
+          )}
+          <li className="more"><a href="/news"><span className="tt">お知らせ一覧へ →</span></a></li>
         </ul></div>
         <div className="rv"><h3 className="col">社長・スタッフのブログ・レシピ</h3><ul>
           {latest.length > 0 ? (
@@ -410,7 +416,7 @@ function TodayNotice({ posts }: { posts: Post[] }) {
             const images = p.files.filter((f) => f.type !== "application/pdf");
             const pdf = p.files.find((f) => f.type === "application/pdf");
             const isFlyer = p.kind === "flyer";
-            const href = isFlyer && p.files.length > 0 ? "/flyer" : p.files.length > 0 ? `/f/${p.files[0].id}` : p.linkUrl || "";
+            const href = isFlyer ? "/flyer" : `/news/${p.id}`;
             const external = href.startsWith("http");
             return (
               <li key={p.id} className={p.kind}>

@@ -171,10 +171,17 @@ export async function getFile(
   return { bytes: value, type: metadata?.type ?? "application/octet-stream", name: metadata?.name ?? "" };
 }
 
-/** 公開ページ用：「今日のチラシ」のリンク先。掲載中のチラシが無ければ既定のURL */
-export function flyerHref(active: Post[], fallback: string): string {
-  const flyer = active.find((p) => p.kind === "flyer");
-  if (!flyer) return fallback;
-  if (flyer.files.length === 0 && flyer.linkUrl) return flyer.linkUrl;
+/** 公開ページ用：「今日のチラシ」のリンク先。サイト内（/flyer）で完結させる */
+export function flyerHref(): string {
   return "/flyer";
+}
+
+/** 公開ページ用：お知らせ（掲載開始を過ぎたもの。掲載終了後も一覧には残す）を新しい順に */
+export async function listPublishedInfo(limit = 50): Promise<Post[]> {
+  const now = nowJst();
+  return (await listPosts()).filter((p) => p.kind === "info" && p.startAt <= now).slice(0, limit);
+}
+
+export async function getPost(id: string): Promise<Post | null> {
+  return (await listPosts()).find((p) => p.id === id) ?? null;
 }
