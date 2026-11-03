@@ -59,7 +59,9 @@ const NUMBERS = [
   { n: "96", u: "日", s: "年間休日（基本週休2日）" },
 ];
 
-export default async function Recruit() {
+export default async function Recruit({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  // デザインの見比べ用：?style=cool で「かっこいい版」
+  const cool = (await searchParams).style === "cool";
   const c = contentGetter(await loadOverrides());
   const videos = [1, 2, 3, 4, 5, 6]
     .map((n) => ({ id: youtubeId(c(`rv.${n}.url`)), title: c(`rv.${n}.title`) }))
@@ -69,8 +71,8 @@ export default async function Recruit() {
       <SiteHeader solid />
 
       {/* POP用の丸ゴシック（採用ページだけで使用） */}
-      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" />
-      <main id="top" className="rc-pop">
+      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@900&family=Oswald:wght@500;700&display=swap" />
+      <main id="top" className={cool ? "rc-cool" : "rc-pop"}>
         <section className="rc2-hero" aria-label="採用情報">
           <img className="rc2-bg" src="/img/team-recruit.jpg" alt="" width={2016} height={1512} />
           <div className="rc2-shade"></div>
