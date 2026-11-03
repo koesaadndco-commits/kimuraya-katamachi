@@ -786,3 +786,24 @@ footer .copy{align-items:flex-end}
   .rc2-in{padding-top:0;margin-top:-28px;padding-bottom:28px}
 }
 @media (max-width:760px){.rc2-hero{padding-top:70px}}
+/* 文字枠は平たくして、写真の下に置く（写真には重ねない） */
+@media (min-width:761px){
+  .rc2-hero{display:block;min-height:0;overflow:visible;background:#fffaf0}
+  .rc2-bg{position:relative;display:block;width:100%;height:min(74vh,700px);margin-top:70px}
+  .rc2-shade{display:none}
+  .rc2-in{position:static;display:block;padding:24px var(--gut) 32px;max-width:1240px;margin:0 auto}
+  .rc2-card{transform:none;max-width:none;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px 36px;padding:22px 32px;background:#fff;backdrop-filter:none}
+  .rc2-card .eyebrow{grid-column:1/-1;margin:0}
+  .rc2-card h1{grid-column:1;margin:0;font-size:clamp(24px,2.4vw,34px);line-height:1.35}
+  .rc2-card .rc2-lead2{grid-column:2;margin:0;font-size:14px;line-height:1.8}
+  .rc2-card .rc2-tags{grid-column:2;margin:0}
+  .rc2-card .rc2-ctas{grid-column:3;grid-row:2 / span 2;margin:0;flex-direction:column;align-items:stretch}
+  .rc2-hero + .rc2-points{padding-top:clamp(60px,7vw,90px)}
+  .rc2-points .sec-hd{max-width:none;min-height:0}
+}
+@media (min-width:761px) and (max-width:1100px){
+  .rc2-card{grid-template-columns:1fr auto}
+  .rc2-card h1{grid-column:1/-1}
+  .rc2-card .rc2-lead2,.rc2-card .rc2-tags{grid-column:1}
+  .rc2-card .rc2-ctas{grid-column:2;grid-row:3 / span 2}
+}
