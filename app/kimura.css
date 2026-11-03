@@ -673,3 +673,7 @@ footer .copy{align-items:flex-end}
 .ft-ai img{width:96px;height:auto}
 .ft-cr{text-align:right;line-height:1.7}
 @media (max-width:560px){.ft-cr{text-align:left}}
+/* 上映中：AI使用マークは映像の左下に小さく（位置と大きさは kimura.js が映像に合わせて指定） */
+.theater.playing .th-ai{gap:0}
+.theater.playing .th-ai span{display:none}
+.theater.playing .th-ai img{width:100%;opacity:.9}

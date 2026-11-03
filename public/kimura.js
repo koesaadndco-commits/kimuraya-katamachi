@@ -100,6 +100,7 @@
   var th=document.getElementById('theater'), thFilm=document.getElementById('thFilm'), thPre=document.getElementById('thPre'), thBar=document.getElementById('thBar'), thCtrl=document.getElementById('thCtrl'), thMute=document.getElementById('thMute');
   var seen=false; try{ seen=sessionStorage.getItem('kimura-theater')==='1'; }catch(e){}
   function closeTheater(){
+    th.classList.remove('playing'); placeAiMark&&placeAiMark();
     if(th.classList.contains('gone')) return;
     th.classList.add('fade'); try{thFilm.pause();}catch(e){}
     document.body.style.overflow='';
@@ -108,14 +109,29 @@
     if(film) { var p=film.play(); if(p&&p.catch) p.catch(function(){}); }
   }
   function openTheater(){
+    th.classList.remove('playing'); placeAiMark&&placeAiMark();
     th.classList.remove('gone','fade'); thPre.classList.remove('off'); thFilm.classList.remove('on'); thCtrl.classList.remove('on');
     thBar.style.width='0'; thFilm.currentTime=0; document.body.style.overflow='hidden';
     if(film) film.pause();
   }
+  // 上映中は、AI使用マークを映像の画面内の左下に小さく置く（高さの約10%・端から3%）
+  var thMark=th.querySelector('.th-ai');
+  function placeAiMark(){
+    if(!thMark) return;
+    if(!th.classList.contains('playing')){ thMark.style.left=thMark.style.top=thMark.style.bottom=thMark.style.width=''; return; }
+    var W=th.clientWidth,H=th.clientHeight,ar=(thFilm.videoWidth&&thFilm.videoHeight)?thFilm.videoWidth/thFilm.videoHeight:16/9;
+    var w,h,x,y; if(W/H>ar){h=H;w=H*ar;x=(W-w)/2;y=0;}else{w=W;h=W/ar;x=0;y=(H-h)/2;}
+    // 映像ファイルには上下に黒帯（シネマスコープ 2.39:1）が入っているので、絵の下端のすぐ下（左下）に置き、字幕と重ねない
+    var picH=Math.min(h,w/2.39), picBottom=y+(h+picH)/2;
+    thMark.style.left=(x+w*0.02)+'px'; thMark.style.top=(picBottom+6)+'px'; thMark.style.bottom='auto'; thMark.style.width=Math.max(56,h*0.12)+'px';
+  }
+  addEventListener('resize',placeAiMark);
+  thFilm.addEventListener('loadedmetadata',placeAiMark);
   document.getElementById('thPlay').addEventListener('click',function(){
     thPre.classList.add('off'); thFilm.muted=false; thFilm.currentTime=0;
     var p=thFilm.play(); if(p&&p.catch) p.catch(function(){ thFilm.muted=true; thFilm.play(); thMute.textContent='音を出す'; });
     thFilm.classList.add('on'); thCtrl.classList.add('on');
+    th.classList.add('playing'); placeAiMark();
   });
   document.getElementById('thSkip').addEventListener('click',closeTheater);
   document.getElementById('thEnd').addEventListener('click',closeTheater);
