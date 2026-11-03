@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 const STORES = [
   "食彩館大宮店",
@@ -17,6 +17,17 @@ type Status = "idle" | "sending" | "done" | "error";
 export default function ApplyForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const storeRef = useRef<HTMLSelectElement>(null);
+  const typeRef = useRef<HTMLSelectElement>(null);
+
+  // 店舗のボタンから来たとき（?store=…&type=…）は、その店舗・雇用形態を選んだ状態にする
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const store = q.get("store");
+    const type = q.get("type");
+    if (store && STORES.includes(store) && storeRef.current) storeRef.current.value = store;
+    if (type && typeRef.current && Array.from(typeRef.current.options).some((o) => o.value === type)) typeRef.current.value = type;
+  }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -91,7 +102,7 @@ export default function ApplyForm() {
         </label>
         <label>
           希望雇用形態
-          <select name="employmentType" defaultValue="">
+          <select name="employmentType" defaultValue="" ref={typeRef}>
             <option value="">選択してください</option>
             <option>正社員（新卒）</option>
             <option>パート・アルバイト</option>
@@ -99,7 +110,7 @@ export default function ApplyForm() {
         </label>
         <label>
           希望店舗
-          <select name="store" defaultValue="">
+          <select name="store" defaultValue="" ref={storeRef}>
             <option value="">選択してください</option>
             {STORES.map((s) => (
               <option key={s}>{s}</option>

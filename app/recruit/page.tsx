@@ -25,13 +25,13 @@ export const metadata: Metadata = {
 };
 
 const STORES = [
-  { name: "食彩館大宮店", url: "https://jobchan.net/search/detail/?id=9c4d500a-76ea-4bcc-9c6b-0ae701695bf2" },
-  { name: "食彩館四ツ居店", url: "https://jobchan.net/search/detail/?id=d340cb39-b8c0-4f8c-8ed6-e9aef0194b1f" },
-  { name: "食彩館やしろ店", url: "https://jobchan.net/search/detail/?id=17c974ca-c4aa-4849-8229-f6ee53468044" },
-  { name: "食彩館西福井店", url: "https://jobchan.net/search/detail/?id=d14905dd-ea3e-4f13-9e09-3775912537fb" },
-  { name: "食彩館丸岡店", url: "https://jobchan.net/search/detail/?id=f9065a8a-019f-467a-bd5a-46ec3f255db6" },
-  { name: "食彩館みくに店", url: "https://jobchan.net/search/detail/?id=fc3264a3-a1e3-4fdd-a69f-fe648ed6b376" },
-  { name: "食彩館東部店", url: "https://jobchan.net/search/detail/?id=13ce6bc2-23fc-4d01-a3af-3dc10d73bacd" },
+  { name: "食彩館大宮店" },
+  { name: "食彩館四ツ居店" },
+  { name: "食彩館やしろ店" },
+  { name: "食彩館西福井店" },
+  { name: "食彩館丸岡店" },
+  { name: "食彩館みくに店" },
+  { name: "食彩館東部店" },
 ];
 
 const VOICES = [
@@ -159,11 +159,11 @@ export default async function Recruit() {
 
             <div className="rc-block rv">
               <h3 className="rc-title">パート・アルバイト</h3>
-              <p>お気軽にお問い合わせ下さい。各店舗の求人ページからご応募いただけます。</p>
+              <p>お気軽にお問い合わせ下さい。働きたいお店を選ぶと、このページの応募フォームからそのままご応募いただけます。</p>
               <div className="rc-stores">
                 {STORES.map((s) => (
-                  <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer">
-                    {s.name}<span>求人を見る ›</span>
+                  <a key={s.name} href={`?store=${encodeURIComponent(s.name)}&type=${encodeURIComponent("パート・アルバイト")}#apply`}>
+                    {s.name}<span>このお店に応募する ›</span>
                   </a>
                 ))}
               </div>
