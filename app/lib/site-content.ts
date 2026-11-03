@@ -101,7 +101,7 @@ export const SECTIONS: Section[] = [
       I("goods.1.img", "1つ目 写真", "/img/crab.jpg"),
       T("goods.1.title", "1つ目 見出し", "越前の鮮魚"),
       T("goods.1.sub", "1つ目 説明", "港から、その日のうちに"),
-      I("goods.2.img", "2つ目 写真", "/img/sozai.jpg"),
+      I("goods.2.img", "2つ目 写真", "/img/sozai-real.jpg"),
       T("goods.2.title", "2つ目 見出し", "手づくり惣菜"),
       T("goods.2.sub", "2つ目 説明", "キムラフーズの台所から"),
       I("goods.3.img", "3つ目 写真", "/img/hors-doeuvre.jpg"),

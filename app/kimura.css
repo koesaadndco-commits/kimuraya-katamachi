@@ -752,3 +752,37 @@ footer .copy{align-items:flex-end}
 .rc2-card h1{font-size:clamp(28px,3.4vw,44px)}
 .rc2-card h1 span{white-space:nowrap}
 @media (min-width:761px){.rc2-hero{min-height:min(88vh,760px)}}
+.rc2-lead2 span{display:inline-block}
+/* 文字枠は写真の右下の空いた場所に（人の顔にかからないように） */
+@media (min-width:761px){
+  .rc2-hero{min-height:min(92vh,820px)}
+  .rc2-in{display:flex;justify-content:flex-end;padding-bottom:28px}
+  .rc2-card{max-width:440px;padding:22px 26px;background:rgba(255,251,242,.92)}
+  .rc2-card .eyebrow{font-size:10px}
+  .rc2-card h1{font-size:clamp(26px,2.6vw,36px);margin:6px 0 10px}
+  .rc2-card p{font-size:14px;line-height:1.9}
+  .rc2-tags{margin-top:12px;gap:8px}.rc2-tags li{padding:5px 12px;font-size:13px}
+  .rc2-ctas{margin-top:16px;gap:8px}.rc2-ctas .btn{padding:0 18px;min-height:42px;font-size:13px}
+  .rc2-bg{object-position:50% 18%}
+}
+/* 文字枠は写真の右下から、下の余白にはみ出す形で置く（写真の人物にかからない） */
+@media (min-width:761px){
+  .rc2-hero{overflow:visible;min-height:min(86vh,760px);margin-bottom:0}
+  .rc2-bg{animation:none}
+  .rc2-in{position:absolute;left:0;right:0;bottom:0;padding:0 var(--gut);max-width:none;display:flex;justify-content:flex-end}
+  .rc2-card{transform:translateY(68%);z-index:3}
+  .rc2-hero + .rc2-points{padding-top:clamp(260px,26vw,320px)}
+}
+@media (min-width:1260px){.rc2-in{padding-right:calc((100vw - 1180px)/2)}}
+@media (min-width:761px){
+  .rc2-hero + .rc2-points{padding-top:clamp(70px,8vw,100px)}
+  .rc2-points .sec-hd{max-width:52%;min-height:clamp(190px,18vw,230px);align-items:flex-start}
+}
+/* スマホ：写真の下に文字枠（顔にかからない） */
+@media (max-width:760px){
+  .rc2-hero{display:block;min-height:0;background:#fffaf0}
+  .rc2-bg{position:relative;display:block;width:100%;height:auto;aspect-ratio:4/3;object-position:50% 50%;animation:none}
+  .rc2-shade{display:none}
+  .rc2-in{padding-top:0;margin-top:-28px;padding-bottom:28px}
+}
+@media (max-width:760px){.rc2-hero{padding-top:70px}}

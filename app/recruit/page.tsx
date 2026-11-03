@@ -75,7 +75,7 @@ export default async function Recruit() {
           <div className="wrap rc2-in"><div className="rc2-card">
             <div className="eyebrow">RECRUIT 2026 — 木村グループ 採用特設ページ</div>
             <h1><span>「ありがとう」を、</span><span>仕事にしよう。</span></h1>
-            <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。<br />正社員・パート・アルバイトを募集しています。</p>
+            <p className="rc2-lead2"><span>「また明日ね」と笑顔で言い合える職場を、</span><span>一緒につくりませんか。</span><br /><span>正社員・パート・アルバイトを</span><span>募集しています。</span></p>
             <ul className="rc2-tags"><li>地域貢献</li><li>成長できる</li><li>プライベートも充実！</li></ul>
             <div className="rc2-ctas">
               <a className="btn btn-mitsu" href="#apply">応募する</a>
