@@ -1108,3 +1108,111 @@ a.ft-honey:hover{opacity:.8}
 .rc-vintage .rc-apply input:focus,.rc-vintage .rc-apply select:focus,.rc-vintage .rc-apply textarea:focus{outline:none;border-color:var(--v-red);box-shadow:0 0 0 3px rgba(168,50,42,.15)}
 .rc-vintage .rc-apply .req{background:var(--v-red);color:#fbf5e6;border-radius:2px;justify-self:start;display:inline-block;width:auto;margin-left:8px}
 @media (prefers-reduced-motion:reduce){.rc-vintage .rc2-point{transform:none}}
+
+/* ===== 共通：パネル系の要素 ===== */
+/* ===== 和モダン（?style=wa）藍×和紙 ===== */
+.rc-wa{--w-ai:#1d3a5f;--w-ai2:#2f5b8a;--w-shu:#c0392b;--w-paper:#f7f3ea;--w-ink:#1e2430;--w-sub:#56607a;--w-line:rgba(29,58,95,.18);
+  color:var(--w-ink);background:
+  repeating-linear-gradient(115deg,rgba(29,58,95,.025) 0 1px,transparent 1px 9px),
+  radial-gradient(1000px 600px at 90% 0%,rgba(47,91,138,.10),transparent 60%),var(--w-paper)}
+.rc-wa h1,.rc-wa h2,.rc-wa h3,.rc-wa .rc-title{font-family:var(--mincho);font-weight:800;color:var(--w-ai);letter-spacing:.1em}
+.rc-wa .sec-hd h2{font-size:clamp(30px,4vw,54px);line-height:1.4;padding-left:22px;border-left:6px solid var(--w-ai)}
+.rc-wa .eyebrow{color:var(--w-shu)!important;letter-spacing:.3em;font-weight:700}
+.rc-wa p,.rc-wa .rc2-lead,.rc-wa .rc2-lead2{color:var(--w-sub)}
+.rc-wa .rc2-card,.rc-wa .rc-persona,.rc-wa .rc-block,.rc-wa .rc-apply,.rc-wa .vc,.rc-wa .rc2-nums-in>div{background:#fffdf8;border:1px solid var(--w-line);border-top:4px solid var(--w-ai);border-radius:0;box-shadow:0 10px 30px rgba(29,58,95,.08)}
+.rc-wa .btn{border-radius:0;font-family:var(--mincho);font-weight:800;letter-spacing:.2em;border:1px solid var(--w-ai);background:#fffdf8;color:var(--w-ai)}
+.rc-wa .btn:hover{background:var(--w-ai);color:#fff}
+.rc-wa .btn-mitsu{background:var(--w-ai);color:#fff}
+.rc-wa .btn-mitsu:hover{background:var(--w-shu);border-color:var(--w-shu)}
+.rc-wa .rc2-hero,.rc-wa .rc2-points,.rc-wa .rc2-movie,.rc-wa .pad,.rc-wa .people,.rc-wa .rc2-apply{background:transparent}
+.rc-wa .rc2-nums{background:var(--w-ai);border:0;padding:30px 0}
+.rc-wa .rc2-nums-in{gap:16px}
+.rc-wa .rc2-nums-in>div{background:transparent;border:1px solid rgba(255,255,255,.3);border-top:1px solid rgba(255,255,255,.3);box-shadow:none}
+.rc-wa .rc2-nums b{color:#fff;font-family:var(--mincho);font-style:normal}
+.rc-wa .rc2-nums b small{color:#cfe0f2}
+.rc-wa .rc2-nums span{color:#cfe0f2}
+.rc-wa .rc2-tags li{background:transparent;border:1px solid var(--w-ai2);color:var(--w-ai);border-radius:0;box-shadow:none}
+.rc-wa .rc2-point{border-radius:0;box-shadow:0 14px 40px rgba(29,58,95,.15)}
+.rc-wa .rc2-point-in{background:linear-gradient(180deg,rgba(255,253,248,0),rgba(255,253,248,.9) 30%,#fffdf8 60%);padding-top:90px}
+.rc-wa .rc2-point-no{display:inline-grid;place-items:center;width:44px;height:44px;background:var(--w-shu);color:#fff;font-family:var(--mincho);font-style:normal;font-size:16px}
+.rc-wa .rc2-frame{border-radius:0;box-shadow:0 20px 50px rgba(29,58,95,.2)}
+.rc-wa .rc-title{font-size:clamp(22px,2.4vw,30px)}
+.rc-wa .rc-special{background:#f3eee2;border:1px solid var(--w-line);border-radius:0}
+.rc-wa .rc-job dt{color:var(--w-ai)}
+.rc-wa .rc-stores a{background:#fffdf8;border:1px solid var(--w-line);border-left:4px solid var(--w-ai);border-radius:0;flex-direction:column;align-items:flex-start;gap:4px;white-space:nowrap}
+.rc-wa .rc-stores a span{color:var(--w-shu)}
+.rc-wa .vc .who i{background:var(--w-ai);color:#fff}
+.rc-wa .rc-apply input,.rc-wa .rc-apply select,.rc-wa .rc-apply textarea{border-radius:0;border:1px solid var(--w-line);background:#fff}
+.rc-wa .rc-apply .req{background:var(--w-shu);color:#fff;border-radius:0;justify-self:start;display:inline-block;width:auto;margin-left:8px}
+
+/* ===== ナチュラル（?style=natural）緑×木 ===== */
+.rc-natural{--n-g:#3f7d4e;--n-g2:#7fb069;--n-wood:#b98a5a;--n-bg:#f6f4ec;--n-ink:#2c3a2e;--n-sub:#5d6b5f;
+  color:var(--n-ink);background:radial-gradient(900px 500px at 0% 0%,rgba(127,176,105,.18),transparent 60%),radial-gradient(900px 600px at 100% 60%,rgba(185,138,90,.14),transparent 60%),var(--n-bg)}
+.rc-natural h1,.rc-natural h2,.rc-natural h3,.rc-natural .rc-title{font-family:'Zen Maru Gothic',sans-serif;font-weight:900;color:var(--n-ink)}
+.rc-natural .sec-hd h2{font-size:clamp(30px,4vw,54px);line-height:1.35}
+.rc-natural .sec-hd h2::after{content:"";display:block;width:70px;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--n-g),var(--n-g2));margin-top:14px}
+.rc-natural .eyebrow{color:var(--n-g)!important;font-weight:700;letter-spacing:.24em}
+.rc-natural .eyebrow::before{content:"🌿 "}
+.rc-natural p,.rc-natural .rc2-lead,.rc-natural .rc2-lead2{color:var(--n-sub)}
+.rc-natural .rc2-card,.rc-natural .rc-persona,.rc-natural .rc-block,.rc-natural .rc-apply,.rc-natural .vc,.rc-natural .rc2-nums-in>div{background:#fff;border:0;border-radius:28px;box-shadow:0 12px 34px rgba(63,125,78,.12)}
+.rc-natural .btn{border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;border:2px solid var(--n-g);background:#fff;color:var(--n-g)}
+.rc-natural .btn:hover{background:#eef6ea}
+.rc-natural .btn-mitsu{background:var(--n-g);color:#fff}
+.rc-natural .btn-mitsu:hover{background:#346b41}
+.rc-natural .rc2-hero,.rc-natural .rc2-points,.rc-natural .rc2-movie,.rc-natural .pad,.rc-natural .people,.rc-natural .rc2-apply{background:transparent}
+.rc-natural .rc2-bg{border-radius:0 0 48px 48px}
+.rc-natural .rc2-nums{background:transparent;border:0;padding:30px 0}.rc-natural .rc2-nums-in{gap:18px}
+.rc-natural .rc2-nums b{color:var(--n-g);font-family:'Zen Maru Gothic',sans-serif;font-style:normal;font-weight:900}
+.rc-natural .rc2-nums b small{color:var(--n-wood)}
+.rc-natural .rc2-tags li{background:#eef6ea;border:0;color:var(--n-g);border-radius:999px;box-shadow:none;font-weight:700}
+.rc-natural .rc2-point{border-radius:32px;box-shadow:0 16px 40px rgba(63,125,78,.16)}
+.rc-natural .rc2-point-in{background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.92) 30%,#fff 60%);padding-top:90px}
+.rc-natural .rc2-point-no{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50% 50% 50% 8px;background:var(--n-g2);color:#fff;font-style:normal;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:16px}
+.rc-natural .rc2-frame{border-radius:28px;box-shadow:0 20px 50px rgba(63,125,78,.2)}
+.rc-natural .rc-title{font-size:clamp(22px,2.4vw,30px);color:var(--n-g)}
+.rc-natural .rc-special{background:#f3f7ef;border:0;border-radius:20px}
+.rc-natural .rc-job dt{color:var(--n-g)}
+.rc-natural .rc-stores a{background:#fff;border:2px solid #dcebd3;border-radius:20px;flex-direction:column;align-items:flex-start;gap:4px;white-space:nowrap}
+.rc-natural .rc-stores a:hover{border-color:var(--n-g2)}
+.rc-natural .rc-stores a span{color:var(--n-wood)}
+.rc-natural .vc .who i{background:var(--n-g2);color:#fff}
+.rc-natural .rc-apply input,.rc-natural .rc-apply select,.rc-natural .rc-apply textarea{border-radius:14px;border:2px solid #e2ead9;background:#fbfdf9}
+.rc-natural .rc-apply .req{background:var(--n-g);color:#fff;border-radius:999px;justify-self:start;display:inline-block;width:auto;margin-left:8px}
+
+/* ===== マルシェ（?style=marche）黒板×クラフト紙 ===== */
+.rc-marche{--m-board:#2f3b33;--m-chalk:#f4f1e6;--m-kraft:#c9a874;--m-kraft2:#e7d4ad;--m-red:#d9553b;--m-yellow:#f2c94c;--m-ink:#3a2c1c;
+  color:var(--m-ink);background:repeating-linear-gradient(90deg,rgba(90,60,20,.04) 0 2px,transparent 2px 5px),var(--m-kraft2)}
+.rc-marche h1,.rc-marche h2,.rc-marche h3,.rc-marche .rc-title{font-family:'Klee One',cursive;font-weight:600;color:var(--m-ink)}
+.rc-marche .sec-hd h2{font-family:'Kaisei Decol',serif;font-weight:700;font-size:clamp(30px,4vw,54px);line-height:1.35;color:var(--m-chalk);background:var(--m-board);display:inline-block;padding:14px 26px;border:10px solid #8a6a43;box-shadow:4px 6px 0 rgba(0,0,0,.2)}
+.rc-marche .eyebrow{display:inline-block;background:var(--m-red);color:#fff!important;padding:4px 14px;font-weight:700;letter-spacing:.2em;transform:rotate(-2deg)}
+.rc-marche p,.rc-marche .rc2-lead,.rc-marche .rc2-lead2{color:#5a4630}
+.rc-marche .rc2-card,.rc-marche .rc-persona,.rc-marche .rc-block,.rc-marche .rc-apply,.rc-marche .vc,.rc-marche .rc2-nums-in>div{background:#fffaf0;border:0;border-radius:4px;box-shadow:0 2px 0 rgba(0,0,0,.06),0 12px 26px rgba(90,60,20,.18);position:relative}
+.rc-marche .rc-block::before,.rc-marche .rc2-card::before{content:"";position:absolute;top:-10px;left:50%;width:90px;height:22px;transform:translateX(-50%) rotate(-2deg);background:rgba(242,201,76,.75)}
+.rc-marche .btn{border-radius:6px;font-family:'Klee One',cursive;font-weight:600;border:2px dashed var(--m-ink);background:#fffaf0;color:var(--m-ink)}
+.rc-marche .btn-mitsu{background:var(--m-red);color:#fff;border:2px solid var(--m-red)}
+.rc-marche .rc2-hero,.rc-marche .rc2-points,.rc-marche .rc2-movie,.rc-marche .pad,.rc-marche .people,.rc-marche .rc2-apply{background:transparent}
+.rc-marche .rc2-bg{border-bottom:14px solid #8a6a43}
+.rc-marche .rc2-nums{background:var(--m-board);border:0;padding:30px 0}
+.rc-marche .rc2-nums-in{gap:16px}
+.rc-marche .rc2-nums-in>div{background:transparent;box-shadow:none;border:2px dashed rgba(244,241,230,.4)}
+.rc-marche .rc2-nums b{color:var(--m-yellow);font-family:'Kaisei Decol',serif;font-style:normal}
+.rc-marche .rc2-nums b small,.rc-marche .rc2-nums span{color:var(--m-chalk)}
+.rc-marche .rc2-tags li{background:var(--m-yellow);border:0;color:var(--m-ink);border-radius:3px;box-shadow:none;font-family:'Klee One',cursive;font-weight:600;transform:rotate(-1.5deg)}
+.rc-marche .rc2-tags li:nth-child(2){transform:rotate(1.5deg);background:#a8d5a2}
+.rc-marche .rc2-tags li:nth-child(3){background:#f7b4a6}
+.rc-marche .rc2-point{border-radius:2px;border:10px solid #fffaf0;box-shadow:0 14px 30px rgba(90,60,20,.25)}
+.rc-marche .rc2-point:nth-child(1){transform:rotate(-2deg)}.rc-marche .rc2-point:nth-child(2){transform:rotate(1.5deg)}.rc-marche .rc2-point:nth-child(3){transform:rotate(-1deg)}
+.rc-marche .rc2-point-in{background:linear-gradient(180deg,rgba(255,250,240,0),rgba(255,250,240,.92) 30%,#fffaf0 60%);padding-top:90px}
+.rc-marche .rc2-point-no{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--m-red);color:#fff;font-family:'Kaisei Decol',serif;font-style:normal;font-size:18px}
+.rc-marche .rc2-point h3{font-family:'Klee One',cursive;font-weight:600}
+.rc-marche .rc2-frame{border-radius:2px;border:12px solid #8a6a43;box-shadow:0 16px 36px rgba(0,0,0,.25)}
+.rc-marche .rc-title{font-size:clamp(22px,2.4vw,30px);background:linear-gradient(transparent 60%,var(--m-yellow) 60%)}
+.rc-marche .rc-special{background:var(--m-kraft2);border:2px dashed var(--m-kraft);border-radius:4px}
+.rc-marche .rc-job dt{color:var(--m-red)}
+.rc-marche .rc-stores a{background:#fffaf0;border:2px dashed var(--m-kraft);border-radius:6px;flex-direction:column;align-items:flex-start;gap:4px;white-space:nowrap;font-family:'Klee One',cursive;font-weight:600}
+.rc-marche .rc-stores a span{color:var(--m-red)}
+.rc-marche .vc q{font-family:'Klee One',cursive;font-weight:600}
+.rc-marche .vc .who i{background:var(--m-red);color:#fff}
+.rc-marche .rc-apply input,.rc-marche .rc-apply select,.rc-marche .rc-apply textarea{border-radius:4px;border:2px solid var(--m-kraft2);background:#fff}
+.rc-marche .rc-apply .req{background:var(--m-red);color:#fff;border-radius:3px;justify-self:start;display:inline-block;width:auto;margin-left:8px}
+@media (prefers-reduced-motion:reduce){.rc-marche .rc2-point{transform:none}}
