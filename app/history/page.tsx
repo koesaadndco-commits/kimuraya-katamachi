@@ -96,7 +96,18 @@ const HISTORY: Item[] = [
   },
 ];
 
+const MOTTO = ["食を通じて、", "ありがとうの溢れる", "豊かな社会を実現する"];
+
+const MESSAGE = [
+  "昭和二十一年、戦後まもない福井の町で、小さな食料品店「木村屋」は生まれました。",
+  "あの日から変わらないのは、お客様の「おいしかったよ」のひとことのために、毎朝いちばんに売り場に立つこと。",
+  "お客様、社員さん、取引業者さん、そして地域のみなさまに喜ばれる店であり続けるために。",
+  "八十年分の「ありがとう」を胸に、これからも福井の台所として、次の百年へ歩んでまいります。",
+];
+
 const COMPANIES = ["株式会社 片町フードセンター", "株式会社 松本フードセンター", "株式会社 東部プラザ"];
+
+const BRUSH_TEXT = [...MOTTO, ...MESSAGE, ...COMPANIES, "経営理念代表取締役社長木村博常"].join("");
 
 export default function HistoryPage() {
   return (
@@ -129,12 +140,18 @@ export default function HistoryPage() {
               </li>
             ))}
           </ol>
-          <section className="hi-group">
-            <h2>グループ会社</h2>
-            <ul>{COMPANIES.map((c) => <li key={c}>{c}</li>)}</ul>
-            <p>代表取締役社長　木村 博常</p>
+          {/* 筆文字（Yuji Syuku）は、このまとまりで使う文字だけを読み込む */}
+          <link rel="stylesheet" precedence="default" href={`https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap&text=${encodeURIComponent(BRUSH_TEXT)}`} />
+          <section className="hi-motto2" aria-label="経営理念とごあいさつ">
+            <div className="hi-motto2-label">経営理念</div>
+            <p className="hi-motto2-text">{MOTTO.map((l) => <span key={l}>{l}</span>)}</p>
+            <div className="hi-motto2-rule" aria-hidden="true"></div>
+            <div className="hi-motto2-msg">{MESSAGE.map((l, i) => <p key={i}>{l}</p>)}</div>
+            <div className="hi-motto2-sign">
+              <ul>{COMPANIES.map((c) => <li key={c}>{c}</li>)}</ul>
+              <p><span>代表取締役社長</span><b>木村 博常</b></p>
+            </div>
           </section>
-          <p className="hi-motto"><span>経営理念</span>食を通じて、ありがとうの溢れる豊かな社会を実現する</p>
         </div>
       </main>
       <BlogFooter />

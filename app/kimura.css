@@ -677,3 +677,20 @@ footer .copy{align-items:flex-end}
 .theater.playing .th-ai{gap:0}
 .theater.playing .th-ai span{display:none}
 .theater.playing .th-ai img{width:100%;opacity:.9}
+
+/* 沿革：経営理念（筆文字）と会社概要 */
+.hi-motto2{margin-top:48px;padding:clamp(36px,6vw,64px) clamp(20px,5vw,56px);text-align:center;background:#fff;border:1px solid var(--line);border-radius:14px;position:relative}
+.hi-motto2::before,.hi-motto2::after{content:"";position:absolute;left:50%;width:60px;height:1px;background:var(--mitsu);transform:translateX(-50%)}
+.hi-motto2::before{top:22px}.hi-motto2::after{bottom:22px}
+.hi-motto2-label{font-family:'Yuji Syuku',var(--mincho);font-size:clamp(15px,1.6vw,18px);letter-spacing:.4em;color:var(--mitsu-d);margin-bottom:14px}
+.hi-motto2-text{margin:0;font-family:'Yuji Syuku',var(--mincho);font-size:clamp(28px,4.6vw,56px);line-height:1.6;letter-spacing:.08em;color:var(--sumi)}
+.hi-motto2-text span{display:inline-block}
+.hi-motto2-rule{width:120px;height:1px;background:var(--mitsu);margin:clamp(26px,4vw,40px) auto}
+.hi-motto2-msg{max-width:36em;margin:0 auto;font-family:'Yuji Syuku',var(--mincho);font-size:clamp(16px,1.7vw,19px);line-height:2.2;letter-spacing:.06em;color:#3c3a36;text-align:left}
+.hi-motto2-msg p{margin:0 0 .6em}
+.hi-motto2-sign{margin-top:clamp(26px,4vw,40px);display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:'Yuji Syuku',var(--mincho);color:var(--sumi);text-align:right}
+.hi-motto2-sign ul{list-style:none;margin:0;padding:0;font-size:clamp(15px,1.6vw,18px);line-height:1.9;letter-spacing:.08em}
+.hi-motto2-sign p{margin:0;display:flex;align-items:baseline;gap:18px}
+.hi-motto2-sign span{font-size:clamp(14px,1.5vw,17px);letter-spacing:.12em}
+.hi-motto2-sign b{font-weight:400;font-size:clamp(26px,3.2vw,38px);letter-spacing:.2em}
+@media (max-width:560px){.hi-motto2-sign{align-items:center;text-align:center}.hi-motto2-sign p{flex-direction:column;align-items:center;gap:4px}}
