@@ -46,6 +46,12 @@ const VOICES = [
 // 管理画面で登録した動画（YouTube）を毎回読むため、リクエスト時に描画する
 export const dynamic = "force-dynamic";
 
+const POINTS = [
+  { no: "01", t: "地域貢献", img: "/img/register.jpg", d: "福井市・坂井市の7店舗で、毎日の食卓を支える仕事。「いつもありがとう」の声が、いちばんのやりがいです。" },
+  { no: "02", t: "成長できる", img: "/img/morning.jpg", d: "売り場づくりも、仕入れも、接客も。先輩が一つずつ教えるので、未経験からでも少しずつ任せられることが増えていきます。" },
+  { no: "03", t: "プライベートも充実！", img: "/img/family.jpg", d: "基本週休2日、有給休暇・産休・育休あり。家族との時間や自分の時間も大切にしながら働けます。" },
+];
+
 const NUMBERS = [
   { n: "1946", u: "年創業", s: "福井の小さな食料品店から" },
   { n: "7", u: "店舗", s: "福井市・坂井市の食彩館" },
@@ -66,14 +72,32 @@ export default async function Recruit() {
         <section className="rc2-hero" aria-label="採用情報">
           <img className="rc2-bg" src="/img/team-recruit.jpg" alt="" width={2016} height={1512} />
           <div className="rc2-shade"></div>
-          <div className="wrap rc2-in">
+          <div className="wrap rc2-in"><div className="rc2-card">
             <div className="eyebrow">RECRUIT 2026 — 木村グループ 採用特設ページ</div>
             <h1><span>「ありがとう」を、</span><span>仕事にしよう。</span></h1>
-            <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。<br />新卒正社員・中途正社員・パート・アルバイトを募集しています。</p>
+            <p>「また明日ね」と笑顔で言い合える職場を、一緒につくりませんか。<br />正社員・パート・アルバイトを募集しています。</p>
+            <ul className="rc2-tags"><li>地域貢献</li><li>成長できる</li><li>プライベートも充実！</li></ul>
             <div className="rc2-ctas">
               <a className="btn btn-mitsu" href="#apply">応募する</a>
-              <a className="btn btn-ghost" href="#movie">▶ 動画を見る</a>
-              <a className="btn btn-ghost" href="#jobs">募集要項</a>
+              <a className="btn rc2-btn2" href="#movie">▶ 動画を見る</a>
+              <a className="btn rc2-btn2" href="#jobs">募集要項</a>
+            </div>
+          </div></div>
+        </section>
+
+        <section className="rc2-points pad" aria-label="木村グループで働く魅力">
+          <div className="wrap">
+            <div className="sec-hd"><div><div className="eyebrow">WHY KIMURA</div><h2>ここで働く、<br />3つのいいところ。</h2></div></div>
+            <div className="rc2-points-in">
+              {POINTS.map((p) => (
+                <article key={p.t} className="rc2-point rv" style={{ backgroundImage: `url(${p.img})` }}>
+                  <div className="rc2-point-in">
+                    <span className="rc2-point-no">{p.no}</span>
+                    <h3>{p.t}</h3>
+                    <p>{p.d}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
