@@ -68,7 +68,9 @@ export default async function Recruit() {
     <>
       <SiteHeader solid />
 
-      <main id="top">
+      {/* POP用の丸ゴシック（採用ページだけで使用） */}
+      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" />
+      <main id="top" className="rc-pop">
         <section className="rc2-hero" aria-label="採用情報">
           <img className="rc2-bg" src="/img/team-recruit.jpg" alt="" width={2016} height={1512} />
           <div className="rc2-shade"></div>
