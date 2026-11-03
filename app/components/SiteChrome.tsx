@@ -34,7 +34,7 @@ export const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
       { href: "/#news", label: "お知らせ" },
       { href: "/blog", label: "お店のたより" },
       { href: "/recruit", label: "採用情報" },
-      { href: "https://kimura-group48.jp/contact.php", label: "お問い合わせ", ext: true },
+      { href: "/contact", label: "お問い合わせ" },
       { href: "/privacy", label: "プライバシーポリシー" },
     ],
   },

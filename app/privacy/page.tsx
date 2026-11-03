@@ -90,7 +90,7 @@ export default function PrivacyPage() {
             <div className="pv-box">
               <b>木村グループ　個人情報お問い合わせ窓口</b>
               <p>〒910-0016 福井県福井市大宮6丁目5-5</p>
-              <p><a href="https://kimura-group48.jp/contact.php" target="_blank" rel="noopener noreferrer">お問い合わせフォーム ↗</a></p>
+              <p>メール：<a href="mailto:info@kimura-group48.jp">info@kimura-group48.jp</a>　／　<a href="/contact">お問い合わせフォーム</a></p>
             </div>
           </section>
           <p className="pv-date">制定日：2026年11月1日</p>

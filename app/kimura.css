@@ -662,3 +662,9 @@ html.menu-open{overflow:hidden}
 .th-note.th-ai{left:clamp(14px,2.4vw,32px);right:auto;bottom:clamp(14px,2.4vw,28px);justify-content:flex-start;text-align:left}
 .th-ai img{width:clamp(90px,10vw,130px);height:auto}
 @media (max-width:520px){.th-ai span{font-size:10px;max-width:9em;line-height:1.6}}
+
+/* お問い合わせ（/contact） */
+.ct{max-width:860px}
+.ct-hint{font-size:12.5px;color:var(--hai);margin:4px 0 0}
+.ct-alt{margin-top:28px;padding:20px 22px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.ct-alt p{margin:6px 0 0}

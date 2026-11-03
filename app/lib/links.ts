@@ -14,3 +14,6 @@ export const TIMEE_URL = "https://timee.co.jp/";
 
 // 公式Instagram（ハニー食彩館）
 export const INSTAGRAM_URL = "https://www.instagram.com/honey_syokusaikan/";
+
+// お問い合わせ・採用応募の受付メールアドレス（フォームの通知先は wrangler.jsonc の *_NOTIFY_EMAIL）
+export const CONTACT_EMAIL = "info@kimura-group48.jp";

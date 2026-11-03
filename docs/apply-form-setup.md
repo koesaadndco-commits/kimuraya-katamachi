@@ -1,3 +1,24 @@
+# 応募フォーム・お問い合わせフォームのメール通知設定
+
+- 採用応募（/recruit）→ `APPLY_NOTIFY_EMAIL`
+- お問い合わせ（/contact）→ `CONTACT_NOTIFY_EMAIL`
+- どちらも **info@kimura-group48.jp** に設定済み（`wrangler.jsonc`）
+
+## 残り作業（Cloudflareダッシュボード側・1回だけ）
+
+Cloudflare のメール送信は「認証済みの宛先」にしか届かないため、info@kimura-group48.jp を宛先として認証する必要がある。
+
+1. [Cloudflareダッシュボード](https://dash.cloudflare.com) → `kimuraya-katamachi.co.jp` のゾーンを選択
+2. **Email** → **Email Routing** を開く（未設定なら有効化する）
+3. **Destination addresses** に `info@kimura-group48.jp` を追加
+4. info@kimura-group48.jp に届く確認メールのリンクをクリックして認証
+
+認証が終わるまでは、フォームは「受付設定を準備中」と表示し、お問い合わせフォームではメールアドレス（info@kimura-group48.jp）を案内する。
+
+---
+
+（以下、これまでの記録）
+
 # 応募フォームのメール通知設定（残り作業）
 
 `/recruit` に自社専用の応募フォームを実装済み。コード側は完成しているが、
