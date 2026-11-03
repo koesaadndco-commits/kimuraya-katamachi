@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages, @next/next/no-img-element -- ホーム（/）は kimura.js の初期化が必要なため、通常のページ読み込みで遷移させる */
 import Script from "next/script";
 import { INSTAGRAM_URL } from "../lib/links";
-import AiMark from "./AiMark";
 
 // 全ページ共通のヘッダー（メニューボタンで、どのページからでも一瞬で行き来できる）とフッター
 
@@ -127,7 +126,7 @@ export function SiteFooter() {
             ))}
           </nav>
         </div>
-        <div className="copy"><span>© 2026 木村グループ</span><span className="ft-ai"><AiMark size={44} /><span>本サイトの一部にAIを使用しています<br />Produced by AISSK</span></span></div>
+        <div className="copy"><span className="ft-ai"><img src="/ai-mark/ai-mark-ornate-navy-sm.webp" alt="AI使用マーク" width={96} height={76} /><span>本サイトの一部にAIを使用しています</span></span><span className="ft-cr">© 2026 木村グループ<br />Produced by AISSK</span></div>
       </div>
     </footer>
   );
