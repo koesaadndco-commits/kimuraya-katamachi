@@ -59,13 +59,9 @@ const NUMBERS = [
   { n: "96", u: "日", s: "年間休日（基本週休2日）" },
 ];
 
-export default async function Recruit({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
-  // デザインの見比べ用：?style=cool で「かっこいい版」
-  // 番号でも選べる（?style=1〜8）。1:POP 2:かっこいい 3:未来的 4:金 5:ヴィンテージ 6:和モダン 7:ナチュラル 8:マルシェ
-  const NUM_STYLE: Record<string, string> = { "1": "pop", "2": "cool", "3": "future", "4": "gold", "5": "vintage", "6": "wa", "7": "natural", "8": "marche" };
-  const rawStyle = (await searchParams).style;
-  const style = typeof rawStyle === "string" ? (NUM_STYLE[rawStyle] ?? rawStyle) : rawStyle;
-  const theme = style === "cool" ? "rc-cool" : style === "future" ? "rc-future" : style === "gold" ? "rc-future rc-gold" : style === "vintage" ? "rc-vintage" : style === "wa" ? "rc-wa" : style === "natural" ? "rc-natural" : style === "marche" ? "rc-marche" : "rc-pop";
+export default async function Recruit() {
+  // 採用ページのデザイン：金の版（未来的な版の作りを金色にしたもの）
+  const theme = "rc-future rc-gold";
   const c = contentGetter(await loadOverrides());
   const videos = [1, 2, 3, 4, 5, 6]
     .map((n) => ({ id: youtubeId(c(`rv.${n}.url`)), title: c(`rv.${n}.title`) }))
@@ -74,8 +70,8 @@ export default async function Recruit({ searchParams }: { searchParams: Promise<
     <>
       <SiteHeader solid />
 
-      {/* POP用の丸ゴシック（採用ページだけで使用） */}
-      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@900&family=Oswald:wght@500;700&family=Space+Grotesk:wght@500;700&family=Yuji+Syuku&family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Klee+One:wght@600&family=Kaisei+Decol:wght@700&display=swap" />
+      {/* 採用ページの見出し・数字用の書体 */}
+      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@900&family=Space+Grotesk:wght@500;700&display=swap" />
       <main id="top" className={theme}>
         <section className="rc2-hero" aria-label="採用情報">
           <img className="rc2-bg" src="/img/team-recruit.jpg" alt="" width={2016} height={1512} />
