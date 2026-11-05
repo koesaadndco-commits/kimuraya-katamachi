@@ -60,8 +60,8 @@ const NUMBERS = [
 ];
 
 export default async function Recruit() {
-  // 採用ページのデザイン：金の版（未来的な版の作りを金色にしたもの）
-  const theme = "rc-future rc-gold";
+  // 採用ページのデザイン：POP版（明るい色・丸ゴシック・水玉背景）。金の版に戻すときは "rc-future rc-gold"
+  const theme = "rc-pop";
   const c = contentGetter(await loadOverrides());
   const videos = [1, 2, 3, 4, 5, 6]
     .map((n) => ({ id: youtubeId(c(`rv.${n}.url`)), title: c(`rv.${n}.title`) }))
@@ -70,8 +70,8 @@ export default async function Recruit() {
     <>
       <SiteHeader solid />
 
-      {/* 採用ページの見出し・数字用の書体 */}
-      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@900&family=Space+Grotesk:wght@500;700&display=swap" />
+      {/* 採用ページの見出し・数字用の書体（POPは丸ゴシック） */}
+      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@900&family=Space+Grotesk:wght@500;700&display=swap" />
       <main id="top" className={theme}>
         <section className="rc2-hero" aria-label="採用情報">
           <img className="rc2-bg" src="/img/team-recruit.jpg" alt="" width={2016} height={1512} />
