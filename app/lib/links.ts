@@ -25,4 +25,4 @@ export const HONEY_URL = "";
 export const HONEY_LOGO = "";
 
 // 代表取締役社長 木村 博常 のお写真（トップの社長メッセージ欄・沿革のごあいさつで使用）
-export const PRESIDENT_PHOTO = "/img/president-smile.jpg";
+export const PRESIDENT_PHOTO = "/img/president-smile.webp";

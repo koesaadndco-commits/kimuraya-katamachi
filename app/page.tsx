@@ -253,8 +253,8 @@ export default async function Home() {
   {/* PRESIDENT */}
   <section className="pres pad" id="message">
     <div className="wrap grid">
-      <div className="screen rv">
-        <img src={c("message.img")} alt="" loading="lazy" />
+      <div className="screen pres-cut rv">
+        <img src={c("message.img")} alt="代表取締役社長 木村 博常" loading="lazy" />
         <span className="tag">毎月配信</span>
         <div className="play"><i><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></i><span style={{fontFamily: 'var(--mincho)', fontSize: '18px', letterSpacing: '.1em'}}>{c("message.videoTitle")}</span></div>
       </div>
