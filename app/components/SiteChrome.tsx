@@ -14,6 +14,7 @@ export const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
       { href: "/", label: "ホーム" },
       { href: "/#promise", label: "私たちの約束" },
       { href: "/#story", label: "80年の物語" },
+      { href: "/company", label: "会社概要" },
       { href: "/history", label: "会社の沿革" },
       { href: "/#message", label: "社長メッセージ" },
     ],
