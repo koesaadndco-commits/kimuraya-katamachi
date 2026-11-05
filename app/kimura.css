@@ -919,3 +919,11 @@ footer .copy{align-items:flex-end}
   background:radial-gradient(circle at 50% 70%,#f6e6bf 0 47%,transparent 47.5%);filter:drop-shadow(0 8px 14px rgba(60,40,10,.15))}
 .hi-fig.cutout{max-width:260px}
 .hi-fig.cutout img{box-shadow:none;border-radius:0;background:radial-gradient(circle at 50% 68%,#f6e6bf 0 46%,transparent 46.5%);filter:drop-shadow(0 8px 14px rgba(60,40,10,.15))}
+/* 社長のお写真：背景（金の円・影）を付けず、切り抜きのまま見せる */
+.hi-fig.cutout img,.hi-sign-photo{background:none!important;filter:none!important;box-shadow:none!important}
+.pres .screen.pres-cut{background:transparent}
+.pres .screen.pres-cut::after{display:none}
+.pres .screen.pres-cut img{filter:none}
+.pres .screen.pres-cut .play{background:rgba(28,40,57,.85);padding:8px 16px 8px 8px;border-radius:999px}
+.pres .screen.pres-cut .play i{width:44px;height:44px}
+.pres .screen.pres-cut .play span{font-size:15px!important;text-shadow:none}
