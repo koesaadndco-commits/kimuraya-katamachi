@@ -14,7 +14,7 @@ type Item = {
   wa: string;
   year: string;
   events: Event[];
-  img?: { src: string; alt: string; caption: string; tall?: boolean };
+  img?: { src: string; alt: string; caption: string; tall?: boolean; cutout?: boolean };
 };
 
 // 出典：木村グループ 30周年記念誌・40周年記念誌の年表。トップページ「80年の物語」は、この中から主な出来事を抜き出している。
@@ -91,6 +91,12 @@ const HISTORY: Item[] = [
     ],
   },
   {
+    // 就任年月がわかったら wa / year を差し替える
+    wa: "現在", year: "NOW",
+    events: [{ title: "代表取締役社長　木村 博常", note: "経営理念「食を通じて、ありがとうの溢れる豊かな社会を実現する」のもと、グループを率いています。" }],
+    img: { src: PRESIDENT_PHOTO, alt: "代表取締役社長 木村 博常", caption: "代表取締役社長　木村 博常", cutout: true },
+  },
+  {
     wa: "令和8年", year: "2026",
     events: [{ title: "創業80年。次の100年へ。", note: "経営力・管理者力・現場力。三位一体で、100年ビジョンの実現へ歩みます。" }],
   },
@@ -130,7 +136,7 @@ export default function HistoryPage() {
                     </div>
                   ))}
                   {h.img && (
-                    <figure className={`hi-fig${h.img.tall ? " tall" : ""}`}>
+                    <figure className={`hi-fig${h.img.tall ? " tall" : ""}${h.img.cutout ? " cutout" : ""}`}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={h.img.src} alt={h.img.alt} loading="lazy" />
                       <figcaption>{h.img.caption}</figcaption>

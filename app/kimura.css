@@ -917,3 +917,5 @@ footer .copy{align-items:flex-end}
 /* 沿革のごあいさつ：背景透過のお写真を丸い金の地に */
 .hi-sign-photo{aspect-ratio:auto;height:clamp(170px,19vw,240px);width:auto;object-fit:contain;object-position:50% 100%;border:0;outline:0;border-radius:0;box-shadow:none;
   background:radial-gradient(circle at 50% 70%,#f6e6bf 0 47%,transparent 47.5%);filter:drop-shadow(0 8px 14px rgba(60,40,10,.15))}
+.hi-fig.cutout{max-width:260px}
+.hi-fig.cutout img{box-shadow:none;border-radius:0;background:radial-gradient(circle at 50% 68%,#f6e6bf 0 46%,transparent 46.5%);filter:drop-shadow(0 8px 14px rgba(60,40,10,.15))}
