@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../kimura.css";
 import { BlogFooter, BlogHeader, Eyebrow } from "../blog/SiteChrome";
-import { SITE_URL } from "../lib/links";
+import { PRESIDENT_PHOTO, SITE_URL } from "../lib/links";
 
 export const metadata: Metadata = {
   title: "会社の沿革｜木村グループ（ハニー食彩館）",
@@ -148,8 +148,12 @@ export default function HistoryPage() {
             <div className="hi-motto2-rule" aria-hidden="true"></div>
             <div className="hi-motto2-msg">{MESSAGE.map((l, i) => <p key={i}>{l}</p>)}</div>
             <div className="hi-motto2-sign">
-              <ul>{COMPANIES.map((c) => <li key={c}>{c}</li>)}</ul>
-              <p><span>代表取締役社長</span><b>木村 博常</b></p>
+              <div className="hi-sign-text">
+                <ul>{COMPANIES.map((c) => <li key={c}>{c}</li>)}</ul>
+                <p><span>代表取締役社長</span><b>木村 博常</b></p>
+              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="hi-sign-photo" src={PRESIDENT_PHOTO} alt="代表取締役社長 木村 博常" loading="lazy" />
             </div>
           </section>
         </div>

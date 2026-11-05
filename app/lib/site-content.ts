@@ -125,7 +125,7 @@ export const SECTIONS: Section[] = [
     id: "message",
     title: "社長メッセージ",
     fields: [
-      I("message.img", "写真", "/img/morning.jpg"),
+      I("message.img", "写真", "/img/president-smile.jpg"),
       T("message.videoTitle", "動画の題名", "社長メッセージ　令和8年9月号"),
       A("message.quote", "メッセージ（大きな文字）", "お客様、社員さん、取引業者さん、\nそして地域のみなさまから\n喜ばれる店でありたい。", BR),
       A("message.body", "本文", "当社は食料品木村屋として創業以来、この想いで商いを続けてきました。「食」という普遍的なテーマを、時代の変化に合わせて追求し続けます。"),
