@@ -927,3 +927,4 @@ footer .copy{align-items:flex-end}
 .pres .screen.pres-cut .play{background:rgba(28,40,57,.85);padding:8px 16px 8px 8px;border-radius:999px}
 .pres .screen.pres-cut .play i{width:44px;height:44px}
 .pres .screen.pres-cut .play span{font-size:15px!important;text-shadow:none}
+.pres .screen.pres-cut a.play{color:#fff;text-decoration:none}
