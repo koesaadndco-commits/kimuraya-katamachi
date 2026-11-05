@@ -4,7 +4,7 @@ import "./kimura.css";
 import { SiteFooter, SiteHeader } from "./components/SiteChrome";
 import { INSTAGRAM_URL, SITE_URL, TIMEE_URL } from "./lib/links";
 import { flyerHref, listActivePosts, listPublishedInfo, type Post } from "./lib/staff-store";
-import { dotDate, getArticle, listPublishedArticles, youtubeId } from "./lib/articles";
+import { dotDate, getArticle, listPublishedArticles } from "./lib/articles";
 import { contentGetter, loadOverrides } from "./lib/site-content";
 import type { ReactNode } from "react";
 
@@ -255,13 +255,6 @@ export default async function Home() {
     <div className="wrap grid">
       <div className="screen pres-cut rv">
         <img src={c("message.img")} alt="代表取締役社長 木村 博常" loading="lazy" />
-        {/* 社長メッセージ動画：管理画面で YouTube のURLが登録されたときだけ再生ボタンを出す */}
-        {youtubeId(c("message.videoUrl")) && (
-          <>
-            <span className="tag">毎月配信</span>
-            <a className="play" href={c("message.videoUrl")} target="_blank" rel="noopener noreferrer"><i><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></i><span style={{fontFamily: 'var(--mincho)', fontSize: '18px', letterSpacing: '.1em'}}>{c("message.videoTitle")}</span></a>
-          </>
-        )}
       </div>
       <div className="rv">
         <div className="eyebrow">MESSAGE FROM THE PRESIDENT</div>
