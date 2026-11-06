@@ -20,9 +20,21 @@ export const INSTAGRAM_URL = "https://www.instagram.com/honey_syokusaikan/";
 export const CONTACT_EMAIL = "info@kimura-group48.jp";
 
 // 協同組合ハニー（本部）の公式サイトURLとロゴ。URLが空のあいだは文字だけを表示する。
-// ロゴは public/img/logo/honey-logo.png に保存し、HONEY_LOGO にそのパスを入れる。
-export const HONEY_URL = "";
-export const HONEY_LOGO = "";
+// ロゴはウィキメディア・コモンズの「Honey logo.png」を public/img/logo/honey-logo.png に保存（URLはWikipediaの記載より）
+export const HONEY_URL = "http://www.honey.jp/";
+export const HONEY_LOGO = "/img/logo/honey-logo.png";
+
+// ナポリの窯 やしろ店（木村グループがフランチャイズで運営。食彩館やしろ店の北側駐車場内）
+// 店舗ページ・ロゴはナポリの窯公式サイトより。Instagramは店舗アカウントが見つからないため、ブランド公式を表示
+export const NAPOLI = {
+  name: "ナポリの窯 やしろ店",
+  url: "https://www.napolipizza.jp/store/2302/",
+  instagram: "https://www.instagram.com/napolinokama/",
+  logo: "/img/logo/napoli-logo.svg",
+  addr: "福井市若杉4-1021（食彩館やしろ店 北側駐車場内）",
+  tel: "0776-50-7550",
+  hours: "10:00〜21:00（L.O. 20:30）",
+};
 
 // 代表取締役社長 木村 博常 のお写真（沿革の年表・ごあいさつで使用。トップの社長メッセージ欄は site-content の message.img）
 export const PRESIDENT_PHOTO = "/img/president-fist.webp";

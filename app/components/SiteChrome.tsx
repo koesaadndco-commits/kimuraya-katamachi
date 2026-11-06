@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages, @next/next/no-img-element -- ホーム（/）は kimura.js の初期化が必要なため、通常のページ読み込みで遷移させる */
 import Script from "next/script";
-import { HONEY_LOGO, HONEY_URL, INSTAGRAM_URL } from "../lib/links";
+import { HONEY_LOGO, HONEY_URL, INSTAGRAM_URL, NAPOLI } from "../lib/links";
 
 // 全ページ共通のヘッダー（メニューボタンで、どのページからでも一瞬で行き来できる）とフッター
 
@@ -70,6 +70,9 @@ export function SiteHeader({ solid = false, flyerHref = "/flyer" }: { solid?: bo
               <img className="lg2" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
             </span>
           </a>
+          <a className="hd-honey" href={HONEY_URL} target="_blank" rel="noopener noreferrer" aria-label="協同組合ハニー 本部サイト（新しいタブで開く）">
+            <img src={HONEY_LOGO} alt="協同組合ハニー" width={220} height={62} />
+          </a>
           <nav className="gnav" aria-label="メインメニュー">
             {MAIN_NAV.map((n) => <A key={n.href} item={n} />)}
           </nav>
@@ -110,6 +113,7 @@ export function SiteFooter() {
   return (
     <footer>
       <div className="wrap">
+        <NapoliPR compact />
         <div className="ft-grid">
           <div className="ft-about">
             <div className="ft-logos">
@@ -131,6 +135,27 @@ export function SiteFooter() {
         <div className="copy"><span className="ft-ai"><img src="/ai-mark/ai-mark-ornate-navy-sm.webp" alt="AI使用マーク" width={96} height={76} /><span>本サイトの一部にAIを使用しています</span></span><span className="ft-cr">© 2026 木村グループ<br />Produced by AISSK</span></div>
       </div>
     </footer>
+  );
+}
+
+/** ナポリの窯 やしろ店（FC運営）のPR。トップページの2画面目と、全ページのフッター（compact）に表示 */
+export function NapoliPR({ compact = false }: { compact?: boolean }) {
+  return (
+    <aside className={`np-pr${compact ? " compact" : ""}`} aria-label="ナポリの窯 やしろ店のご案内">
+      <div className="np-pr-logo">
+        <img src={NAPOLI.logo} alt="ナポリの窯 PIZZERIA" width={125} height={36} />
+      </div>
+      <div className="np-pr-body">
+        <p className="np-pr-kicker">木村グループが運営しています</p>
+        <h2 className="np-pr-h">{NAPOLI.name}</h2>
+        {!compact && <p className="np-pr-lead">食彩館やしろ店の北側駐車場に、テイクアウト専門の本格ナポリピザのお店があります。お買い物の前に注文しておけば、帰りに焼きたてを受け取れます。</p>}
+        <p className="np-pr-info">{NAPOLI.addr}<br />TEL <a href={`tel:${NAPOLI.tel.replace(/-/g, "")}`}>{NAPOLI.tel}</a>　営業 {NAPOLI.hours}</p>
+      </div>
+      <div className="np-pr-btns">
+        <a className="btn np-btn" href={NAPOLI.url} target="_blank" rel="noopener noreferrer">メニュー・ご注文</a>
+        <a className="btn btn-insta" href={NAPOLI.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </aside>
   );
 }
 

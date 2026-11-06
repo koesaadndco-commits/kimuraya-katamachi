@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./kimura.css";
-import { SiteFooter, SiteHeader } from "./components/SiteChrome";
+import { NapoliPR, SiteFooter, SiteHeader } from "./components/SiteChrome";
 import { INSTAGRAM_URL, SITE_URL, TIMEE_URL } from "./lib/links";
 import { flyerHref, listActivePosts, listPublishedInfo, type Post } from "./lib/staff-store";
 import { dotDate, getArticle, listPublishedArticles, youtubeId } from "./lib/articles";
@@ -135,6 +135,9 @@ export default async function Home() {
   </nav>
 
   <TodayNotice posts={active} />
+
+  {/* ナポリの窯 やしろ店（FC運営）のPR */}
+  <div className="wrap np-wrap"><NapoliPR /></div>
   
   {/* MANIFESTO: reading reveal */}
   <section className="read" id="promise">

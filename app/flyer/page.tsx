@@ -17,7 +17,12 @@ export default async function FlyerPage() {
     <>
       <header className="flyer-hd">
         <a className="flyer-back" href="/">‹ ホームへ戻る</a>
-        <span>木村グループ ／ ハニー食彩館</span>
+        <span className="flyer-logos">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/logo/kimuraya-lockup.png" alt="木村屋（木村グループ）" width={1200} height={355} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} />
+        </span>
       </header>
       <main className="flyer-main">
         {flyers.length === 0 && (
