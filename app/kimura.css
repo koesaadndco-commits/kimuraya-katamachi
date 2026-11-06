@@ -1067,3 +1067,4 @@ header.site .wrap.hd{max-width:1480px}
 .ft-honey-logo{height:30px;width:auto;display:block}
 a.ft-honey:hover span{text-decoration:underline}
 @media (max-width:960px){.hd .btn+.menu-btn{margin-left:auto}}
+.quick .np-q svg{background:#ea601f;border-color:#ea601f;color:#fff;stroke:#fff}

@@ -25,11 +25,13 @@ export const HONEY_URL = "http://www.honey.jp/";
 export const HONEY_LOGO = "/img/logo/honey-logo.png";
 
 // ナポリの窯 やしろ店（木村グループがフランチャイズで運営。食彩館やしろ店の北側駐車場内）
-// 店舗ページ・ロゴはナポリの窯公式サイトより。Instagramは店舗アカウントが見つからないため、ブランド公式を表示
+// 店舗ページ・ロゴはナポリの窯公式サイトより。Instagramはやしろ店のアカウント（ご指定）
 export const NAPOLI = {
   name: "ナポリの窯 やしろ店",
   url: "https://www.napolipizza.jp/store/2302/",
-  instagram: "https://www.instagram.com/napolinokama/",
+  instagram: "https://www.instagram.com/naporino_kama/",
+  // 配達（Uber Eats のやしろ店ページ）
+  delivery: "https://www.ubereats.com/jp/store/%E3%83%8A%E3%83%9B%E3%83%AA%E3%81%AE%E7%AA%AF-%E3%82%84%E3%81%97%E3%82%8D%E5%BA%97/A1mHJHuKUVyTjkBBZQlUew",
   logo: "/img/logo/napoli-logo.svg",
   addr: "福井市若杉4-1021（食彩館やしろ店 北側駐車場内）",
   tel: "0776-50-7550",
