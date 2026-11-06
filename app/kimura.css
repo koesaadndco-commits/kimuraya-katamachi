@@ -1033,7 +1033,10 @@ footer .copy{align-items:flex-end}
 .hd-honey img{height:26px;width:auto;display:block}
 .hd .logo,.hd-honey{flex-shrink:0}
 /* ハニーのロゴが加わった分、メニューの文字を早めに MENU ボタンへ畳む */
-@media (min-width:1241px) and (max-width:1420px){nav.gnav{display:none}.menu-btn{margin-left:auto}.hd .btn{margin-left:auto}.hd .btn+.menu-btn{margin-left:12px}}
+header.site .wrap.hd{max-width:1480px}
+@media (min-width:1241px) and (max-width:1500px){nav.gnav{display:none}.menu-btn{margin-left:auto}.hd .btn{margin-left:auto}.hd .btn+.menu-btn{margin-left:12px}}
+/* 文字の幅がブラウザで違っても見切れないよう、入りきらないときは menu.js が hd-tight を付けてメニュー文字を畳む */
+.hd.hd-tight nav.gnav{display:none}.hd.hd-tight .btn{margin-left:auto}.hd.hd-tight .btn+.menu-btn{margin-left:12px}
 @media (max-width:560px){.hd-honey{display:none}}
 
 /* ナポリの窯 やしろ店（FC運営）のPR */

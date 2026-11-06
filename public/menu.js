@@ -26,3 +26,17 @@
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) close(); });
 })();
+
+// ヘッダーが横にはみ出すときは、メニュー文字を畳んで MENU ボタンだけにする
+(function () {
+  var hd = document.querySelector('header.site .hd');
+  if (!hd) return;
+  function fit() {
+    hd.classList.remove('hd-tight');
+    if (hd.scrollWidth > hd.clientWidth + 1) hd.classList.add('hd-tight');
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('load', fit);
+})();
