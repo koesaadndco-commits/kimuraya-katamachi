@@ -1067,4 +1067,28 @@ header.site .wrap.hd{max-width:1480px}
 .ft-honey-logo{height:30px;width:auto;display:block}
 a.ft-honey:hover span{text-decoration:underline}
 @media (max-width:960px){.hd .btn+.menu-btn{margin-left:auto}}
-.quick .np-q svg{background:#ea601f;border-color:#ea601f;color:#fff;stroke:#fff}
+
+/* クイックメニュー：ナポリの窯 やしろ店（2枠ぶんの白いカード） */
+.quick li.np-cell{grid-column:span 2;background:#fff;color:var(--sumi);border-left:0}
+.quick li.np-cell+li{border-left:0}
+.np-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;height:100%;padding:12px 18px;border-left:5px solid #ea601f}
+.np-card-logo{width:118px;height:auto;display:block}
+.np-card-txt{min-width:0;display:flex;flex-direction:column;gap:2px}
+.np-card-kick{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#ea601f}
+.np-card-name{font-family:var(--mincho);font-size:17px;letter-spacing:.06em;line-height:1.35}
+.np-card-info{font-size:11px;color:var(--hai);line-height:1.5}
+.np-card-btns{display:grid;grid-template-columns:auto auto;gap:6px}
+.quick .np-b{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:34px;padding:0 14px;border-radius:999px;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-decoration:none;white-space:nowrap;transition:filter .2s,transform .2s}
+.quick .np-b:hover{filter:brightness(1.08);transform:translateY(-1px);background:none}
+.quick .np-b-del{background:#ea601f;color:#fff;grid-column:1/-1}
+.quick .np-b-del:hover{background:#ea601f}
+.np-b-del em{font-style:normal;font-size:9px;letter-spacing:.1em;background:var(--mitsu);color:var(--sumi);border-radius:3px;padding:1px 5px}
+.quick .np-b-res{background:#fff;color:#ea601f;border:1.5px solid #ea601f}
+.quick .np-b-ig{background:linear-gradient(45deg,#f9a13a,#e1306c 50%,#833ab4);color:#fff;padding:0;width:34px;min-height:34px}
+.quick .np-b-ig svg{width:18px;height:18px;padding:0;border:0;background:none;stroke:#fff;border-radius:0}
+@media (max-width:1280px){.np-card{gap:12px;padding:12px 14px}.np-card-logo{width:96px}.np-card-name{font-size:15px}}
+@media (min-width:961px) and (max-width:1280px){.quick ul{grid-auto-flow:dense}.quick li.np-cell{border-top:1px solid rgba(255,255,255,.12)}}
+@media (max-width:960px){.quick li.np-cell,.quick li.np-cell+li{border-left:0!important}.quick li.np-cell+li+li{border-left:1px solid rgba(255,255,255,.12)!important}}
+@media (max-width:600px){.np-card{grid-template-columns:auto 1fr;padding:14px}.np-card-btns{grid-column:1/-1;grid-template-columns:1fr 1fr auto}.quick .np-b-del{grid-column:auto}.np-card-info{display:none}}
+.np-card-kick,.np-card-name{white-space:nowrap}
+@media (min-width:1281px){.np-card{gap:12px;padding:10px 14px}.np-card-logo{width:100px}.np-card-info{display:none}.np-card-name{font-size:16px}.quick .np-b{padding:0 12px}}
