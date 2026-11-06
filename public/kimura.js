@@ -188,36 +188,23 @@
     },280);
   });});
 
-  // ---- store map ----
+  // ---- store map：お店をクリックすると、右（スマホは上）のGoogleマップがその店の周辺に切り替わる ----
   var stores=[['大宮',36.07927,136.19795],['四ツ居',36.06345,136.24404],['やしろ',36.05575,136.18609],['西福井',36.07447,136.21021],['丸岡',36.11699,136.25716],['みくに',36.21449,136.15948],['東部',36.05234,136.24406]];
-  var svg=document.getElementById('mapSvg'), NS='http://www.w3.org/2000/svg';
-  var LON0=136.075, LON1=136.305, LAT1=36.245, LAT0=36.02;
-  function P(lat,lon){ return [ (lon-LON0)/(LON1-LON0)*480, (LAT1-lat)/(LAT1-LAT0)*600 ]; }
-  function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
-  function path(pts){ return pts.map(function(p,i){var q=P(p[0],p[1]);return (i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1);}).join(' '); }
-  // sea (west of coast)
-  var coast=[[36.245,136.140],[36.225,136.135],[36.205,136.122],[36.17,136.105],[36.13,136.088],[36.09,136.079],[36.05,136.075],[36.02,136.075]];
-  svg.appendChild(el('path',{d:path(coast)+' L0 600 L0 0 Z',fill:'#16202e'}));
-  svg.appendChild(el('path',{d:path(coast),fill:'none',stroke:'rgba(217,162,59,.5)','stroke-width':'1.2'}));
-  // paddy grid
-  for(var gx=0;gx<480;gx+=24){ svg.appendChild(el('line',{x1:gx,y1:0,x2:gx,y2:600,stroke:'rgba(255,255,255,.035)'})); }
-  for(var gy=0;gy<600;gy+=24){ svg.appendChild(el('line',{x1:0,y1:gy,x2:480,y2:gy,stroke:'rgba(255,255,255,.035)'})); }
-  // Kuzuryu river (approximate)
-  var river=[[36.085,136.305],[36.095,136.27],[36.108,136.245],[36.12,136.222],[36.14,136.20],[36.165,136.185],[36.19,136.168],[36.212,136.152],[36.228,136.138]];
-  svg.appendChild(el('path',{d:path(river),fill:'none',stroke:'rgba(120,160,210,.55)','stroke-width':'3','stroke-linecap':'round'}));
-  var lab=function(t,lat,lon){var q=P(lat,lon);var x=el('text',{x:q[0],y:q[1],class:'lbl'});x.textContent=t;svg.appendChild(x);};
-  lab('日 本 海',36.16,136.078); lab('九頭竜川',36.15,136.205); lab('坂井市',36.14,136.245); lab('福井市',36.035,136.13);
-  var eki=P(36.0620,136.2233); svg.appendChild(el('rect',{x:eki[0]-4,y:eki[1]-4,width:8,height:8,fill:'none',stroke:'rgba(255,255,255,.6)'})); var et=el('text',{x:eki[0]+8,y:eki[1]+14,class:'lbl'}); et.textContent='福井駅'; svg.appendChild(et);
-  var rows=document.querySelectorAll('#storeList .store'), pins=[];
-  stores.forEach(function(s,i){
-    var q=P(s[1],s[2]), g=el('g',{class:'pin',transform:'translate('+q[0].toFixed(1)+','+q[1].toFixed(1)+')',tabindex:'0',role:'button','aria-label':'食彩館 '+s[0]+'店'});
-    g.appendChild(el('circle',{class:'halo',r:'9'})); g.appendChild(el('circle',{class:'core',r:'6'}));
-    var t=el('text',{x:'10',y:'-8'}); t.textContent=s[0]; g.appendChild(t);
-    svg.appendChild(g); pins.push(g);
-    var hl=function(on){ g.classList.toggle('hl',on); if(rows[i]) rows[i].classList.toggle('hl',on); };
-    g.addEventListener('mouseenter',function(){hl(true);}); g.addEventListener('mouseleave',function(){hl(false);});
-    g.addEventListener('click',function(){ if(rows[i]) rows[i].scrollIntoView({behavior:'smooth',block:'center'}); });
-    if(rows[i]){ rows[i].addEventListener('mouseenter',function(){hl(true);}); rows[i].addEventListener('mouseleave',function(){hl(false);}); }
+  var rows=Array.prototype.slice.call(document.querySelectorAll('#storeList .store'));
+  var gf=document.getElementById('gmapFrame'), gName=document.getElementById('gmapName');
+  function showStore(i, scroll){
+    var r=rows[i]; if(!r||!gf) return;
+    rows.forEach(function(x,j){ x.classList.toggle('on', j===i); });
+    var q=r.getAttribute('data-q'), n=r.getAttribute('data-name');
+    gf.src='https://maps.google.com/maps?q='+encodeURIComponent(q)+'&z=15&hl=ja&output=embed';
+    gf.title='Googleマップ：'+n+'の周辺';
+    if(gName) gName.textContent=n;
+    // スマホでは地図が一覧の上にあるので、切り替えたら地図が見える位置まで戻す
+    if(scroll && window.matchMedia('(max-width:960px)').matches){ document.getElementById('map').scrollIntoView({behavior:'smooth',block:'start'}); }
+  }
+  rows.forEach(function(r,i){
+    r.addEventListener('click',function(e){ if(e.target.closest('a')) return; showStore(i,true); });
+    r.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); showStore(i,true); } });
   });
   document.getElementById('nearBtn').addEventListener('click',function(){
     var out=document.getElementById('nearOut');
@@ -227,7 +214,7 @@
       var la=pos.coords.latitude, lo=pos.coords.longitude, best=0, bd=1e9;
       stores.forEach(function(s,i){ var dy=(s[1]-la)*111, dx=(s[2]-lo)*111*Math.cos(la*Math.PI/180), d=Math.sqrt(dx*dx+dy*dy); if(d<bd){bd=d;best=i;} });
       out.textContent='いちばん近いのは 食彩館 '+stores[best][0]+'店（約'+bd.toFixed(1)+'km）';
-      pins.forEach(function(p,i){p.classList.toggle('hl',i===best);}); rows.forEach(function(r,i){r.classList.toggle('hl',i===best);});
+      showStore(best,false);
     },function(){ out.textContent='現在地を取得できませんでした。一覧からお選びください。'; },{timeout:8000});
   });
 

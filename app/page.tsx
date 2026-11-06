@@ -52,6 +52,11 @@ const STORES_JSON_LD = {
   })),
 };
 
+/** Googleマップの埋め込みURL（APIキー不要の検索埋め込み） */
+function gmapSrc(q: string) {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(q)}&z=15&hl=ja&output=embed`;
+}
+
 export default async function Home() {
   // 掲載期間内の「本日のチラシ・お知らせ」（期間外のものは含まれない）
   const active = await listActivePosts();
@@ -183,7 +188,7 @@ export default async function Home() {
         <article className="hs-card" data-y="1998"><div className="ph"><img src={c("story.6.img")} alt={c("story.6.title")} loading="lazy" /></div><div className="era"><b>平成10年</b><span>1998</span></div><h3>{c("story.6.title")}</h3><p>{c("story.6.text")}</p></article>
         <article className="hs-card" data-y="2026"><div className="ph now"><img src={c("story.7.img")} alt={c("story.7.title")} loading="lazy" /></div><div className="era"><b>令和8年</b><span>2026</span></div><h3>{c("story.7.title")}</h3><p>{c("story.7.text")}</p></article>
       </div>
-      <div className="wrap"><div className="hs-prog"><i id="hsProg"></i></div><a className="hs-more" href="/history">会社の沿革をくわしく見る ›</a></div>
+      <div className="wrap"><div className="hs-prog"><i id="hsProg"></i></div><a className="hs-more" href="/history">会社の沿革をくわしく見る<b aria-hidden="true">›</b></a></div>
     </div>
   </section>
   
@@ -315,17 +320,21 @@ export default async function Home() {
     <div className="wrap">
       <div className="sec-hd"><div><img className="st-logo" src="/img/logo/shokusaikan-logo.png" alt="ハニー食彩館 FOOD MARKET" width={1200} height={567} /><div className="eyebrow">STORES</div><h2>{lines(c("stores.heading"))}</h2></div><p style={{margin: '0', color: 'var(--hai)', maxWidth: '26em'}}>{c("stores.lead")}</p></div>
       <div className="store-grid">
-      <div className="map rv" id="map" aria-label="店舗マップ（福井市・坂井市）"><svg id="mapSvg" viewBox="0 0 480 600" role="img" aria-label="福井市・坂井市の食彩館7店舗の位置"></svg>
+      <div className="map gmap rv" id="map">
+        <div className="gmap-frame">
+          <iframe id="gmapFrame" title="Googleマップ：食彩館 大宮店の周辺" src={gmapSrc("ハニー食彩館 大宮店 福井市大宮6丁目5-5")} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen></iframe>
+        </div>
+        <div className="gmap-bar"><b id="gmapName">食彩館 大宮店</b><span>お店をクリックすると、地図が切り替わります</span></div>
         <div className="map-tools"><button type="button" id="nearBtn">現在地から近い店を探す</button><span id="nearOut"></span></div>
       </div>
       <div className="store-list one" id="storeList">
-        <div className="store" data-close="24"><h3>食彩館 大宮店<span className="open"></span></h3><div className="addr">福井市大宮6丁目5-5 ／ TEL 0776-27-1194</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps?cid=698264289893347059">地図を開く</a><a href={flyer}>チラシ</a></div></div>
-        <div className="store" data-close="22"><h3>食彩館 四ツ居店<span className="open"></span></h3><div className="addr">福井市北四ツ居1-9-1 ／ TEL 0776-53-5535</div><div className="hrs"><b>8:00 – 22:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館四ツ居店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
-        <div className="store" data-close="24"><h3>食彩館 やしろ店<span className="open"></span></h3><div className="addr">福井市若杉4丁目1021 ／ TEL 0776-34-3030</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館やしろ店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
-        <div className="store" data-close="23"><h3>食彩館 西福井店<span className="open"></span></h3><div className="addr">福井市文京4丁目3-1 ／ TEL 0776-26-6400</div><div className="hrs"><b>8:00 – 23:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館西福井">地図を開く</a><a href={flyer}>チラシ</a></div></div>
-        <div className="store" data-close="24"><h3>食彩館 丸岡店<span className="open"></span></h3><div className="addr">坂井市丸岡町羽崎16字25 ／ TEL 0776-67-3771</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館丸岡店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
-        <div className="store" data-close="24"><h3>食彩館 みくに店<span className="open"></span></h3><div className="addr">坂井市三国町三国東7-513 ／ TEL 0776-81-6670</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館みくに">地図を開く</a><a href={flyer}>チラシ</a></div></div>
-        <div className="store" data-close="24"><h3>食彩館 東部店<span className="open"></span></h3><div className="addr">福井市成和1丁目3210 ／ TEL 0776-26-1002</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館東部店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store on" data-close="24" data-q="ハニー食彩館大宮店 福井市大宮6丁目5-5" data-name="食彩館 大宮店" tabIndex={0}><h3>食彩館 大宮店<span className="open"></span></h3><div className="addr">福井市大宮6丁目5-5 ／ TEL 0776-27-1194</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps?cid=698264289893347059">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="22" data-q="ハニー食彩館四ツ居店 福井市北四ツ居1-9-1" data-name="食彩館 四ツ居店" tabIndex={0}><h3>食彩館 四ツ居店<span className="open"></span></h3><div className="addr">福井市北四ツ居1-9-1 ／ TEL 0776-53-5535</div><div className="hrs"><b>8:00 – 22:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館四ツ居店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="24" data-q="ハニー食彩館やしろ店 福井市若杉4丁目1021" data-name="食彩館 やしろ店" tabIndex={0}><h3>食彩館 やしろ店<span className="open"></span></h3><div className="addr">福井市若杉4丁目1021 ／ TEL 0776-34-3030</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館やしろ店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="23" data-q="ハニー食彩館西福井店 福井市文京4丁目3-1" data-name="食彩館 西福井店" tabIndex={0}><h3>食彩館 西福井店<span className="open"></span></h3><div className="addr">福井市文京4丁目3-1 ／ TEL 0776-26-6400</div><div className="hrs"><b>8:00 – 23:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館西福井">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="24" data-q="ハニー食彩館丸岡店 坂井市丸岡町羽崎16字25" data-name="食彩館 丸岡店" tabIndex={0}><h3>食彩館 丸岡店<span className="open"></span></h3><div className="addr">坂井市丸岡町羽崎16字25 ／ TEL 0776-67-3771</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館丸岡店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="24" data-q="ハニー食彩館みくに店 坂井市三国町三国東7-513" data-name="食彩館 みくに店" tabIndex={0}><h3>食彩館 みくに店<span className="open"></span></h3><div className="addr">坂井市三国町三国東7-513 ／ TEL 0776-81-6670</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館みくに">地図を開く</a><a href={flyer}>チラシ</a></div></div>
+        <div className="store" data-close="24" data-q="ハニー食彩館東部店 福井市成和1丁目3210" data-name="食彩館 東部店" tabIndex={0}><h3>食彩館 東部店<span className="open"></span></h3><div className="addr">福井市成和1丁目3210 ／ TEL 0776-26-1002</div><div className="hrs"><b>8:00 – 24:00</b><span>年中無休</span></div><div className="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=ハニー食彩館東部店">地図を開く</a><a href={flyer}>チラシ</a></div></div>
       </div>
       </div>
     </div>

@@ -1092,3 +1092,34 @@ a.ft-honey:hover span{text-decoration:underline}
 @media (max-width:600px){.np-card{grid-template-columns:auto 1fr;padding:14px}.np-card-btns{grid-column:1/-1;grid-template-columns:1fr 1fr auto}.quick .np-b-del{grid-column:auto}.np-card-info{display:none}}
 .np-card-kick,.np-card-name{white-space:nowrap}
 @media (min-width:1281px){.np-card{gap:12px;padding:10px 14px}.np-card-logo{width:100px}.np-card-info{display:none}.np-card-name{font-size:16px}.quick .np-b{padding:0 12px}}
+
+/* ===== 店舗一覧：少しPOPなカード＋Googleマップ切り替え ===== */
+.stores .store-list{border-top:0;gap:14px}
+.stores .store{position:relative;background:#fff;border:2px solid var(--sumi);border-radius:18px;padding:18px 22px;box-shadow:4px 5px 0 var(--sumi);cursor:pointer;transition:transform .15s,box-shadow .15s,background .2s}
+.stores .store:hover{transform:translate(-1px,-2px);box-shadow:5px 7px 0 var(--sumi)}
+.stores .store:focus-visible{outline:3px solid var(--mitsu);outline-offset:3px}
+.stores .store.on{background:#fff8e6;box-shadow:5px 6px 0 var(--mitsu);border-color:var(--sumi)}
+.stores .store.on::before{content:"地図に表示中";position:absolute;top:-11px;left:18px;background:var(--mitsu);color:var(--sumi);font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:2px 10px;border-radius:999px;border:2px solid var(--sumi)}
+.stores .store h3{font-size:19px}
+.stores .store .open{border:0;color:#fff;padding:2px 9px}
+.stores .store .open.on{background:#2bb673;color:#fff}.stores .store .open.off{background:#b0563b;color:#fff}
+.stores .store .links a{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:999px;border:1.5px solid var(--mitsu-d);font-size:12px}
+.stores .store .links a:hover{background:var(--mitsu);text-decoration:none}
+.stores .store.hl{background:#fff}
+/* Googleマップ */
+.map.gmap{background:none;aspect-ratio:auto;overflow:visible;color:var(--sumi)}
+.gmap-frame{border:2px solid var(--sumi);border-radius:22px;overflow:hidden;box-shadow:6px 8px 0 var(--mitsu);background:#e9e4da;aspect-ratio:4/5}
+.gmap-frame iframe{display:block;width:100%;height:100%;border:0}
+.gmap-bar{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:18px 4px 0}
+.gmap-bar b{font-size:16px;letter-spacing:.06em}
+.gmap-bar span{font-size:12px;color:var(--hai)}
+.map.gmap .map-tools{position:static;margin:12px 4px 0}
+.map.gmap .map-tools button{border:2px solid var(--sumi);background:#fff;color:var(--sumi);font-weight:700;box-shadow:2px 3px 0 var(--sumi)}
+.map.gmap .map-tools span{color:var(--hai)}
+@media (max-width:960px){.map.gmap{position:static}.gmap-frame{aspect-ratio:4/3}}
+@media (max-width:600px){.gmap-frame{aspect-ratio:1/1}.stores .store{padding:16px 16px}}
+/* 80年の物語：沿革ページへのボタン（目立つように） */
+.hs-more{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:0 26px;min-height:50px;border:0;border-radius:999px;background:var(--mitsu);color:var(--sumi);font-size:15px;font-weight:700;letter-spacing:.08em;box-shadow:0 6px 18px -6px rgba(217,162,59,.6);transition:transform .15s,filter .15s}
+.hs-more:hover{color:var(--sumi);filter:brightness(1.08);transform:translateY(-2px)}
+.hs-more b{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--sumi);color:var(--mitsu);font-size:14px}
+#map{scroll-margin-top:86px}@media (max-width:600px){.stores .store h3{font-size:17px}}
