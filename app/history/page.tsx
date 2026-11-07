@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import "../kimura.css";
 import { BlogFooter, BlogHeader, Eyebrow } from "../blog/SiteChrome";
-import { PRESIDENT_PHOTO, SITE_URL } from "../lib/links";
+import { SITE_URL } from "../lib/links";
 
 export const metadata: Metadata = {
   title: "会社の沿革｜木村グループ（ハニー食彩館）",
@@ -24,13 +24,13 @@ const HISTORY: Item[] = [
   {
     wa: "昭和40年12月", year: "1965",
     events: [{ title: "株式会社 片町フードセンターを設立", note: "福井市錦町801　代表取締役 木村常治" }],
-    img: { src: "/img/history/1965-katamachi-rooftop.jpg", alt: "片町店の屋上に立つ木村逸子夫人と木村常治会長", caption: "昭和40年　片町店開業時、屋上にて逸子夫人と故木村常治会長" },
+    img: { src: "/img/history/retro/1965-katamachi-rooftop.jpg", alt: "片町店の屋上に立つ木村逸子夫人と木村常治会長", caption: "昭和40年　片町店開業時、屋上にて逸子夫人と故木村常治会長" },
   },
   { wa: "昭和42年8月", year: "1967", events: [{ title: "片町フードセンターの住所変更", note: "福井市順化1丁目17番5号" }] },
   {
     wa: "昭和46年8月", year: "1971",
     events: [{ title: "株式会社 松本フードセンターを設立", note: "福井市松本2丁目16-5　代表取締役 木村常治" }],
-    img: { src: "/img/history/1971-matsumoto.jpg", alt: "松本フードセンターのレジに座る木村常雄社長", caption: "昭和46年頃　松本フードセンター　木村常雄社長", tall: true },
+    img: { src: "/img/history/retro/1971-matsumoto.jpg", alt: "松本フードセンターのレジに座る木村常雄社長", caption: "昭和46年頃　松本フードセンター　木村常雄社長", tall: true },
   },
   { wa: "昭和52年7月", year: "1977", events: [{ title: "ハニー大宮店をオープン", note: "福井市大宮6丁目5-5" }] },
   { wa: "昭和55年8月", year: "1980", events: [{ title: "ハニー四ツ居店をオープン", note: "福井市北四ツ居1丁目9-1" }] },
@@ -42,7 +42,7 @@ const HISTORY: Item[] = [
       { title: "7月　ハニー松本北店を閉店" },
       { title: "8月　ハニー足羽店をオープン" },
     ],
-    img: { src: "/img/history/store-asuwa.jpg", alt: "ハニー足羽店", caption: "ハニー足羽店" },
+    img: { src: "/img/history/retro/store-asuwa.jpg", alt: "ハニー足羽店", caption: "ハニー足羽店" },
   },
   { wa: "昭和62年10月", year: "1987", events: [{ title: "松本フードセンターの代表者変更", note: "代表取締役 木村常雄" }] },
   {
@@ -57,32 +57,32 @@ const HISTORY: Item[] = [
   {
     wa: "平成10年8月", year: "1998",
     events: [{ title: "ハニー食彩館みくにをオープン", note: "坂井郡三国町三国東7丁目513" }],
-    img: { src: "/img/history/store-mikuni.jpg", alt: "ハニー食彩館みくに店", caption: "ハニー食彩館みくに店" },
+    img: { src: "/img/history/retro/store-mikuni.jpg", alt: "ハニー食彩館みくに店", caption: "ハニー食彩館みくに店" },
   },
   {
     wa: "平成14年2月", year: "2002",
     events: [{ title: "東部プラザと合併", note: "福井市成和1丁目3210番" }],
-    img: { src: "/img/history/store-tobu.jpg", alt: "ハニー食彩館東部店（東部プラザ）", caption: "ハニー食彩館東部店" },
+    img: { src: "/img/history/retro/store-tobu.jpg", alt: "ハニー食彩館東部店（東部プラザ）", caption: "ハニー食彩館東部店" },
   },
   {
     wa: "平成15年11月", year: "2003",
     events: [{ title: "ハニー食彩館丸岡店をリニューアル", note: "坂井市丸岡町羽崎16-25" }],
-    img: { src: "/img/history/store-maruoka.jpg", alt: "ハニー食彩館丸岡店", caption: "ハニー食彩館丸岡店" },
+    img: { src: "/img/history/retro/store-maruoka.jpg", alt: "ハニー食彩館丸岡店", caption: "ハニー食彩館丸岡店" },
   },
   {
     wa: "平成17年8月", year: "2005",
     events: [{ title: "ハニー塚町店をリニューアル" }],
-    img: { src: "/img/history/store-tsukamachi.jpg", alt: "ハニー塚町店", caption: "ハニー塚町店" },
+    img: { src: "/img/history/retro/store-tsukamachi.jpg", alt: "ハニー塚町店", caption: "ハニー塚町店" },
   },
   {
     wa: "平成18年10月", year: "2006",
     events: [{ title: "ハニー食彩館四ツ居店をリニューアル", note: "福井市北四ツ居1丁目9-1" }],
-    img: { src: "/img/history/store-yotsui.jpg", alt: "ハニー食彩館四ツ居店", caption: "ハニー食彩館四ツ居店" },
+    img: { src: "/img/history/retro/store-yotsui.jpg", alt: "ハニー食彩館四ツ居店", caption: "ハニー食彩館四ツ居店" },
   },
   {
     wa: "平成20年8月", year: "2008",
     events: [{ title: "ハニー食彩館大宮店を新築開店", note: "福井市大宮6丁目5-5" }],
-    img: { src: "/img/history/store-oomiya.jpg", alt: "ハニー食彩館大宮店", caption: "ハニー食彩館大宮店" },
+    img: { src: "/img/history/retro/store-oomiya.jpg", alt: "ハニー食彩館大宮店", caption: "ハニー食彩館大宮店" },
   },
   {
     wa: "平成23年", year: "2011",
@@ -94,7 +94,7 @@ const HISTORY: Item[] = [
   {
     wa: "令和元年10月", year: "2019",
     events: [{ title: "木村 博常が代表取締役社長に就任", note: "これからも、お客様、社員さん、取引業者さん、そして地域のみなさまに「ありがとう」を伝え続けてまいります。" }],
-    img: { src: PRESIDENT_PHOTO, alt: "代表取締役社長 木村 博常", caption: "代表取締役社長　木村 博常", cutout: true },
+    img: { src: "/img/history/retro/president-fist.webp", alt: "代表取締役社長 木村 博常", caption: "代表取締役社長　木村 博常", cutout: true },
   },
   {
     wa: "令和8年", year: "2026",

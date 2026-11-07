@@ -1135,3 +1135,5 @@ a.ft-honey:hover span{text-decoration:underline}
   .rc-pop .rc2-card .rc2-ctas{grid-area:ctas;align-self:center;margin:0;display:flex;flex-direction:column;gap:10px}
   .rc-pop .rc2-card .rc2-ctas .btn{width:100%;justify-content:center}
 }
+/* 沿革の写真：レトロ加工にそろえ、古い写真のような白フチをつける */
+.hi-fig:not(.cutout) img{border:7px solid #fbf6ea;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.06),0 10px 24px rgba(60,40,10,.18)}
