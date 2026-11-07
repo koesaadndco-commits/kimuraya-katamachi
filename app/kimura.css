@@ -1123,3 +1123,15 @@ a.ft-honey:hover span{text-decoration:underline}
 .hs-more:hover{color:var(--sumi);filter:brightness(1.08);transform:translateY(-2px)}
 .hs-more b{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--sumi);color:var(--mitsu);font-size:14px}
 #map{scroll-margin-top:86px}@media (max-width:600px){.stores .store h3{font-size:17px}}
+/* 採用ページの大写真：上の余白（天井）を詰め、下（前列の女性）まで見えるように */
+@media (min-width:761px){.rc2-bg{height:auto;aspect-ratio:16/10;max-height:none;object-position:50% 62%}}
+/* 採用ページ：ヒーロー下の文字枠（POP）を整える：見出し｜説明＋タグ｜ボタン の3段組、上下中央でそろえる */
+@media (min-width:1101px){
+  .rc-pop .rc2-card{grid-template-columns:minmax(0,auto) minmax(0,1fr) 200px;grid-template-areas:"eye eye ." "h1 lead ctas" "h1 tags ctas";grid-template-rows:auto auto auto;column-gap:clamp(28px,3.4vw,52px);row-gap:12px;align-items:center;padding:26px 36px}
+  .rc-pop .rc2-card .eyebrow{grid-area:eye;margin:0}
+  .rc-pop .rc2-card h1{grid-area:h1;align-self:center;margin:0}
+  .rc-pop .rc2-card .rc2-lead2{grid-area:lead;align-self:end;margin:0;padding-left:clamp(20px,2.4vw,36px);border-left:3px dotted rgba(43,42,51,.2)}
+  .rc-pop .rc2-card .rc2-tags{grid-area:tags;align-self:start;margin:0;padding-left:clamp(20px,2.4vw,36px);border-left:3px dotted rgba(43,42,51,.2)}
+  .rc-pop .rc2-card .rc2-ctas{grid-area:ctas;align-self:center;margin:0;display:flex;flex-direction:column;gap:10px}
+  .rc-pop .rc2-card .rc2-ctas .btn{width:100%;justify-content:center}
+}
